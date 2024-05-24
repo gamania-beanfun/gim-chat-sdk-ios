@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   
   s.license      = { :type => 'MIT', :file => 'LICENSE.md' }
   s.authors      = { Ray => g-raychen@gamania.com }
-  s.source       = { :http => "https://github.com/gamania-beanfun/gim-chat-sdk-ios/releases/download/1.0.7/ChatSDK.zip" }
+  s.source       = { :http => "https://github.com/gamania-beanfun/gim-chat-sdk-ios/releases/download/1.0.7/ChatSDK.zip", :sha1 => "e323977b3cf1f965390c4f690daa103e9abc73148e00f7d4c30fabdbe19b474d" }
   s.requires_arc = true
   
   s.ios.vendored_frameworks = 'ChatSDK/ChatSDK.xcframework'

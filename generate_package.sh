@@ -2,11 +2,12 @@
 
 VERSION=''
 
-while getopts v:p: flag
+while getopts v:c:p: flag
 do
     case "${flag}" in
         p) PRODUCT=${OPTARG};;
         v) VERSION=${OPTARG};;
+        c) CHECKSUM=${OPTARG};;
         *) error "Unexpected option ${flag}";;
     esac
 done
@@ -18,6 +19,11 @@ fi
 
 if [ -z $VERSION ]; then
     echo "Version is required"
+    exit 1
+fi
+
+if [ -z $CHECKSUM ]; then
+    echo "Checksum is required"
     exit 1
 fi
 
@@ -42,7 +48,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: \"$PRODUCT\",
-            url: \"https://github.com/gamania-beanfun/gim-chat-sdk-ios/releases/download/$VERSION/$PRODUCT.xcframework.zip\"
+            url: \"https://github.com/gamania-beanfun/gim-chat-sdk-ios/releases/download/$VERSION/$PRODUCT.xcframework.zip\",
+            checksum: \"$CHECKSUM\"
         ),
     ]
 )"
