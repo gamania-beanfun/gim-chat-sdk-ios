@@ -2,11 +2,10 @@
 
 VERSION=''
 
-while getopts v:c:p:r: flag
+while getopts v:p: flag
 do
     case "${flag}" in
         p) PRODUCT=${OPTARG};;
-        r) REPO=${OPTARG};;
         v) VERSION=${OPTARG};;
         *) error "Unexpected option ${flag}";;
     esac
@@ -17,19 +16,15 @@ if [ -z $PRODUCT ]; then
     exit 1
 fi
 
-if [ -z $REPO ]; then
-    echo "Repository name is required"
-    exit 1
-fi
-
 if [ -z $VERSION ]; then
     echo "Version is required"
     exit 1
 fi
 
 TEMPLATE="
-// swift-tools-version:5.3
+// swift-tools-version: 5.7
 // The swift-tools-version declares the minimum version of Swift required to build this package.
+
 import PackageDescription
 let package = Package(
     name: \"$PRODUCT\",
