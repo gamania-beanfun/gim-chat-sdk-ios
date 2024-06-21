@@ -37,8 +37,6 @@ Pod::Spec.new do |s|
   s.ios.vendored_frameworks = 'ChatSDK/ChatSDK.xcframework'
   s.ios.frameworks = ['UIKit', 'CFNetwork', 'Security', 'Foundation', 'MobileCoreServices', 'SystemConfiguration', 'CoreFoundation']
   s.ios.library   = 'icucore'
-  s.dependency 'SQLite.swift', '0.14.1'
-  s.dependency 'Starscream', '4.0.4'
 
 end
 "

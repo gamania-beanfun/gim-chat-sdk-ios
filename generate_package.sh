@@ -41,10 +41,7 @@ let package = Package(
             targets: [\"$PRODUCT\"]
         ),
     ],
-    dependencies: [
-        .package(url: "https://github.com/daltoniam/Starscream", exact: .init(stringLiteral: "4.0.4")),
-        .package(url: "https://github.com/stephencelis/SQLite.swift", exact: .init(stringLiteral: "0.14.1"))
-    ],
+    dependencies: [],
     targets: [
         .binaryTarget(
             name: \"$PRODUCT\",

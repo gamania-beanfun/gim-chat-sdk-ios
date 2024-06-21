@@ -12,15 +12,12 @@ let package = Package(
             targets: ["ChatSDK"]
         ),
     ],
-    dependencies: [
-        .package(url: "https://github.com/daltoniam/Starscream", exact: .init(stringLiteral: "4.0.4")),
-        .package(url: "https://github.com/stephencelis/SQLite.swift", exact: .init(stringLiteral: "0.14.1"))
-    ],
+    dependencies: [],
     targets: [
         .binaryTarget(
             name: "ChatSDK",
-            url: "https://github.com/gamania-beanfun/gim-chat-sdk-ios/releases/download/1.0.7/ChatSDK.xcframework.zip",
-            checksum: "e323977b3cf1f965390c4f690daa103e9abc73148e00f7d4c30fabdbe19b474d"
+            url: "https://github.com/gamania-beanfun/gim-chat-sdk-ios/releases/download/1.0.12/ChatSDK.xcframework.zip",
+            checksum: "da090cf0d9509ac934f70bc917ed71c57ae97dfdae6ed000d2a52dc506adce09"
         ),
     ]
 )
