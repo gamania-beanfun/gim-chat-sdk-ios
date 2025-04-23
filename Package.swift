@@ -1,8 +1,8 @@
-// swift-tools-version: 5.10
+
+// swift-tools-version: 5.7
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
-
 let package = Package(
     name: "ChatSDK",
     platforms: [.iOS(.v12)],
@@ -16,8 +16,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "ChatSDK",
-            url: "https://github.com/gamania-beanfun/gim-chat-sdk-ios/releases/download/1.0.12/ChatSDK.xcframework.zip",
-            checksum: "da090cf0d9509ac934f70bc917ed71c57ae97dfdae6ed000d2a52dc506adce09"
+            url: "https://github.com/gamania-beanfun/gim-chat-sdk-ios/releases/download/1.0.29/ChatSDK.xcframework.zip",
+            checksum: "64688370b54dc780a4914bfc4a889b0fda89454f73efc5b6b6edeb76b20bcd01"
         ),
     ]
 )
