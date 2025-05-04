@@ -4,6 +4,7 @@ Pod::Spec.new do |s|
   s.version      = '1.0.36'
   s.summary      = 'Gamania Chat iOS Framework'
   s.description  = 'Messaging and Chat API for Mobile Apps'
+  s.homepage     = 'https://github.com/gamania-beanfun/gim-chat-sdk-ios'
   s.license      = { :type => 'MIT', :file => 'LICENSE.md' }
   s.authors      = { 'Gamania' => 'g-raychen@gamania.com' }
   s.source       = { :http => "https://github.com/gamania-beanfun/gim-chat-sdk-ios/releases/download/1.0.36/ChatSDK.xcframework.zip", :sha256 => '7baab3bf82a7c2b39cbbc164be8fc39c7b44a03a9607b4546381aea727c0c5a4' }
