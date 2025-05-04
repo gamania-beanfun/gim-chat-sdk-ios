@@ -1,4 +1,4 @@
--e 
+
 Pod::Spec.new do |s|
   s.name         = 'ChatSDK'
   s.version      = '1.0.36'
