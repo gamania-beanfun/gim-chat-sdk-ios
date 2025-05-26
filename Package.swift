@@ -5,7 +5,7 @@
 import PackageDescription
 let package = Package(
     name: "ChatSDK",
-    platforms: [.iOS(.v12)],
+    platforms: [.iOS(.v13)],
     products: [
         .library(
             name: "ChatSDK",
@@ -16,8 +16,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "ChatSDK",
-            url: "https://github.com/gamania-beanfun/gim-chat-sdk-ios/releases/download/1.0.36/ChatSDK.xcframework.zip",
-            checksum: "7baab3bf82a7c2b39cbbc164be8fc39c7b44a03a9607b4546381aea727c0c5a4"
+            url: "https://github.com/gamania-beanfun/gim-chat-sdk-ios/releases/download/1.0.37/ChatSDK.xcframework.zip",
+            checksum: "c30715ba0c40c479da662d139c1efba5360cfffb83b91d93a1e8c8b817cdd775"
         ),
     ]
 )
