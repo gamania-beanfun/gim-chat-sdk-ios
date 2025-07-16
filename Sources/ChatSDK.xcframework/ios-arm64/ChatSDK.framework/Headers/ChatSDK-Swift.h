@@ -803,7 +803,6 @@ SWIFT_CLASS("_TtC7ChatSDK17MessageCollection")
 
 
 
-
 /// Represents what happened to the messages.
 SWIFT_CLASS("_TtC7ChatSDK14MessageContext")
 @interface MessageContext : NSObject

@@ -282,6 +282,7 @@ extension ChatSDK.BaseChannel {
   dynamic public func updateUserMessage(messageId: Swift.Int64, params: ChatSDK.UserMessageUpdateParams, completionHandler: ChatSDK.UserMessageHandler?)
   @available(iOS 13.0, *)
   dynamic public func updateUserMessage(messageId: Swift.Int64, params: ChatSDK.UserMessageUpdateParams) async throws -> Swift.Result<ChatSDK.UserMessage, ChatSDK.GIMError>
+  dynamic public func translateUserMessage(_ message: ChatSDK.UserMessage, targetLanguages: [Swift.String], completionHandler: ChatSDK.UserMessageHandler?)
 }
 extension ChatSDK.BaseChannel {
   dynamic public func pinMessage(messageId: Swift.Int64, completionHandler: ChatSDK.GIMErrorHandler?)
@@ -317,6 +318,17 @@ public typealias PinnedMessageListHandler = ((_ messages: [ChatSDK.BaseMessage]?
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
+public enum MessageType : Swift.String, Swift.Codable {
+  case user
+  case file
+  case admin
+  case summary
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
 @objc @_inheritsConvenienceInitializers final public class PinnedMessageListQueryParams : ObjectiveC.NSObject {
   final public var includeMetaArray: Swift.Bool
   final public var includeReactions: Swift.Bool
@@ -330,6 +342,9 @@ public typealias PinnedMessageListHandler = ((_ messages: [ChatSDK.BaseMessage]?
 }
 extension ChatSDK.PinnedMessageListQueryParams : Foundation.NSCopying {
   @objc final public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+}
+@_hasMissingDesignatedInitializers public class TranslateMessageParams {
+  @objc deinit
 }
 public typealias RestrictedUserListHandler = (_ users: [ChatSDK.RestrictedUser]?, _ error: ChatSDK.GIMError?) -> Swift.Void
 @objc @_hasMissingDesignatedInitializers public class Sender : ChatSDK.User {
@@ -396,6 +411,16 @@ public enum ReportCategory : Swift.String, Swift.Encodable {
     get
   }
   public var pollId: Swift.Int64?
+  public var messageType: ChatSDK.MessageType {
+    get
+  }
+  public var translations: [Swift.String : Swift.String] {
+    get
+  }
+  public var translationTargetLanguages: [Swift.String] {
+    get
+  }
+  public init(mesgId: Swift.Int64, message: Swift.String, createdAt: Swift.Int64, channel: ChatSDK.BaseChannel)
   override public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
@@ -743,16 +768,19 @@ public enum Role : Swift.String, Swift.Codable {
   @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers public class Thumbnail : ObjectiveC.NSObject, ChatSDK.Serializable {
-  public var url: Swift.String {
+  public var url: Swift.String? {
     get
   }
-  public var maxSize: CoreFoundation.CGSize {
+  public var maxSize: CoreFoundation.CGSize? {
     get
   }
-  public var realSize: CoreFoundation.CGSize {
+  public var realSize: CoreFoundation.CGSize? {
     get
   }
   public var plainURL: Swift.String? {
+    get
+  }
+  public var size: CoreFoundation.CGSize? {
     get
   }
   required public init(from decoder: any Swift.Decoder) throws
@@ -763,10 +791,11 @@ extension ChatSDK.Thumbnail {
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
 }
 public typealias PollOptionHandler = (_ option: ChatSDK.PollOption?, _ error: ChatSDK.GIMError?) -> Swift.Void
-@objc @_hasMissingDesignatedInitializers public class ThreadInfo : ObjectiveC.NSObject, Swift.Codable {
+@objc public class ThreadInfo : ObjectiveC.NSObject, Swift.Codable {
   final public let replyCount: Swift.Int
   final public let mostRepliedUsers: [ChatSDK.User]
   final public let lastRepliedAt: Swift.Int64
+  public init(replyCount: Swift.Int, mostRepliedUsers: [ChatSDK.User], lastRepliedAt: Swift.Int64)
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
@@ -1025,6 +1054,8 @@ public protocol GroupChannelDelegate : ChatSDK.BaseChannelDelegate {
   func channel(_ channel: ChatSDK.GroupChannel, userDidLeave user: ChatSDK.User)
   func channelWasHidden(_ channel: ChatSDK.GroupChannel)
   func channel(_ channel: ChatSDK.GroupChannel, didUpdatePoll event: ChatSDK.PollUpdateEvent)
+  func channel(_ channel: ChatSDK.GroupChannel, didGetAISummary message: ChatSDK.UserMessage)
+  func channel(_ channel: ChatSDK.GroupChannel, didUpdateSummaryStatus status: ChatSDK.AISummaryStatus)
 }
 extension ChatSDK.GroupChannelDelegate {
   public func channelDidUpdateReadStatus(_ channel: ChatSDK.GroupChannel)
@@ -1037,6 +1068,8 @@ extension ChatSDK.GroupChannelDelegate {
   public func channel(_ channel: ChatSDK.GroupChannel, userDidLeave user: ChatSDK.User)
   public func channelWasHidden(_ channel: ChatSDK.GroupChannel)
   public func channel(_ channel: ChatSDK.GroupChannel, didUpdatePoll event: ChatSDK.PollUpdateEvent)
+  public func channel(_ channel: ChatSDK.GroupChannel, didGetAISummary message: ChatSDK.UserMessage)
+  public func channel(_ channel: ChatSDK.GroupChannel, didUpdateSummaryStatus status: ChatSDK.AISummaryStatus)
 }
 public enum ChatError : Swift.Int, ChatSDK.GIMErrorCode {
   case parameterDecodeFailure
@@ -1340,6 +1373,8 @@ public protocol BaseChannelDelegate : AnyObject {
   func channelDidUpdatePinnedMessages(_ channel: ChatSDK.BaseChannel)
   func channel(_ channel: ChatSDK.BaseChannel, pinnedMessageIds: [Swift.Int64], lastPinMessage: ChatSDK.BaseMessage?)
   func channel(_ channel: ChatSDK.BaseChannel, systemMessage: ChatSDK.BaseMessage)
+  func channel(_ channel: ChatSDK.BaseChannel, didTranslateOnDemand message: ChatSDK.BaseMessage)
+  func channel(_ channel: ChatSDK.BaseChannel, didAutoTranslate message: ChatSDK.BaseMessage)
 }
 extension ChatSDK.BaseChannelDelegate {
   public func channel(_ channel: ChatSDK.BaseChannel, didPending message: ChatSDK.BaseMessage)
@@ -1368,6 +1403,8 @@ extension ChatSDK.BaseChannelDelegate {
   public func channel(_ channel: ChatSDK.BaseChannel, pinnedMessageIds: [Swift.Int64], lastPinMessage: ChatSDK.BaseMessage?)
   public func channelDidUpdatePinnedMessages(_ channel: ChatSDK.BaseChannel)
   public func channel(_ channel: ChatSDK.BaseChannel, systemMessage: ChatSDK.BaseMessage)
+  public func channel(_ channel: ChatSDK.BaseChannel, didTranslateOnDemand message: ChatSDK.BaseMessage)
+  public func channel(_ channel: ChatSDK.BaseChannel, didAutoTranslate message: ChatSDK.BaseMessage)
 }
 @objc public class MessageMetaArray : ObjectiveC.NSObject, ChatSDK.Serializable, Foundation.NSCopying {
   public var key: Swift.String {
@@ -1637,6 +1674,16 @@ public protocol UserListQuery {
   var hasNext: Swift.Bool { get }
   var isLoading: Swift.Bool { get }
   func loadNextPage(completionHandler: @escaping ChatSDK.UserListHandler)
+}
+public enum AISummaryStatus : Swift.String {
+  case processing
+  case timeout
+  case failed
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
 }
 public enum MessageCollectionInitPolicy : Swift.Int {
   case cacheAndReplaceByApi
@@ -1942,10 +1989,11 @@ extension ChatSDK.GroupChannelCollection : ChatSDK.GIMUserEventDelegate {
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
 }
-@objc @_hasMissingDesignatedInitializers public class ThreadInfoUpdateEvent : ObjectiveC.NSObject, Swift.Codable {
+@objc public class ThreadInfoUpdateEvent : ObjectiveC.NSObject, Swift.Codable {
   final public let targetMessageId: Swift.Int64
   final public let channelURL: Swift.String
   final public let channelType: ChatSDK.ChannelType
+  public init(threadInfo: ChatSDK.ThreadInfo, targetMessageId: Swift.Int64, channelURL: Swift.String, channelType: ChatSDK.ChannelType)
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
@@ -2585,6 +2633,9 @@ extension ChatSDK.GIMChat {
   public static func stopOpenChannelObserve(channelIdentifier: Swift.String)
   public static func startMessageObserve(delegate: any ChatSDK.ConnectionDelegate & ChatSDK.OpenChannelDelegate, channelIdentifier: Swift.String)
   public static func stopMessageObserve(channelIdentifier: Swift.String)
+  public static func getConverstationSummarySetting(completion: ((ChatSDK.SettingAISummary?) -> Swift.Void)?)
+  public static func updateConverstationSummarySetting(isEnabled: Swift.Bool, completion: ((ChatSDK.SettingAISummary?) -> Swift.Void)?)
+  public static func getSummaryMessage(type: ChatSDK.ChannelType, uri: Swift.String, completion: ((ChatSDK.SummaryMessage?) -> Swift.Void)?)
 }
 @objc public class MessageContext : ObjectiveC.NSObject {
   public var source: ChatSDK.CollectionEventSource {
@@ -2694,6 +2745,14 @@ public protocol MessageCollectionDelegate : AnyObject {
   func messageCollection(_ collection: ChatSDK.MessageCollection, context: ChatSDK.MessageContext, updatedChannel: ChatSDK.GroupChannel)
   func messageCollection(_ collection: ChatSDK.MessageCollection, context: ChatSDK.MessageContext, deletedChannel channelURL: Swift.String)
   func didDetectHugeGap(_ collection: ChatSDK.MessageCollection)
+  func messageCollection(_ collection: ChatSDK.MessageCollection, context: ChatSDK.MessageContext, channel: ChatSDK.GroupChannel, didTranslateOnDemand message: ChatSDK.BaseMessage)
+  func messageCollection(_ collection: ChatSDK.MessageCollection, context: ChatSDK.MessageContext, channel: ChatSDK.GroupChannel, didAutoTranslate message: ChatSDK.BaseMessage)
+  func messageCollection(_ collection: ChatSDK.MessageCollection, context: ChatSDK.MessageContext, channel: ChatSDK.GroupChannel, didGetSummary message: ChatSDK.BaseMessage)
+}
+extension ChatSDK.MessageCollectionDelegate {
+  public func messageCollection(_ collection: ChatSDK.MessageCollection, context: ChatSDK.MessageContext, channel: ChatSDK.GroupChannel, didTranslateOnDemand message: ChatSDK.BaseMessage)
+  public func messageCollection(_ collection: ChatSDK.MessageCollection, context: ChatSDK.MessageContext, channel: ChatSDK.GroupChannel, didAutoTranslate message: ChatSDK.BaseMessage)
+  public func messageCollection(_ collection: ChatSDK.MessageCollection, context: ChatSDK.MessageContext, channel: ChatSDK.GroupChannel, didGetSummary message: ChatSDK.BaseMessage)
 }
 @objc @_inheritsConvenienceInitializers public class PollVoterListQueryParams : ObjectiveC.NSObject, Swift.Encodable {
   public var pollId: Swift.Int64
@@ -2721,6 +2780,7 @@ public protocol SessionDelegate : AnyObject {
 }
 @objc @_hasMissingDesignatedInitializers public class UserMessageCreateParams : ChatSDK.BaseMessageCreateParams {
   public var message: Swift.String
+  public var translationTargetLanguages: [Swift.String]?
   public var pollId: Swift.Int64
   public var mentionedMessageTemplate: Swift.String?
   public init(message: Swift.String)
@@ -3079,13 +3139,13 @@ extension ChatSDK.MessageCollection : ChatSDK.GroupChannelDelegate {
   public func channelDidUpdateDeliveryStatus(_ channel: ChatSDK.GroupChannel)
   public func channelDidUpdateTypingStatus(_ channel: ChatSDK.GroupChannel)
   public func channel(_ channel: ChatSDK.GroupChannel, didUpdatePoll event: ChatSDK.PollUpdateEvent)
+  public func channel(_ channel: ChatSDK.BaseChannel, didTranslateOnDemand message: ChatSDK.BaseMessage)
+  public func channel(_ channel: ChatSDK.BaseChannel, didAutoTranslate message: ChatSDK.BaseMessage)
+  public func channel(_ channel: ChatSDK.GroupChannel, didGetAISummary message: ChatSDK.UserMessage)
 }
 extension ChatSDK.MessageCollection : ChatSDK.ConnectionDelegate {
   dynamic public func didSucceedReconnection()
   dynamic public func didConnect(userId: Swift.String)
-}
-extension ChatSDK.MessageCollection : ChatSDK.GIMUserEventDelegate {
-  public func didUpdateUsers(_ users: [ChatSDK.User])
 }
 @objc @_hasMissingDesignatedInitializers final public class MutedUserListQuery : ObjectiveC.NSObject, ChatSDK.RestrictedUserListQuery {
   final public var hasNext: Swift.Bool {
@@ -3190,6 +3250,30 @@ extension ChatSDK.GIMErrorCode {
   }
   public func asGIMError(message: Swift.String?) -> ChatSDK.GIMError
 }
+public class SummaryMessage : Swift.Codable {
+  final public let summary: ChatSDK.Summary
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public class Summary : Swift.Codable {
+  final public let channelID: Swift.String, scrapID: Swift.String
+  final public let silent: Swift.Bool, checkReactions: Swift.Bool, isOpMsg: Swift.Bool, isGuestMsg: Swift.Bool
+  final public let data: Swift.String?
+  final public let sts: Swift.Int
+  final public let channelURL: Swift.String, channelType: Swift.String
+  final public let isSuper: Swift.Bool
+  final public let mentionType: Swift.String
+  final public let messageRetentionHour: Swift.Int
+  final public let customType: Swift.String
+  final public let isRemoved: Swift.Bool
+  final public let lastUpdatedAt: Swift.Int
+  final public let message: Swift.String
+  final public let msgID: Swift.Int, ts: Swift.Int
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
 public typealias FileMessageHandler = ((_ message: ChatSDK.FileMessage?, _ error: ChatSDK.GIMError?) -> Swift.Void)
 @objc @_hasMissingDesignatedInitializers public class ApplicationUserListQuery : ObjectiveC.NSObject, ChatSDK.UserListQuery {
   public var hasNext: Swift.Bool {
@@ -3217,6 +3301,19 @@ public typealias FileMessageHandler = ((_ message: ChatSDK.FileMessage?, _ error
   @available(iOS 13.0, *)
   public func loadNextPage() async throws -> Swift.Result<[ChatSDK.User], ChatSDK.GIMError>
   @objc deinit
+}
+@_hasMissingDesignatedInitializers public class SettingAISummary : Swift.Codable {
+  final public let summary: ChatSDK.AISummary
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public class AISummary : Swift.Codable {
+  final public let isEnabled: Swift.Bool
+  public init(isEnabled: Swift.Bool)
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
 }
 public enum ReactionEventAction : Swift.String, Swift.Codable {
   case add
@@ -3461,6 +3558,9 @@ public enum MemberListOrder : Swift.String, Swift.Codable {
     get
   }
 }
+extension ChatSDK.MessageType : Swift.Equatable {}
+extension ChatSDK.MessageType : Swift.Hashable {}
+extension ChatSDK.MessageType : Swift.RawRepresentable {}
 extension ChatSDK.ReportCategory : Swift.Equatable {}
 extension ChatSDK.ReportCategory : Swift.Hashable {}
 extension ChatSDK.ReportCategory : Swift.RawRepresentable {}
@@ -3494,6 +3594,9 @@ extension ChatSDK.ScheduledMessageListOrder : Swift.RawRepresentable {}
 extension ChatSDK.PushTokenRegistrationStatus : Swift.Equatable {}
 extension ChatSDK.PushTokenRegistrationStatus : Swift.Hashable {}
 extension ChatSDK.PushTokenRegistrationStatus : Swift.RawRepresentable {}
+extension ChatSDK.AISummaryStatus : Swift.Equatable {}
+extension ChatSDK.AISummaryStatus : Swift.Hashable {}
+extension ChatSDK.AISummaryStatus : Swift.RawRepresentable {}
 extension ChatSDK.MessageCollectionInitPolicy : Swift.Equatable {}
 extension ChatSDK.MessageCollectionInitPolicy : Swift.Hashable {}
 extension ChatSDK.MessageCollectionInitPolicy : Swift.RawRepresentable {}

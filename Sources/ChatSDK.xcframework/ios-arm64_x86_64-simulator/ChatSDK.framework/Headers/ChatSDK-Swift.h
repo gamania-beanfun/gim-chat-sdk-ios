@@ -803,7 +803,6 @@ SWIFT_CLASS("_TtC7ChatSDK17MessageCollection")
 
 
 
-
 /// Represents what happened to the messages.
 SWIFT_CLASS("_TtC7ChatSDK14MessageContext")
 @interface MessageContext : NSObject
@@ -2385,7 +2384,6 @@ SWIFT_CLASS("_TtC7ChatSDK17MessageCollection")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
-
 
 
 
