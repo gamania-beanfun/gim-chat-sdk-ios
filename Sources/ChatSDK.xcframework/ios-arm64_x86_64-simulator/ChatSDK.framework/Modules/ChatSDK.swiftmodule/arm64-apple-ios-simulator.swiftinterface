@@ -49,10 +49,9 @@ public protocol RestrictedUserListQuery : AnyObject {
   open var customType: Swift.String?
   open var isFrozen: Swift.Bool
   open var channelType: ChatSDK.ChannelType
-  @ChatSDK.SafeQueue open var pinnedMessageIds: [Swift.Int64] {
+  open var pinnedMessageIds: [Swift.Int64] {
     get
     set
-    _modify
   }
   open var lastPinMessage: ChatSDK.BaseMessage?
   public func encode(to encoder: any Swift.Encoder) throws
@@ -2204,6 +2203,7 @@ public typealias BaseMessageHandler = ((_ message: ChatSDK.BaseMessage?, _ error
   }
   public var lastMessage: ChatSDK.BaseMessage? {
     get
+    set
   }
   public var isSuper: Swift.Bool {
     get
