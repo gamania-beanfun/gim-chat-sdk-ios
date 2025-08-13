@@ -422,6 +422,7 @@ public enum ReportCategory : Swift.String, Swift.Encodable {
   public init(mesgId: Swift.Int64, message: Swift.String, createdAt: Swift.Int64, channel: ChatSDK.BaseChannel)
   override public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
+  public func mergeTranslation(_ newTranslations: [Swift.String : Swift.String])
   @objc deinit
 }
 extension ChatSDK.UserMessage {
