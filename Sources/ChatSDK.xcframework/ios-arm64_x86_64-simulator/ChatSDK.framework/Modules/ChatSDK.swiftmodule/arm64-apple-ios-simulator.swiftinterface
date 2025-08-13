@@ -422,6 +422,7 @@ public enum ReportCategory : Swift.String, Swift.Encodable {
   public init(mesgId: Swift.Int64, message: Swift.String, createdAt: Swift.Int64, channel: ChatSDK.BaseChannel)
   override public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
+  public func mergeTranslation(_ newTranslations: [Swift.String : Swift.String])
   @objc deinit
 }
 extension ChatSDK.UserMessage {
@@ -3186,6 +3187,15 @@ public enum GroupChannelHiddenState : Swift.String, Swift.Codable {
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
+}
+@_hasMissingDesignatedInitializers final public class AutoResendManager {
+  public static let shared: ChatSDK.AutoResendManager
+  final public func upsertPendingMessageToFail()
+  @objc deinit
+}
+extension ChatSDK.AutoResendManager : ChatSDK.ConnectionDelegate {
+  final public func didConnect(userId: Swift.String)
+  final public func didSucceedReconnection()
 }
 public enum LogLevel : Swift.Int, Swift.Comparable, Swift.Codable {
   case verbose
