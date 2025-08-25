@@ -3188,6 +3188,15 @@ public enum GroupChannelHiddenState : Swift.String, Swift.Codable {
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
 }
+@_hasMissingDesignatedInitializers final public class AutoResendManager {
+  public static let shared: ChatSDK.AutoResendManager
+  final public func upsertPendingMessageToFail()
+  @objc deinit
+}
+extension ChatSDK.AutoResendManager : ChatSDK.ConnectionDelegate {
+  final public func didConnect(userId: Swift.String)
+  final public func didSucceedReconnection()
+}
 public enum LogLevel : Swift.Int, Swift.Comparable, Swift.Codable {
   case verbose
   case debug
