@@ -130753,14 +130753,14 @@
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Channel\/BaseChannel.swift",
       "kind": "IntegerLiteral",
-      "offset": 83213,
+      "offset": 83620,
       "length": 2,
       "value": "20"
     },
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Channel\/BaseChannel.swift",
       "kind": "IntegerLiteral",
-      "offset": 83745,
+      "offset": 84152,
       "length": 2,
       "value": "20"
     },
@@ -137733,7 +137733,7 @@
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Channel\/GroupChannel\/GroupChannel.swift",
       "kind": "StringLiteral",
       "offset": 3836,
-      "length": 105816,
+      "length": 106239,
       "value": "\"\""
     },
     {
@@ -139316,7 +139316,7 @@
       "kind": "StringLiteral",
       "offset": 346,
       "length": 8,
-      "value": "\"1.0.42\""
+      "value": "\"1.0.43\""
     },
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/GIMEnvironment.swift",
