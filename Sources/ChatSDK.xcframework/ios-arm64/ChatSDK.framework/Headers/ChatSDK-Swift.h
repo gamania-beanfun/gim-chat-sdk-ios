@@ -920,6 +920,32 @@ SWIFT_CLASS("_TtC7ChatSDK24MessageSearchQueryParams")
 @end
 
 
+SWIFT_CLASS("_TtC7ChatSDK25MultipleFilesCreateParams")
+@interface MultipleFilesCreateParams : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Represents a mesage object that contains a file. Derived from <code>BaseMessage</code>
+/// note:
+/// This class doesn’t include a binary <em>data</em> for the file. It is just a URL.
+SWIFT_CLASS("_TtC7ChatSDK20MultipleFilesMessage")
+@interface MultipleFilesMessage : BaseMessage
+@end
+
+
+@interface MultipleFilesMessage (SWIFT_EXTENSION(ChatSDK))
+/// Compares this object with given other object.
+/// \param object <code>Any</code> instance
+///
+///
+/// returns:
+/// <code>true</code> if same otherwise <code>false</code>
+- (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
 /// The <code>MutedUserListQuery</code> class is a query class for getting the list of muted users in
 /// a specific channel.
 /// This instance is created by <code>createMutedUserListQuery</code> of <code>BaseChannel</code>.
@@ -1523,12 +1549,12 @@ SWIFT_CLASS("_TtC7ChatSDK16UpdatedVoteCount")
 
 
 @interface User (SWIFT_EXTENSION(ChatSDK))
-- (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 @end
 
 
 @interface User (SWIFT_EXTENSION(ChatSDK))
-@property (nonatomic, readonly, copy) NSString * _Nonnull description;
+- (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
 @end
 
 

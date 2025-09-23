@@ -166,6 +166,7 @@ extension ChatSDK.BaseChannel {
 extension ChatSDK.BaseChannel {
   dynamic public func sendFileMessage(params: ChatSDK.FileMessageCreateParams, completionHandler: ChatSDK.FileMessageHandler?) -> ChatSDK.FileMessage?
   dynamic public func sendFileMessage(params: ChatSDK.FileMessageCreateParams, progressHandler: ChatSDK.MultiProgressHandler?, completionHandler: ChatSDK.FileMessageHandler?) -> ChatSDK.FileMessage?
+  dynamic public func sendMultipleFilesMessage(uploadableInfoList: [ChatSDK.MultipleFilesCreateParams], completionHandler: ChatSDK.MultipleFilesMessageHandler?) -> ChatSDK.MultipleFilesMessage
   dynamic public func updateFileMessage(messageId: Swift.Int64, params: ChatSDK.FileMessageUpdateParams, completionHandler: ChatSDK.FileMessageHandler?)
   @available(iOS 13.0, *)
   dynamic public func updateFileMessage(messageId: Swift.Int64, params: ChatSDK.FileMessageUpdateParams) async throws -> Swift.Result<ChatSDK.FileMessage, ChatSDK.GIMError>
@@ -173,6 +174,7 @@ extension ChatSDK.BaseChannel {
   dynamic public func resendFileMessage(_ message: ChatSDK.FileMessage, binaryData: Foundation.Data?, progressHandler: ChatSDK.MultiProgressHandler?, completionHandler: ChatSDK.FileMessageHandler?) -> ChatSDK.FileMessage?
   dynamic public func copyFileMessage(_ message: ChatSDK.FileMessage, toTargetChannel targetChannel: ChatSDK.BaseChannel, completionHandler: ChatSDK.FileMessageHandler?) -> ChatSDK.FileMessage?
   dynamic public class func cancelUploadingFileMessage(requestId: Swift.String, completionHandler: ((_ result: Swift.Bool, _ error: ChatSDK.GIMError?) -> Swift.Void)?)
+  dynamic public func resendMutilpleFilesMessage(_ message: ChatSDK.MultipleFilesMessage, completionHandler: ChatSDK.MultipleFilesMessageHandler?) -> ChatSDK.MultipleFilesMessage?
 }
 extension ChatSDK.BaseChannel {
   dynamic public func deleteMessage(_ message: ChatSDK.BaseMessage, completionHandler: ChatSDK.GIMErrorHandler?)
@@ -1043,6 +1045,27 @@ extension ChatSDK.BaseMessage {
     @objc get
   }
 }
+@objc public class MultipleFilesCreateParams : ObjectiveC.NSObject {
+  final public let params: ChatSDK.FileMessageCreateParams
+  final public let channelURI: Swift.String
+  final public let channelType: ChatSDK.ChannelType
+  final public let identifierString: Swift.String
+  public init(params: ChatSDK.FileMessageCreateParams, channelURI: Swift.String, channelType: ChatSDK.ChannelType, identifierString: Swift.String)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MultipleFilesMessage : ChatSDK.BaseMessage {
+  public var multipleFilesMessageParams: [ChatSDK.FileMessageCreateParams]?
+  public var files: [ChatSDK.FileEntity]? {
+    get
+  }
+  required public init(from decoder: any Swift.Decoder) throws
+  override public func encode(to encoder: any Swift.Encoder) throws
+  public func dispose()
+  @objc deinit
+}
+extension ChatSDK.MultipleFilesMessage {
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+}
 public protocol GroupChannelDelegate : ChatSDK.BaseChannelDelegate {
   func channelDidUpdateReadStatus(_ channel: ChatSDK.GroupChannel)
   func channelDidUpdateDeliveryStatus(_ channel: ChatSDK.GroupChannel)
@@ -1322,6 +1345,9 @@ public typealias MetaCountersHandler = ((_ metaData: [Swift.String : Swift.Int]?
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
+}
+extension Foundation.URLRequest {
+  public func cURL(pretty: Swift.Bool = false) -> Swift.String
 }
 @objc @_inheritsConvenienceInitializers public class BaseMessageUpdateParams : ObjectiveC.NSObject, Swift.Encodable {
   public var data: Swift.String?
@@ -2012,6 +2038,8 @@ public enum PushTriggerOption : Swift.String, Swift.Codable {
   case all
   case off
   case mentionOnly
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -2079,6 +2107,9 @@ extension ChatSDK.BannedUserListQueryParams : Foundation.NSCopying {
     get
   }
   public var isBlockingMe: Swift.Bool {
+    get
+  }
+  public var preferredLanguages: [Swift.String]? {
     get
   }
   public var metaData: [Swift.String : Swift.String]? {
@@ -2198,6 +2229,18 @@ extension ChatSDK.PollDetails {
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
 }
 public typealias BaseMessageHandler = ((_ message: ChatSDK.BaseMessage?, _ error: ChatSDK.GIMError?) -> Swift.Void)
+public struct FileEntity : Swift.Codable {
+  public var url: Swift.String
+  public let plainURL: Swift.String?
+  public let name: Swift.String
+  public let size: Swift.UInt
+  public let type: Swift.String
+  public var thumbnails: [ChatSDK.Thumbnail]?
+  public let objectId: Swift.String?
+  public init(url: Swift.String, plainURL: Swift.String?, name: Swift.String, size: Swift.UInt, type: Swift.String, thumbnails: [ChatSDK.Thumbnail]?, objectId: Swift.String?)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
 @objc @_hasMissingDesignatedInitializers public class GroupChannel : ChatSDK.BaseChannel {
   @objc override dynamic public var description: Swift.String {
     @objc get
@@ -2587,12 +2630,14 @@ extension ChatSDK.GIMChat {
   public class func getMyPushTokens(token: Swift.String?, pushTokenType: ChatSDK.PushTokenType, completionHandler: @escaping ChatSDK.GetPushTokensHandler)
   @available(iOS 13.0, *)
   public class func getMyPushTokens(token: Swift.String?, pushTokenType: ChatSDK.PushTokenType) async throws -> Swift.Result<ChatSDK.PushTokens, ChatSDK.GIMError>
-  public class func setDoNotDisturb(enable: Swift.Bool, startHour: Swift.Int32, startMin: Swift.Int32, endHour: Swift.Int32, endMin: Swift.Int32, timezone: Swift.String, completionHandler: ChatSDK.GIMErrorHandler? = nil)
+  public class func setDoNotDisturb(entity: ChatSDK.DoNotDisturbEntity, completionHandler: ChatSDK.GIMErrorHandler? = nil)
   @available(iOS 13.0, *)
-  public class func setDoNotDisturb(enable: Swift.Bool, startHour: Swift.Int32, startMin: Swift.Int32, endHour: Swift.Int32, endMin: Swift.Int32, timezone: Swift.String) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  public class func getDoNotDisturb(completionHandler: ((_ enabled: Swift.Bool, _ startHour: Swift.Int, _ startMin: Swift.Int, _ endHour: Swift.Int, _ endMin: Swift.Int, _ timezone: Swift.String, _ error: ChatSDK.GIMError?) -> Swift.Void)? = nil)
+  public class func setDoNotDisturb(entity: ChatSDK.DoNotDisturbEntity) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
+  public class func getDoNotDisturb(completionHandler: ((_ entity: ChatSDK.DoNotDisturbEntity?, _ error: ChatSDK.GIMError?) -> Swift.Void)? = nil)
   @available(iOS 13.0, *)
-  public class func getDoNotDisturb() async throws -> Swift.Result<(enabled: Swift.Bool, startHour: Swift.Int, startMin: Swift.Int, endHour: Swift.Int, endMin: Swift.Int, timezone: Swift.String), ChatSDK.GIMError>
+  public class func fetchUserInfo(userId: Swift.String) async throws -> Swift.Result<ChatSDK.User, ChatSDK.GIMError>
+  @available(iOS 13.0, *)
+  public class func getDoNotDisturb() async throws -> Swift.Result<ChatSDK.DoNotDisturbEntity, ChatSDK.GIMError>
   public class func setSnoozePeriod(enabled: Swift.Bool, startTimestamp: Swift.Int64, endTimestamp: Swift.Int64, timezone: Swift.String, completionHandler: ChatSDK.GIMErrorHandler? = nil)
   @available(iOS 13.0, *)
   public class func setSnoozePeriod(enabled: Swift.Bool, startTimestamp: Swift.Int64, endTimestamp: Swift.Int64, timezone: Swift.String) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
@@ -3285,6 +3330,21 @@ public class Summary : Swift.Codable {
   required public init(from decoder: any Swift.Decoder) throws
 }
 public typealias FileMessageHandler = ((_ message: ChatSDK.FileMessage?, _ error: ChatSDK.GIMError?) -> Swift.Void)
+public typealias MultipleFilesMessageHandler = ((_ message: ChatSDK.MultipleFilesMessage?, _ error: ChatSDK.GIMError?) -> Swift.Void)
+public struct DoNotDisturbEntity : Swift.Codable {
+  public var enabled: Swift.Bool?
+  public var startHour: Swift.Int?
+  public var startMin: Swift.Int?
+  public var endHour: Swift.Int?
+  public var endMin: Swift.Int?
+  public var timezone: Swift.String?
+  public var pushTriggerOption: ChatSDK.PushTriggerOption?
+  public var dndDaysOfWeek: [Swift.Int]?
+  public var pushSound: Swift.String?, pushTemplate: Swift.String?
+  public init()
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
 @objc @_hasMissingDesignatedInitializers public class ApplicationUserListQuery : ObjectiveC.NSObject, ChatSDK.UserListQuery {
   public var hasNext: Swift.Bool {
     get
