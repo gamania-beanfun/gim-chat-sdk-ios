@@ -2384,6 +2384,7 @@ extension ChatSDK.GroupChannel {
   dynamic public func getReadStatus(includeAllMembers: Swift.Bool) -> [Swift.String : [Swift.String : Any]]
   dynamic public func markAsRead(completionHandler: ChatSDK.GIMErrorHandler?)
   @available(iOS 13.0, *)
+  @discardableResult
   dynamic public func markAsRead() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
 }
 extension ChatSDK.GroupChannel {
@@ -2681,6 +2682,7 @@ extension ChatSDK.GIMChat {
   public static func stopMessageObserve(channelIdentifier: Swift.String)
   public static func getConverstationSummarySetting(completion: ((ChatSDK.SettingAISummary?) -> Swift.Void)?)
   public static func updateConverstationSummarySetting(isEnabled: Swift.Bool, completion: ((ChatSDK.SettingAISummary?) -> Swift.Void)?)
+  public static func updatePushNotificationTranslationSetting(isEnabled: Swift.Bool, completion: ((ChatSDK.SettingAISummary?) -> Swift.Void)?)
   public static func getSummaryMessage(type: ChatSDK.ChannelType, uri: Swift.String, completion: ((ChatSDK.SummaryMessage?) -> Swift.Void)?)
 }
 @objc public class MessageContext : ObjectiveC.NSObject {
@@ -3263,6 +3265,11 @@ public protocol GroupChannelCollectionDelegate : AnyObject {
   func channelCollection(_ collection: ChatSDK.GroupChannelCollection, context: ChatSDK.ChannelContext, updatedChannels: [ChatSDK.GroupChannel])
   func channelCollection(_ collection: ChatSDK.GroupChannelCollection, context: ChatSDK.ChannelContext, deletedChannelURLs: [Swift.String])
 }
+extension ChatSDK.GroupChannelCollectionDelegate {
+  public func channelCollection(_ collection: ChatSDK.GroupChannelCollection, context: ChatSDK.ChannelContext, addedChannels: [ChatSDK.GroupChannel])
+  public func channelCollection(_ collection: ChatSDK.GroupChannelCollection, context: ChatSDK.ChannelContext, updatedChannels: [ChatSDK.GroupChannel])
+  public func channelCollection(_ collection: ChatSDK.GroupChannelCollection, context: ChatSDK.ChannelContext, deletedChannelURLs: [Swift.String])
+}
 @objc @_hasMissingDesignatedInitializers public class ReadStatus : ObjectiveC.NSObject, Swift.Codable {
   public var reader: ChatSDK.User?
   public var timestamp: Swift.Int64
@@ -3373,12 +3380,20 @@ public struct DoNotDisturbEntity : Swift.Codable {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class SettingAISummary : Swift.Codable {
-  final public let summary: ChatSDK.AISummary
+  final public let summary: ChatSDK.AISummary?
+  final public let notificationSetting: ChatSDK.PushNotificationTranslation?
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
 }
 public class AISummary : Swift.Codable {
+  final public let isEnabled: Swift.Bool
+  public init(isEnabled: Swift.Bool)
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public class PushNotificationTranslation : Swift.Codable {
   final public let isEnabled: Swift.Bool
   public init(isEnabled: Swift.Bool)
   @objc deinit
