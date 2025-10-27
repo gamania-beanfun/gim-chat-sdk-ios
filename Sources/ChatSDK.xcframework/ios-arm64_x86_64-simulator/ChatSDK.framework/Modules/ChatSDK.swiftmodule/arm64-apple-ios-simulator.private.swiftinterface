@@ -284,10 +284,7 @@ extension ChatSDK.BaseChannel {
   dynamic public func updateFileMessage(messageId: Swift.Int64, params: ChatSDK.FileMessageUpdateParams) async throws -> Swift.Result<ChatSDK.FileMessage, ChatSDK.GIMError>
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
-  dynamic public func resendFileMessage(_ message: ChatSDK.FileMessage, binaryData: Foundation.Data?, completionHandler: ChatSDK.FileMessageHandler?) -> ChatSDK.FileMessage?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
-  dynamic public func resendFileMessage(_ message: ChatSDK.FileMessage, binaryData: Foundation.Data?, progressHandler: ChatSDK.MultiProgressHandler?, completionHandler: ChatSDK.FileMessageHandler?) -> ChatSDK.FileMessage?
+  dynamic public func resendFileMessage(_ fileMessage: ChatSDK.FileMessage, progressHandler: ChatSDK.MultiProgressHandler?, completionHandler: ChatSDK.FileMessageHandler?) -> ChatSDK.FileMessage?
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func copyFileMessage(_ message: ChatSDK.FileMessage, toTargetChannel targetChannel: ChatSDK.BaseChannel, completionHandler: ChatSDK.FileMessageHandler?) -> ChatSDK.FileMessage?
@@ -564,6 +561,9 @@ extension ChatSDK.BaseChannel {
   @available(iOS 13.0, *)
   public func sendCustomEvent(message: Swift.String) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
   #endif
+}
+extension ChatSDK.BaseMessage {
+  public func asFileMessage() -> ChatSDK.BaseMessage
 }
 public typealias GetPushTokensHandler = (_ pushTokens: [Swift.String], _ pushTokenType: ChatSDK.PushTokenType, _ hasMore: Swift.Bool, _ token: Swift.String?, _ error: ChatSDK.GIMError?) -> Swift.Void
 public struct PushTokens {
@@ -1422,23 +1422,26 @@ extension ChatSDK.BaseMessage {
     @objc get
   }
 }
-@objc public class MultipleFilesCreateParams : ObjectiveC.NSObject {
+public class MultipleFilesCreateParams : Swift.Codable {
   final public let params: ChatSDK.FileMessageCreateParams
   final public let channelURI: Swift.String
   final public let channelType: ChatSDK.ChannelType
-  final public let identifierString: Swift.String
-  public init(params: ChatSDK.FileMessageCreateParams, channelURI: Swift.String, channelType: ChatSDK.ChannelType, identifierString: Swift.String)
+  public var requestId: Swift.String
+  public init(params: ChatSDK.FileMessageCreateParams, channelURI: Swift.String, channelType: ChatSDK.ChannelType, requestId: Swift.String)
   @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MultipleFilesMessage : ChatSDK.BaseMessage {
-  public var multipleFilesMessageParams: [ChatSDK.FileMessageCreateParams]?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getMultipleFilesMessageParams() -> [ChatSDK.FileMessageCreateParams]?
+  #endif
   #if compiler(>=5.3) && $NonescapableTypes
   public var files: [ChatSDK.FileEntity]? {
     get
   }
   #endif
   required public init(from decoder: any Swift.Decoder) throws
-  override public func encode(to encoder: any Swift.Encoder) throws
   public func dispose()
   @objc deinit
 }
@@ -3240,6 +3243,7 @@ public typealias GroupChannelHandler = (_ channel: ChatSDK.GroupChannel?, _ erro
   public class func performCompletionHandlerDelegateQueue(_ block: (() -> Swift.Void)?)
   #endif
   public class func getLastConnectedAt() -> Swift.Int64
+  public class func clearAllCacheDataMessageSuccess(_ messages: [ChatSDK.BaseMessage])
   @objc override dynamic public init()
   @objc deinit
 }
@@ -3647,11 +3651,16 @@ public enum GroupChannelOperatorFilter : Swift.String, Swift.Codable {
     get
   }
   public var thumbnailSizes: [ChatSDK.ThumbnailSize]?
-  public var fileName: Swift.String?
-  public var mimeType: Swift.String?
+  public var fileName: Swift.String
+  public var mimeType: Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getFileUrlIfNeeded() -> Swift.String?
+  #endif
   public var fileSize: Swift.UInt
-  public init(file: Foundation.Data)
-  public init(fileURL: Swift.String)
+  public var objectId: Swift.String?
+  public var uuid: Swift.String
+  public init(file: Foundation.Data, fileName: Swift.String, mimeType: Swift.String)
+  public init(fileURL: Swift.String, fileName: Swift.String, mimeType: Swift.String)
   @objc override dynamic public init()
   override public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws

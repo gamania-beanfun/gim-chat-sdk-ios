@@ -796,12 +796,6 @@ SWIFT_CLASS("_TtC7ChatSDK24MessageSearchQueryParams")
 - (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
 @end
 
-SWIFT_CLASS("_TtC7ChatSDK25MultipleFilesCreateParams")
-@interface MultipleFilesCreateParams : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
 /// Represents a mesage object that contains a file. Derived from <code>BaseMessage</code>
 /// note:
 /// This class doesn’t include a binary <em>data</em> for the file. It is just a URL.
