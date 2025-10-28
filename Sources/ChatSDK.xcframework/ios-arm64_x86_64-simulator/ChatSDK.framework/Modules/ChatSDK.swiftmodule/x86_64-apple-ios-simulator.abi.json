@@ -377,6 +377,257 @@
         ]
       },
       {
+        "kind": "TypeDecl",
+        "name": "ReachabilityStatus",
+        "printedName": "ReachabilityStatus",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "unknown",
+            "printedName": "unknown",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(ChatSDK.ReachabilityStatus.Type) -> ChatSDK.ReachabilityStatus",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ReachabilityStatus",
+                    "printedName": "ChatSDK.ReachabilityStatus",
+                    "usr": "s:7ChatSDK18ReachabilityStatusO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "ChatSDK.ReachabilityStatus.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ReachabilityStatus",
+                        "printedName": "ChatSDK.ReachabilityStatus",
+                        "usr": "s:7ChatSDK18ReachabilityStatusO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7ChatSDK18ReachabilityStatusO7unknownyA2CmF",
+            "mangledName": "$s7ChatSDK18ReachabilityStatusO7unknownyA2CmF",
+            "moduleName": "ChatSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "notReachable",
+            "printedName": "notReachable",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(ChatSDK.ReachabilityStatus.Type) -> ChatSDK.ReachabilityStatus",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ReachabilityStatus",
+                    "printedName": "ChatSDK.ReachabilityStatus",
+                    "usr": "s:7ChatSDK18ReachabilityStatusO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "ChatSDK.ReachabilityStatus.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ReachabilityStatus",
+                        "printedName": "ChatSDK.ReachabilityStatus",
+                        "usr": "s:7ChatSDK18ReachabilityStatusO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7ChatSDK18ReachabilityStatusO12notReachableyA2CmF",
+            "mangledName": "$s7ChatSDK18ReachabilityStatusO12notReachableyA2CmF",
+            "moduleName": "ChatSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "reachable",
+            "printedName": "reachable",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(ChatSDK.ReachabilityStatus.Type) -> ChatSDK.ReachabilityStatus",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ReachabilityStatus",
+                    "printedName": "ChatSDK.ReachabilityStatus",
+                    "usr": "s:7ChatSDK18ReachabilityStatusO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "ChatSDK.ReachabilityStatus.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ReachabilityStatus",
+                        "printedName": "ChatSDK.ReachabilityStatus",
+                        "usr": "s:7ChatSDK18ReachabilityStatusO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7ChatSDK18ReachabilityStatusO9reachableyA2CmF",
+            "mangledName": "$s7ChatSDK18ReachabilityStatusO9reachableyA2CmF",
+            "moduleName": "ChatSDK"
+          },
+          {
+            "kind": "Function",
+            "name": "==",
+            "printedName": "==(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ReachabilityStatus",
+                "printedName": "ChatSDK.ReachabilityStatus",
+                "usr": "s:7ChatSDK18ReachabilityStatusO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ReachabilityStatus",
+                "printedName": "ChatSDK.ReachabilityStatus",
+                "usr": "s:7ChatSDK18ReachabilityStatusO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7ChatSDK18ReachabilityStatusO2eeoiySbAC_ACtFZ",
+            "mangledName": "$s7ChatSDK18ReachabilityStatusO2eeoiySbAC_ACtFZ",
+            "moduleName": "ChatSDK",
+            "static": true,
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7ChatSDK18ReachabilityStatusO9hashValueSivp",
+            "mangledName": "$s7ChatSDK18ReachabilityStatusO9hashValueSivp",
+            "moduleName": "ChatSDK",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7ChatSDK18ReachabilityStatusO9hashValueSivg",
+                "mangledName": "$s7ChatSDK18ReachabilityStatusO9hashValueSivg",
+                "moduleName": "ChatSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7ChatSDK18ReachabilityStatusO4hash4intoys6HasherVz_tF",
+            "mangledName": "$s7ChatSDK18ReachabilityStatusO4hash4intoys6HasherVz_tF",
+            "moduleName": "ChatSDK",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:7ChatSDK18ReachabilityStatusO",
+        "mangledName": "$s7ChatSDK18ReachabilityStatusO",
+        "moduleName": "ChatSDK",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          }
+        ]
+      },
+      {
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
@@ -5540,7 +5791,7 @@
           {
             "kind": "Function",
             "name": "sendMultipleFilesMessage",
-            "printedName": "sendMultipleFilesMessage(uploadableInfoList:completionHandler:)",
+            "printedName": "sendMultipleFilesMessage(uploadableInfoList:parentMessage:isReplyToChannel:completionHandler:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -5551,16 +5802,38 @@
               {
                 "kind": "TypeNominal",
                 "name": "Array",
-                "printedName": "[ChatSDK.MultipleFilesCreateParams]",
+                "printedName": "[ChatSDK.FileMessageCreateParams]",
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "MultipleFilesCreateParams",
-                    "printedName": "ChatSDK.MultipleFilesCreateParams",
-                    "usr": "s:7ChatSDK25MultipleFilesCreateParamsC"
+                    "name": "FileMessageCreateParams",
+                    "printedName": "ChatSDK.FileMessageCreateParams",
+                    "usr": "c:@M@ChatSDK@objc(cs)FileMessageCreateParams"
                   }
                 ],
                 "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ChatSDK.BaseMessage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BaseMessage",
+                    "printedName": "ChatSDK.BaseMessage",
+                    "usr": "c:@M@ChatSDK@objc(cs)BaseMessage"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
               },
               {
                 "kind": "TypeNominal",
@@ -5619,8 +5892,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:7ChatSDK11BaseChannelC24sendMultipleFilesMessage18uploadableInfoList17completionHandlerAA0fgH0CSayAA0fG12CreateParamsCG_yAHSg_AA8GIMErrorCSgtcSgtF",
-            "mangledName": "$s7ChatSDK11BaseChannelC24sendMultipleFilesMessage18uploadableInfoList17completionHandlerAA0fgH0CSayAA0fG12CreateParamsCG_yAHSg_AA8GIMErrorCSgtcSgtF",
+            "usr": "s:7ChatSDK11BaseChannelC24sendMultipleFilesMessage18uploadableInfoList06parentH009isReplyToD017completionHandlerAA0fgH0CSayAA04FileH12CreateParamsCG_AA0cH0CSgSbyAJSg_AA8GIMErrorCSgtcSgtF",
+            "mangledName": "$s7ChatSDK11BaseChannelC24sendMultipleFilesMessage18uploadableInfoList06parentH009isReplyToD017completionHandlerAA0fgH0CSayAA04FileH12CreateParamsCG_AA0cH0CSgSbyAJSg_AA8GIMErrorCSgtcSgtF",
             "moduleName": "ChatSDK",
             "declAttributes": [
               "AccessControl",
@@ -6102,8 +6375,8 @@
           },
           {
             "kind": "Function",
-            "name": "resendMutilpleFilesMessage",
-            "printedName": "resendMutilpleFilesMessage(_:completionHandler:)",
+            "name": "resendMultipleFilesMessage",
+            "printedName": "resendMultipleFilesMessage(_:completionHandler:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -6182,8 +6455,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:7ChatSDK11BaseChannelC26resendMutilpleFilesMessage_17completionHandlerAA08MultiplegH0CSgAG_yAH_AA8GIMErrorCSgtcSgtF",
-            "mangledName": "$s7ChatSDK11BaseChannelC26resendMutilpleFilesMessage_17completionHandlerAA08MultiplegH0CSgAG_yAH_AA8GIMErrorCSgtcSgtF",
+            "usr": "s:7ChatSDK11BaseChannelC26resendMultipleFilesMessage_17completionHandlerAA0fgH0CSgAG_yAH_AA8GIMErrorCSgtcSgtF",
+            "mangledName": "$s7ChatSDK11BaseChannelC26resendMultipleFilesMessage_17completionHandlerAA0fgH0CSgAG_yAH_AA8GIMErrorCSgtcSgtF",
             "moduleName": "ChatSDK",
             "declAttributes": [
               "AccessControl",
@@ -35104,6 +35377,25 @@
           },
           {
             "kind": "Function",
+            "name": "asPendingMessage",
+            "printedName": "asPendingMessage()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BaseMessage",
+                "printedName": "ChatSDK.BaseMessage",
+                "usr": "c:@M@ChatSDK@objc(cs)BaseMessage"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7ChatSDK11BaseMessageC09asPendingD0ACyF",
+            "mangledName": "$s7ChatSDK11BaseMessageC09asPendingD0ACyF",
+            "moduleName": "ChatSDK",
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "copyWithFailedState",
             "printedName": "copyWithFailedState()",
             "children": [
@@ -36063,24 +36355,32 @@
       },
       {
         "kind": "TypeDecl",
-        "name": "MultipleFilesCreateParams",
-        "printedName": "MultipleFilesCreateParams",
+        "name": "UploadableFileParams",
+        "printedName": "UploadableFileParams",
         "children": [
           {
             "kind": "Var",
-            "name": "params",
-            "printedName": "params",
+            "name": "paramList",
+            "printedName": "paramList",
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "FileMessageCreateParams",
-                "printedName": "ChatSDK.FileMessageCreateParams",
-                "usr": "c:@M@ChatSDK@objc(cs)FileMessageCreateParams"
+                "name": "Array",
+                "printedName": "[ChatSDK.FileMessageCreateParams]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FileMessageCreateParams",
+                    "printedName": "ChatSDK.FileMessageCreateParams",
+                    "usr": "c:@M@ChatSDK@objc(cs)FileMessageCreateParams"
+                  }
+                ],
+                "usr": "s:Sa"
               }
             ],
             "declKind": "Var",
-            "usr": "s:7ChatSDK25MultipleFilesCreateParamsC6paramsAA011FileMessageeF0Cvp",
-            "mangledName": "$s7ChatSDK25MultipleFilesCreateParamsC6paramsAA011FileMessageeF0Cvp",
+            "usr": "s:7ChatSDK20UploadableFileParamsC9paramListSayAA0d13MessageCreateE0CGvp",
+            "mangledName": "$s7ChatSDK20UploadableFileParamsC9paramListSayAA0d13MessageCreateE0CGvp",
             "moduleName": "ChatSDK",
             "declAttributes": [
               "Final",
@@ -36097,14 +36397,22 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "FileMessageCreateParams",
-                    "printedName": "ChatSDK.FileMessageCreateParams",
-                    "usr": "c:@M@ChatSDK@objc(cs)FileMessageCreateParams"
+                    "name": "Array",
+                    "printedName": "[ChatSDK.FileMessageCreateParams]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "FileMessageCreateParams",
+                        "printedName": "ChatSDK.FileMessageCreateParams",
+                        "usr": "c:@M@ChatSDK@objc(cs)FileMessageCreateParams"
+                      }
+                    ],
+                    "usr": "s:Sa"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:7ChatSDK25MultipleFilesCreateParamsC6paramsAA011FileMessageeF0Cvg",
-                "mangledName": "$s7ChatSDK25MultipleFilesCreateParamsC6paramsAA011FileMessageeF0Cvg",
+                "usr": "s:7ChatSDK20UploadableFileParamsC9paramListSayAA0d13MessageCreateE0CGvg",
+                "mangledName": "$s7ChatSDK20UploadableFileParamsC9paramListSayAA0d13MessageCreateE0CGvg",
                 "moduleName": "ChatSDK",
                 "implicit": true,
                 "declAttributes": [
@@ -36127,8 +36435,8 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:7ChatSDK25MultipleFilesCreateParamsC10channelURISSvp",
-            "mangledName": "$s7ChatSDK25MultipleFilesCreateParamsC10channelURISSvp",
+            "usr": "s:7ChatSDK20UploadableFileParamsC10channelURISSvp",
+            "mangledName": "$s7ChatSDK20UploadableFileParamsC10channelURISSvp",
             "moduleName": "ChatSDK",
             "declAttributes": [
               "Final",
@@ -36151,8 +36459,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:7ChatSDK25MultipleFilesCreateParamsC10channelURISSvg",
-                "mangledName": "$s7ChatSDK25MultipleFilesCreateParamsC10channelURISSvg",
+                "usr": "s:7ChatSDK20UploadableFileParamsC10channelURISSvg",
+                "mangledName": "$s7ChatSDK20UploadableFileParamsC10channelURISSvg",
                 "moduleName": "ChatSDK",
                 "implicit": true,
                 "declAttributes": [
@@ -36175,8 +36483,8 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:7ChatSDK25MultipleFilesCreateParamsC11channelTypeAA07ChannelH0Ovp",
-            "mangledName": "$s7ChatSDK25MultipleFilesCreateParamsC11channelTypeAA07ChannelH0Ovp",
+            "usr": "s:7ChatSDK20UploadableFileParamsC11channelTypeAA07ChannelG0Ovp",
+            "mangledName": "$s7ChatSDK20UploadableFileParamsC11channelTypeAA07ChannelG0Ovp",
             "moduleName": "ChatSDK",
             "declAttributes": [
               "Final",
@@ -36199,8 +36507,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:7ChatSDK25MultipleFilesCreateParamsC11channelTypeAA07ChannelH0Ovg",
-                "mangledName": "$s7ChatSDK25MultipleFilesCreateParamsC11channelTypeAA07ChannelH0Ovg",
+                "usr": "s:7ChatSDK20UploadableFileParamsC11channelTypeAA07ChannelG0Ovg",
+                "mangledName": "$s7ChatSDK20UploadableFileParamsC11channelTypeAA07ChannelG0Ovg",
                 "moduleName": "ChatSDK",
                 "implicit": true,
                 "declAttributes": [
@@ -36223,8 +36531,8 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:7ChatSDK25MultipleFilesCreateParamsC9requestIdSSvp",
-            "mangledName": "$s7ChatSDK25MultipleFilesCreateParamsC9requestIdSSvp",
+            "usr": "s:7ChatSDK20UploadableFileParamsC9requestIdSSvp",
+            "mangledName": "$s7ChatSDK20UploadableFileParamsC9requestIdSSvp",
             "moduleName": "ChatSDK",
             "declAttributes": [
               "HasStorage",
@@ -36245,8 +36553,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:7ChatSDK25MultipleFilesCreateParamsC9requestIdSSvg",
-                "mangledName": "$s7ChatSDK25MultipleFilesCreateParamsC9requestIdSSvg",
+                "usr": "s:7ChatSDK20UploadableFileParamsC9requestIdSSvg",
+                "mangledName": "$s7ChatSDK20UploadableFileParamsC9requestIdSSvg",
                 "moduleName": "ChatSDK",
                 "implicit": true,
                 "accessorKind": "get"
@@ -36269,8 +36577,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:7ChatSDK25MultipleFilesCreateParamsC9requestIdSSvs",
-                "mangledName": "$s7ChatSDK25MultipleFilesCreateParamsC9requestIdSSvs",
+                "usr": "s:7ChatSDK20UploadableFileParamsC9requestIdSSvs",
+                "mangledName": "$s7ChatSDK20UploadableFileParamsC9requestIdSSvs",
                 "moduleName": "ChatSDK",
                 "implicit": true,
                 "accessorKind": "set"
@@ -36287,8 +36595,118 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:7ChatSDK25MultipleFilesCreateParamsC9requestIdSSvM",
-                "mangledName": "$s7ChatSDK25MultipleFilesCreateParamsC9requestIdSSvM",
+                "usr": "s:7ChatSDK20UploadableFileParamsC9requestIdSSvM",
+                "mangledName": "$s7ChatSDK20UploadableFileParamsC9requestIdSSvM",
+                "moduleName": "ChatSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "parentMessageId",
+            "printedName": "parentMessageId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int64?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int64",
+                    "printedName": "Swift.Int64",
+                    "usr": "s:s5Int64V"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7ChatSDK20UploadableFileParamsC15parentMessageIds5Int64VSgvp",
+            "mangledName": "$s7ChatSDK20UploadableFileParamsC15parentMessageIds5Int64VSgvp",
+            "moduleName": "ChatSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Int64?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int64",
+                        "printedName": "Swift.Int64",
+                        "usr": "s:s5Int64V"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7ChatSDK20UploadableFileParamsC15parentMessageIds5Int64VSgvg",
+                "mangledName": "$s7ChatSDK20UploadableFileParamsC15parentMessageIds5Int64VSgvg",
+                "moduleName": "ChatSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Int64?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int64",
+                        "printedName": "Swift.Int64",
+                        "usr": "s:s5Int64V"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7ChatSDK20UploadableFileParamsC15parentMessageIds5Int64VSgvs",
+                "mangledName": "$s7ChatSDK20UploadableFileParamsC15parentMessageIds5Int64VSgvs",
+                "moduleName": "ChatSDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7ChatSDK20UploadableFileParamsC15parentMessageIds5Int64VSgvM",
+                "mangledName": "$s7ChatSDK20UploadableFileParamsC15parentMessageIds5Int64VSgvM",
                 "moduleName": "ChatSDK",
                 "implicit": true,
                 "accessorKind": "_modify"
@@ -36298,19 +36716,27 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(params:channelURI:channelType:requestId:)",
+            "printedName": "init(paramsList:channelURI:channelType:requestId:parentMessageId:)",
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "MultipleFilesCreateParams",
-                "printedName": "ChatSDK.MultipleFilesCreateParams",
-                "usr": "s:7ChatSDK25MultipleFilesCreateParamsC"
+                "name": "UploadableFileParams",
+                "printedName": "ChatSDK.UploadableFileParams",
+                "usr": "s:7ChatSDK20UploadableFileParamsC"
               },
               {
                 "kind": "TypeNominal",
-                "name": "FileMessageCreateParams",
-                "printedName": "ChatSDK.FileMessageCreateParams",
-                "usr": "c:@M@ChatSDK@objc(cs)FileMessageCreateParams"
+                "name": "Array",
+                "printedName": "[ChatSDK.FileMessageCreateParams]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FileMessageCreateParams",
+                    "printedName": "ChatSDK.FileMessageCreateParams",
+                    "usr": "c:@M@ChatSDK@objc(cs)FileMessageCreateParams"
+                  }
+                ],
+                "usr": "s:Sa"
               },
               {
                 "kind": "TypeNominal",
@@ -36329,11 +36755,26 @@
                 "name": "String",
                 "printedName": "Swift.String",
                 "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int64?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int64",
+                    "printedName": "Swift.Int64",
+                    "usr": "s:s5Int64V"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:7ChatSDK25MultipleFilesCreateParamsC6params10channelURI0H4Type9requestIdAcA011FileMessageeF0C_SSAA07ChannelJ0OSStcfc",
-            "mangledName": "$s7ChatSDK25MultipleFilesCreateParamsC6params10channelURI0H4Type9requestIdAcA011FileMessageeF0C_SSAA07ChannelJ0OSStcfc",
+            "usr": "s:7ChatSDK20UploadableFileParamsC10paramsList10channelURI0H4Type9requestId013parentMessageL0ACSayAA0dn6CreateE0CG_SSAA07ChannelJ0OSSs5Int64VSgtcfc",
+            "mangledName": "$s7ChatSDK20UploadableFileParamsC10paramsList10channelURI0H4Type9requestId013parentMessageL0ACSayAA0dn6CreateE0CG_SSAA07ChannelJ0OSSs5Int64VSgtcfc",
             "moduleName": "ChatSDK",
             "declAttributes": [
               "AccessControl"
@@ -36347,9 +36788,9 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "MultipleFilesCreateParams",
-                "printedName": "ChatSDK.MultipleFilesCreateParams",
-                "usr": "s:7ChatSDK25MultipleFilesCreateParamsC"
+                "name": "UploadableFileParams",
+                "printedName": "ChatSDK.UploadableFileParams",
+                "usr": "s:7ChatSDK20UploadableFileParamsC"
               },
               {
                 "kind": "TypeNominal",
@@ -36359,8 +36800,8 @@
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:7ChatSDK25MultipleFilesCreateParamsC4fromACs7Decoder_p_tKcfc",
-            "mangledName": "$s7ChatSDK25MultipleFilesCreateParamsC4fromACs7Decoder_p_tKcfc",
+            "usr": "s:7ChatSDK20UploadableFileParamsC4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s7ChatSDK20UploadableFileParamsC4fromACs7Decoder_p_tKcfc",
             "moduleName": "ChatSDK",
             "implicit": true,
             "declAttributes": [
@@ -36387,8 +36828,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:7ChatSDK25MultipleFilesCreateParamsC6encode2toys7Encoder_p_tKF",
-            "mangledName": "$s7ChatSDK25MultipleFilesCreateParamsC6encode2toys7Encoder_p_tKF",
+            "usr": "s:7ChatSDK20UploadableFileParamsC6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s7ChatSDK20UploadableFileParamsC6encode2toys7Encoder_p_tKF",
             "moduleName": "ChatSDK",
             "implicit": true,
             "throwing": true,
@@ -36396,8 +36837,8 @@
           }
         ],
         "declKind": "Class",
-        "usr": "s:7ChatSDK25MultipleFilesCreateParamsC",
-        "mangledName": "$s7ChatSDK25MultipleFilesCreateParamsC",
+        "usr": "s:7ChatSDK20UploadableFileParamsC",
+        "mangledName": "$s7ChatSDK20UploadableFileParamsC",
         "moduleName": "ChatSDK",
         "declAttributes": [
           "AccessControl"
@@ -36480,35 +36921,27 @@
         "children": [
           {
             "kind": "Function",
-            "name": "getMultipleFilesMessageParams",
-            "printedName": "getMultipleFilesMessageParams()",
+            "name": "getUploadableFileParams",
+            "printedName": "getUploadableFileParams()",
             "children": [
               {
                 "kind": "TypeNominal",
                 "name": "Optional",
-                "printedName": "[ChatSDK.FileMessageCreateParams]?",
+                "printedName": "ChatSDK.UploadableFileParams?",
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[ChatSDK.FileMessageCreateParams]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "FileMessageCreateParams",
-                        "printedName": "ChatSDK.FileMessageCreateParams",
-                        "usr": "c:@M@ChatSDK@objc(cs)FileMessageCreateParams"
-                      }
-                    ],
-                    "usr": "s:Sa"
+                    "name": "UploadableFileParams",
+                    "printedName": "ChatSDK.UploadableFileParams",
+                    "usr": "s:7ChatSDK20UploadableFileParamsC"
                   }
                 ],
                 "usr": "s:Sq"
               }
             ],
             "declKind": "Func",
-            "usr": "s:7ChatSDK20MultipleFilesMessageC03getcdE6ParamsSayAA04Filee6CreateG0CGSgyF",
-            "mangledName": "$s7ChatSDK20MultipleFilesMessageC03getcdE6ParamsSayAA04Filee6CreateG0CGSgyF",
+            "usr": "s:7ChatSDK20MultipleFilesMessageC23getUploadableFileParamsAA0ghI0CSgyF",
+            "mangledName": "$s7ChatSDK20MultipleFilesMessageC23getUploadableFileParamsAA0ghI0CSgyF",
             "moduleName": "ChatSDK",
             "declAttributes": [
               "AccessControl"
@@ -41211,6 +41644,413 @@
             "declKind": "EnumElement",
             "usr": "s:7ChatSDK0A5ErrorO21socketChannelNotFoundyA2CmF",
             "mangledName": "$s7ChatSDK0A5ErrorO21socketChannelNotFoundyA2CmF",
+            "moduleName": "ChatSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "errBadRequest",
+            "printedName": "errBadRequest",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(ChatSDK.ChatError.Type) -> ChatSDK.ChatError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ChatError",
+                    "printedName": "ChatSDK.ChatError",
+                    "usr": "s:7ChatSDK0A5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "ChatSDK.ChatError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ChatError",
+                        "printedName": "ChatSDK.ChatError",
+                        "usr": "s:7ChatSDK0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7ChatSDK0A5ErrorO13errBadRequestyA2CmF",
+            "mangledName": "$s7ChatSDK0A5ErrorO13errBadRequestyA2CmF",
+            "moduleName": "ChatSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "errInvalidArgument",
+            "printedName": "errInvalidArgument",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(ChatSDK.ChatError.Type) -> ChatSDK.ChatError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ChatError",
+                    "printedName": "ChatSDK.ChatError",
+                    "usr": "s:7ChatSDK0A5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "ChatSDK.ChatError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ChatError",
+                        "printedName": "ChatSDK.ChatError",
+                        "usr": "s:7ChatSDK0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7ChatSDK0A5ErrorO18errInvalidArgumentyA2CmF",
+            "mangledName": "$s7ChatSDK0A5ErrorO18errInvalidArgumentyA2CmF",
+            "moduleName": "ChatSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "errBlockAndInvitedNotAllowed",
+            "printedName": "errBlockAndInvitedNotAllowed",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(ChatSDK.ChatError.Type) -> ChatSDK.ChatError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ChatError",
+                    "printedName": "ChatSDK.ChatError",
+                    "usr": "s:7ChatSDK0A5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "ChatSDK.ChatError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ChatError",
+                        "printedName": "ChatSDK.ChatError",
+                        "usr": "s:7ChatSDK0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7ChatSDK0A5ErrorO28errBlockAndInvitedNotAllowedyA2CmF",
+            "mangledName": "$s7ChatSDK0A5ErrorO28errBlockAndInvitedNotAllowedyA2CmF",
+            "moduleName": "ChatSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "errInvalidSession",
+            "printedName": "errInvalidSession",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(ChatSDK.ChatError.Type) -> ChatSDK.ChatError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ChatError",
+                    "printedName": "ChatSDK.ChatError",
+                    "usr": "s:7ChatSDK0A5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "ChatSDK.ChatError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ChatError",
+                        "printedName": "ChatSDK.ChatError",
+                        "usr": "s:7ChatSDK0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7ChatSDK0A5ErrorO17errInvalidSessionyA2CmF",
+            "mangledName": "$s7ChatSDK0A5ErrorO17errInvalidSessionyA2CmF",
+            "moduleName": "ChatSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "errAPPUnauthorized",
+            "printedName": "errAPPUnauthorized",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(ChatSDK.ChatError.Type) -> ChatSDK.ChatError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ChatError",
+                    "printedName": "ChatSDK.ChatError",
+                    "usr": "s:7ChatSDK0A5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "ChatSDK.ChatError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ChatError",
+                        "printedName": "ChatSDK.ChatError",
+                        "usr": "s:7ChatSDK0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7ChatSDK0A5ErrorO18errAPPUnauthorizedyA2CmF",
+            "mangledName": "$s7ChatSDK0A5ErrorO18errAPPUnauthorizedyA2CmF",
+            "moduleName": "ChatSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "errHttpUnauthorized",
+            "printedName": "errHttpUnauthorized",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(ChatSDK.ChatError.Type) -> ChatSDK.ChatError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ChatError",
+                    "printedName": "ChatSDK.ChatError",
+                    "usr": "s:7ChatSDK0A5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "ChatSDK.ChatError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ChatError",
+                        "printedName": "ChatSDK.ChatError",
+                        "usr": "s:7ChatSDK0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7ChatSDK0A5ErrorO19errHttpUnauthorizedyA2CmF",
+            "mangledName": "$s7ChatSDK0A5ErrorO19errHttpUnauthorizedyA2CmF",
+            "moduleName": "ChatSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "errForbidden",
+            "printedName": "errForbidden",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(ChatSDK.ChatError.Type) -> ChatSDK.ChatError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ChatError",
+                    "printedName": "ChatSDK.ChatError",
+                    "usr": "s:7ChatSDK0A5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "ChatSDK.ChatError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ChatError",
+                        "printedName": "ChatSDK.ChatError",
+                        "usr": "s:7ChatSDK0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7ChatSDK0A5ErrorO12errForbiddenyA2CmF",
+            "mangledName": "$s7ChatSDK0A5ErrorO12errForbiddenyA2CmF",
+            "moduleName": "ChatSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "errForbiddenFeatureGroupPermission",
+            "printedName": "errForbiddenFeatureGroupPermission",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(ChatSDK.ChatError.Type) -> ChatSDK.ChatError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ChatError",
+                    "printedName": "ChatSDK.ChatError",
+                    "usr": "s:7ChatSDK0A5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "ChatSDK.ChatError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ChatError",
+                        "printedName": "ChatSDK.ChatError",
+                        "usr": "s:7ChatSDK0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7ChatSDK0A5ErrorO34errForbiddenFeatureGroupPermissionyA2CmF",
+            "mangledName": "$s7ChatSDK0A5ErrorO34errForbiddenFeatureGroupPermissionyA2CmF",
+            "moduleName": "ChatSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "ErrForbiddenOutOfQuota",
+            "printedName": "ErrForbiddenOutOfQuota",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(ChatSDK.ChatError.Type) -> ChatSDK.ChatError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ChatError",
+                    "printedName": "ChatSDK.ChatError",
+                    "usr": "s:7ChatSDK0A5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "ChatSDK.ChatError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ChatError",
+                        "printedName": "ChatSDK.ChatError",
+                        "usr": "s:7ChatSDK0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7ChatSDK0A5ErrorO22ErrForbiddenOutOfQuotayA2CmF",
+            "mangledName": "$s7ChatSDK0A5ErrorO22ErrForbiddenOutOfQuotayA2CmF",
+            "moduleName": "ChatSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "errNotSupportDefaultPlan",
+            "printedName": "errNotSupportDefaultPlan",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(ChatSDK.ChatError.Type) -> ChatSDK.ChatError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ChatError",
+                    "printedName": "ChatSDK.ChatError",
+                    "usr": "s:7ChatSDK0A5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "ChatSDK.ChatError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ChatError",
+                        "printedName": "ChatSDK.ChatError",
+                        "usr": "s:7ChatSDK0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7ChatSDK0A5ErrorO24errNotSupportDefaultPlanyA2CmF",
+            "mangledName": "$s7ChatSDK0A5ErrorO24errNotSupportDefaultPlanyA2CmF",
+            "moduleName": "ChatSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "errNotFound",
+            "printedName": "errNotFound",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(ChatSDK.ChatError.Type) -> ChatSDK.ChatError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ChatError",
+                    "printedName": "ChatSDK.ChatError",
+                    "usr": "s:7ChatSDK0A5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "ChatSDK.ChatError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ChatError",
+                        "printedName": "ChatSDK.ChatError",
+                        "usr": "s:7ChatSDK0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:7ChatSDK0A5ErrorO11errNotFoundyA2CmF",
+            "mangledName": "$s7ChatSDK0A5ErrorO11errNotFoundyA2CmF",
             "moduleName": "ChatSDK"
           },
           {
@@ -61322,16 +62162,6 @@
             "usr": "s:SE",
             "mangledName": "$sSE"
           }
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "UIKit",
-        "printedName": "UIKit",
-        "declKind": "Import",
-        "moduleName": "ChatSDK",
-        "declAttributes": [
-          "RawDocComment"
         ]
       },
       {
@@ -88632,6 +89462,40 @@
             "funcSelfKind": "NonMutating"
           },
           {
+            "kind": "Function",
+            "name": "addNetwork",
+            "printedName": "addNetwork(delegate:identifier:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GIMNetworkDelegate",
+                "printedName": "any ChatSDK.GIMNetworkDelegate",
+                "usr": "s:7ChatSDK18GIMNetworkDelegateP"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7ChatSDK7GIMChatC10addNetwork8delegate10identifieryAA18GIMNetworkDelegate_p_SStFZ",
+            "mangledName": "$s7ChatSDK7GIMChatC10addNetwork8delegate10identifieryAA18GIMNetworkDelegate_p_SStFZ",
+            "moduleName": "ChatSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init()",
@@ -110765,6 +111629,66 @@
         ]
       },
       {
+        "kind": "TypeDecl",
+        "name": "GIMNetworkDelegate",
+        "printedName": "GIMNetworkDelegate",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "network",
+            "printedName": "network(state:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ReachabilityStatus",
+                "printedName": "ChatSDK.ReachabilityStatus",
+                "usr": "s:7ChatSDK18ReachabilityStatusO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7ChatSDK18GIMNetworkDelegateP7network5stateyAA18ReachabilityStatusO_tF",
+            "mangledName": "$s7ChatSDK18GIMNetworkDelegateP7network5stateyAA18ReachabilityStatusO_tF",
+            "moduleName": "ChatSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : ChatSDK.GIMNetworkDelegate>",
+            "sugared_genericSig": "<Self where Self : ChatSDK.GIMNetworkDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:7ChatSDK18GIMNetworkDelegateP",
+        "mangledName": "$s7ChatSDK18GIMNetworkDelegateP",
+        "moduleName": "ChatSDK",
+        "genericSig": "<τ_0_0 : AnyObject>",
+        "sugared_genericSig": "<Self : AnyObject>",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          }
+        ]
+      },
+      {
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
@@ -125293,7 +126217,6 @@
               "Final",
               "RawDocComment"
             ],
-            "isLet": true,
             "hasStorage": true,
             "accessors": [
               {
@@ -125317,6 +126240,54 @@
                   "Final"
                 ],
                 "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7ChatSDK10PollOptionC4textSSvs",
+                "mangledName": "$s7ChatSDK10PollOptionC4textSSvs",
+                "moduleName": "ChatSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7ChatSDK10PollOptionC4textSSvM",
+                "mangledName": "$s7ChatSDK10PollOptionC4textSSvM",
+                "moduleName": "ChatSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
               }
             ]
           },
@@ -134818,7 +135789,7 @@
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Network\/NetworkMonitor\/GIMNetworkMonitor.swift",
       "kind": "BooleanLiteral",
-      "offset": 796,
+      "offset": 803,
       "length": 5,
       "value": "false"
     },
@@ -134971,15 +135942,29 @@
     },
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Channel\/BaseChannel.swift",
+      "kind": "BooleanLiteral",
+      "offset": 53003,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Channel\/BaseChannel.swift",
+      "kind": "BooleanLiteral",
+      "offset": 68180,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Channel\/BaseChannel.swift",
       "kind": "IntegerLiteral",
-      "offset": 91190,
+      "offset": 91897,
       "length": 2,
       "value": "20"
     },
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Channel\/BaseChannel.swift",
       "kind": "IntegerLiteral",
-      "offset": 91722,
+      "offset": 92429,
       "length": 2,
       "value": "20"
     },
@@ -135854,14 +136839,14 @@
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/BaseDataSource\/CacheDataSource.swift",
       "kind": "Dictionary",
-      "offset": 2067,
+      "offset": 2313,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/BaseDataSource\/CacheDataSource.swift",
       "kind": "Dictionary",
-      "offset": 2282,
+      "offset": 2528,
       "length": 3,
       "value": "[]"
     },
@@ -137534,7 +138519,7 @@
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Network\/GIMAPI\/Files\/Caches\/MultipleFilesParamCacheManager.swift",
       "kind": "StringLiteral",
-      "offset": 1559,
+      "offset": 1532,
       "length": 25,
       "value": "\"multipleFilesCacheQueue\""
     },
@@ -137761,6 +138746,13 @@
       "offset": 2602,
       "length": 12,
       "value": "\"is_created\""
+    },
+    {
+      "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Message\/FileMessage\/MultipleFilesMessage.swift",
+      "kind": "BooleanLiteral",
+      "offset": 772,
+      "length": 4,
+      "value": "true"
     },
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Entity\/File\/FileMetaEntity.swift",
@@ -138419,6 +139411,83 @@
       "offset": 4358,
       "length": 6,
       "value": "900500"
+    },
+    {
+      "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Error\/ChatError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4395,
+      "length": 6,
+      "value": "400000"
+    },
+    {
+      "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Error\/ChatError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4432,
+      "length": 6,
+      "value": "400001"
+    },
+    {
+      "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Error\/ChatError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4479,
+      "length": 6,
+      "value": "400701"
+    },
+    {
+      "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Error\/ChatError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4515,
+      "length": 6,
+      "value": "100001"
+    },
+    {
+      "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Error\/ChatError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4552,
+      "length": 6,
+      "value": "100002"
+    },
+    {
+      "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Error\/ChatError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4590,
+      "length": 6,
+      "value": "100003"
+    },
+    {
+      "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Error\/ChatError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4621,
+      "length": 6,
+      "value": "100004"
+    },
+    {
+      "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Error\/ChatError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4674,
+      "length": 6,
+      "value": "403202"
+    },
+    {
+      "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Error\/ChatError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4715,
+      "length": 6,
+      "value": "403203"
+    },
+    {
+      "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Error\/ChatError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4758,
+      "length": 6,
+      "value": "403901"
+    },
+    {
+      "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Models\/Error\/ChatError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4788,
+      "length": 6,
+      "value": "404000"
     },
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Entity\/Message\/ScheduledMessagesEntity.swift",
@@ -139683,7 +140752,7 @@
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Network\/GIMAPI\/File\/UploadImageOperation.swift",
       "kind": "IntegerLiteral",
-      "offset": 337,
+      "offset": 358,
       "length": 1,
       "value": "0"
     },
@@ -142231,42 +143300,42 @@
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Network\/GIMAPI\/Files\/Caches\/ChunkDataCacheManager.swift",
       "kind": "Dictionary",
-      "offset": 339,
+      "offset": 309,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Network\/GIMAPI\/Files\/Caches\/ChunkDataCacheManager.swift",
       "kind": "Array",
-      "offset": 951,
+      "offset": 852,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Network\/GIMAPI\/Files\/Caches\/ChunkDataCacheManager.swift",
       "kind": "Dictionary",
-      "offset": 1334,
+      "offset": 1245,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Network\/GIMAPI\/Files\/Caches\/ChunkDataCacheManager.swift",
       "kind": "Dictionary",
-      "offset": 1385,
+      "offset": 1296,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Network\/GIMAPI\/Files\/Caches\/ChunkDataCacheManager.swift",
       "kind": "StringLiteral",
-      "offset": 4321,
+      "offset": 3587,
       "length": 18,
       "value": "\"uploadCacheQueue\""
     },
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Network\/GIMAPI\/Files\/Caches\/ChunkDataCacheManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 10944,
+      "offset": 11306,
       "length": 1,
       "value": "7"
     },
@@ -143612,7 +144681,7 @@
       "kind": "StringLiteral",
       "offset": 346,
       "length": 7,
-      "value": "\"1.3.0\""
+      "value": "\"1.3.1\""
     },
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/GIMEnvironment.swift",
@@ -144989,28 +146058,28 @@
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Network\/GIMAPI\/Files\/UploadFileRequestV2.swift",
       "kind": "IntegerLiteral",
-      "offset": 276,
+      "offset": 384,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Network\/GIMAPI\/Files\/UploadFileRequestV2.swift",
       "kind": "Dictionary",
-      "offset": 323,
+      "offset": 431,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Network\/GIMAPI\/Files\/UploadFileRequestV2.swift",
       "kind": "StringLiteral",
-      "offset": 378,
+      "offset": 486,
       "length": 17,
       "value": "\"sendFileQueueV2\""
     },
     {
       "filePath": "\/Users\/nicktseng\/Documents\/hidol\/chatsdk\/Sources\/ChatSDK\/Network\/GIMAPI\/Files\/UploadFileRequestV2.swift",
       "kind": "IntegerLiteral",
-      "offset": 906,
+      "offset": 1014,
       "length": 1,
       "value": "0"
     },

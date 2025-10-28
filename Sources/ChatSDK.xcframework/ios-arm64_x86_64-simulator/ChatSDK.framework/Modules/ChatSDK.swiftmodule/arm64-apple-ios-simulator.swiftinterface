@@ -33,6 +33,16 @@ extension ChatSDK.ParticipantListQueryParams : Foundation.NSCopying {
   @objc final public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
   #endif
 }
+public enum ReachabilityStatus {
+  case unknown
+  case notReachable
+  case reachable
+  public static func == (a: ChatSDK.ReachabilityStatus, b: ChatSDK.ReachabilityStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 public typealias UserHandler = (_ user: ChatSDK.User?, _ error: ChatSDK.GIMError?) -> Swift.Void
 public protocol RestrictedUserListQuery : AnyObject {
   var hasNext: Swift.Bool { get }
@@ -274,7 +284,7 @@ extension ChatSDK.BaseChannel {
   dynamic public func sendFileMessage(params: ChatSDK.FileMessageCreateParams, progressHandler: ChatSDK.MultiProgressHandler?, completionHandler: ChatSDK.FileMessageHandler?) -> ChatSDK.FileMessage?
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
-  dynamic public func sendMultipleFilesMessage(uploadableInfoList: [ChatSDK.MultipleFilesCreateParams], completionHandler: ChatSDK.MultipleFilesMessageHandler?) -> ChatSDK.MultipleFilesMessage
+  dynamic public func sendMultipleFilesMessage(uploadableInfoList: [ChatSDK.FileMessageCreateParams], parentMessage: ChatSDK.BaseMessage? = nil, isReplyToChannel: Swift.Bool = true, completionHandler: ChatSDK.MultipleFilesMessageHandler?) -> ChatSDK.MultipleFilesMessage
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func updateFileMessage(messageId: Swift.Int64, params: ChatSDK.FileMessageUpdateParams, completionHandler: ChatSDK.FileMessageHandler?)
@@ -293,7 +303,7 @@ extension ChatSDK.BaseChannel {
   dynamic public class func cancelUploadingFileMessage(requestId: Swift.String, completionHandler: ((_ result: Swift.Bool, _ error: ChatSDK.GIMError?) -> Swift.Void)?)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
-  dynamic public func resendMutilpleFilesMessage(_ message: ChatSDK.MultipleFilesMessage, completionHandler: ChatSDK.MultipleFilesMessageHandler?) -> ChatSDK.MultipleFilesMessage?
+  dynamic public func resendMultipleFilesMessage(_ message: ChatSDK.MultipleFilesMessage, completionHandler: ChatSDK.MultipleFilesMessageHandler?) -> ChatSDK.MultipleFilesMessage?
   #endif
 }
 extension ChatSDK.BaseChannel {
@@ -564,6 +574,7 @@ extension ChatSDK.BaseChannel {
 }
 extension ChatSDK.BaseMessage {
   public func asFileMessage() -> ChatSDK.BaseMessage
+  public func asPendingMessage() -> ChatSDK.BaseMessage
 }
 public typealias GetPushTokensHandler = (_ pushTokens: [Swift.String], _ pushTokenType: ChatSDK.PushTokenType, _ hasMore: Swift.Bool, _ token: Swift.String?, _ error: ChatSDK.GIMError?) -> Swift.Void
 public struct PushTokens {
@@ -1422,19 +1433,22 @@ extension ChatSDK.BaseMessage {
     @objc get
   }
 }
-public class MultipleFilesCreateParams : Swift.Codable {
-  final public let params: ChatSDK.FileMessageCreateParams
+public class UploadableFileParams : Swift.Codable {
+  final public let paramList: [ChatSDK.FileMessageCreateParams]
   final public let channelURI: Swift.String
   final public let channelType: ChatSDK.ChannelType
   public var requestId: Swift.String
-  public init(params: ChatSDK.FileMessageCreateParams, channelURI: Swift.String, channelType: ChatSDK.ChannelType, requestId: Swift.String)
+  public var parentMessageId: Swift.Int64?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(paramsList: [ChatSDK.FileMessageCreateParams], channelURI: Swift.String, channelType: ChatSDK.ChannelType, requestId: Swift.String, parentMessageId: Swift.Int64? = nil)
+  #endif
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MultipleFilesMessage : ChatSDK.BaseMessage {
   #if compiler(>=5.3) && $NonescapableTypes
-  public func getMultipleFilesMessageParams() -> [ChatSDK.FileMessageCreateParams]?
+  public func getUploadableFileParams() -> ChatSDK.UploadableFileParams?
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   public var files: [ChatSDK.FileEntity]? {
@@ -1580,6 +1594,17 @@ public enum ChatError : Swift.Int, ChatSDK.GIMErrorCode {
   case socketMessageNotFound
   case socketTooManyParticipants
   case socketChannelNotFound
+  case errBadRequest
+  case errInvalidArgument
+  case errBlockAndInvitedNotAllowed
+  case errInvalidSession
+  case errAPPUnauthorized
+  case errHttpUnauthorized
+  case errForbidden
+  case errForbiddenFeatureGroupPermission
+  case ErrForbiddenOutOfQuota
+  case errNotSupportDefaultPlan
+  case errNotFound
   public var code: Swift.Int {
     get
   }
@@ -3244,6 +3269,7 @@ public typealias GroupChannelHandler = (_ channel: ChatSDK.GroupChannel?, _ erro
   #endif
   public class func getLastConnectedAt() -> Swift.Int64
   public class func clearAllCacheDataMessageSuccess(_ messages: [ChatSDK.BaseMessage])
+  public static func addNetwork(delegate: any ChatSDK.GIMNetworkDelegate, identifier: Swift.String)
   @objc override dynamic public init()
   @objc deinit
 }
@@ -4077,6 +4103,9 @@ extension ChatSDK.ConnectionDelegate {
   dynamic public func didFailReconnection()
   dynamic public func didDisconnect(userId: Swift.String)
 }
+public protocol GIMNetworkDelegate : AnyObject {
+  func network(state: ChatSDK.ReachabilityStatus)
+}
 public typealias MuteInfoHandler = (_ isMuted: Swift.Bool, _ description: Swift.String, _ startAt: Swift.Int64, _ endAt: Swift.Int64, _ remainingDuration: Swift.Int64, _ error: ChatSDK.GIMError?) -> Swift.Void
 public struct MuteInfo {
 }
@@ -4254,8 +4283,8 @@ public enum GroupChannelHiddenState : Swift.String, Swift.Codable {
 }
 @_hasMissingDesignatedInitializers final public class AutoResendManager {
   public static let shared: ChatSDK.AutoResendManager
-  final public func upsertPendingMessageToFail()
   @objc deinit
+  final public func upsertPendingMessageToFail()
 }
 extension ChatSDK.AutoResendManager : ChatSDK.ConnectionDelegate {
   final public func didConnect(userId: Swift.String)
@@ -4535,7 +4564,7 @@ extension ChatSDK.OpenChannelDelegate {
 @objc @_hasMissingDesignatedInitializers public class PollOption : ObjectiveC.NSObject, Swift.Codable {
   final public let pollId: Swift.Int64
   final public let pollOptionId: Swift.Int64
-  final public let text: Swift.String
+  final public var text: Swift.String
   final public let createdBy: Swift.String
   final public let createdAt: Swift.Int64
   public var voteCount: Swift.Int64 {
@@ -4704,6 +4733,8 @@ public enum MemberListOrder : Swift.String, Swift.Codable {
     get
   }
 }
+extension ChatSDK.ReachabilityStatus : Swift.Equatable {}
+extension ChatSDK.ReachabilityStatus : Swift.Hashable {}
 extension ChatSDK.MessageType : Swift.Equatable {}
 extension ChatSDK.MessageType : Swift.Hashable {}
 extension ChatSDK.MessageType : Swift.RawRepresentable {}
