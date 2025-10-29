@@ -174,14 +174,14 @@ extension ChatSDK.BaseChannel {
   dynamic public func unfreeze() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
 }
 extension ChatSDK.BaseChannel {
-  dynamic public func sendFileMessage(params: ChatSDK.FileMessageCreateParams, completionHandler: ChatSDK.FileMessageHandler?) -> ChatSDK.FileMessage?
-  dynamic public func sendFileMessage(params: ChatSDK.FileMessageCreateParams, progressHandler: ChatSDK.MultiProgressHandler?, completionHandler: ChatSDK.FileMessageHandler?) -> ChatSDK.FileMessage?
-  dynamic public func sendMultipleFilesMessage(uploadableInfoList: [ChatSDK.FileMessageCreateParams], parentMessage: ChatSDK.BaseMessage? = nil, isReplyToChannel: Swift.Bool = true, completionHandler: ChatSDK.MultipleFilesMessageHandler?) -> ChatSDK.MultipleFilesMessage
+  dynamic public func sendFileMessage(params: ChatSDK.FileMessageCreateParams, completionHandler: ChatSDK.FileMessageHandler?, createMessageSuccess: ((ChatSDK.FileMessage?) -> Swift.Void)?)
+  dynamic public func sendFileMessage(params: ChatSDK.FileMessageCreateParams, progressHandler: ChatSDK.MultiProgressHandler?, completionHandler: ChatSDK.FileMessageHandler?, createMessageSuccess: ((ChatSDK.FileMessage?) -> Swift.Void)?)
+  dynamic public func sendMultipleFilesMessage(uploadableInfoList: [ChatSDK.FileMessageCreateParams], parentMessage: ChatSDK.BaseMessage? = nil, isReplyToChannel: Swift.Bool = true, completionHandler: ChatSDK.MultipleFilesMessageHandler?, createMultipleFileMessageSuccess: ((ChatSDK.MultipleFilesMessage?) -> Swift.Void)?)
   dynamic public func updateFileMessage(messageId: Swift.Int64, params: ChatSDK.FileMessageUpdateParams, completionHandler: ChatSDK.FileMessageHandler?)
   @available(iOS 13.0, *)
   dynamic public func updateFileMessage(messageId: Swift.Int64, params: ChatSDK.FileMessageUpdateParams) async throws -> Swift.Result<ChatSDK.FileMessage, ChatSDK.GIMError>
   dynamic public func resendFileMessage(_ fileMessage: ChatSDK.FileMessage, progressHandler: ChatSDK.MultiProgressHandler?, completionHandler: ChatSDK.FileMessageHandler?) -> ChatSDK.FileMessage?
-  dynamic public func copyFileMessage(_ message: ChatSDK.FileMessage, toTargetChannel targetChannel: ChatSDK.BaseChannel, completionHandler: ChatSDK.FileMessageHandler?) -> ChatSDK.FileMessage?
+  dynamic public func copyFileMessage(_ message: ChatSDK.FileMessage, toTargetChannel targetChannel: ChatSDK.BaseChannel, completionHandler: ChatSDK.FileMessageHandler?, createMessageSuccess: ((ChatSDK.FileMessage?) -> Swift.Void)?)
   dynamic public class func cancelUploadingFileMessage(requestId: Swift.String, completionHandler: ((_ result: Swift.Bool, _ error: ChatSDK.GIMError?) -> Swift.Void)?)
   dynamic public func resendMultipleFilesMessage(_ message: ChatSDK.MultipleFilesMessage, completionHandler: ChatSDK.MultipleFilesMessageHandler?) -> ChatSDK.MultipleFilesMessage?
 }
