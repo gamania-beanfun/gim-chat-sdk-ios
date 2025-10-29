@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.2 effective-5.10 (swiftlang-6.2.0.19.9 clang-1700.3.19.1)
+// swift-compiler-version: Apple Swift version 6.1.2 effective-5.10 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
 // swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name ChatSDK
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1.2
 import CoreGraphics
 import CoreTelephony
 import CryptoKit
@@ -24,14 +24,10 @@ import _SwiftConcurrencyShims
   @objc deinit
 }
 extension ChatSDK.ParticipantListQueryParams {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 extension ChatSDK.ParticipantListQueryParams : Foundation.NSCopying {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
 }
 public enum ReachabilityStatus {
   case unknown
@@ -49,16 +45,15 @@ public protocol RestrictedUserListQuery : AnyObject {
   var isLoading: Swift.Bool { get }
   func loadNextPage(completionHandler: @escaping ChatSDK.RestrictedUserListHandler)
 }
+#warning("TODO, Most implementations are temporary, need to be refactored")
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class BaseChannel : ObjectiveC.NSObject, Swift.Identifiable, ChatSDK.Serializable, ChatSDK.Mappable {
   open var id: Swift.String
   open var channelURL: Swift.String
   open var name: Swift.String
   open var coverURL: Swift.String?
-  #if compiler(>=5.3) && $NonescapableTypes
   open var creator: ChatSDK.User? {
     get
   }
-  #endif
   open var createdAt: Swift.Int64
   open var data: Swift.String?
   open var customType: Swift.String?
@@ -78,68 +73,34 @@ public protocol RestrictedUserListQuery : AnyObject {
   @objc deinit
 }
 extension ChatSDK.BaseChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func report(offendingUser: ChatSDK.User, reportCategory: ChatSDK.ReportCategory, reportDescription: Swift.String?, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func report(offendingUser: ChatSDK.User, reportCategory: ChatSDK.ReportCategory, reportDescription: Swift.String?) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func report(category: ChatSDK.ReportCategory, reportDescription: Swift.String?, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func report(category: ChatSDK.ReportCategory, reportDescription: Swift.String?) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func report(message: ChatSDK.BaseMessage, reportCategory: ChatSDK.ReportCategory, reportDescription: Swift.String?, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func report(message: ChatSDK.BaseMessage, reportCategory: ChatSDK.ReportCategory, reportDescription: Swift.String?) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.BaseChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func delete(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func delete() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.BaseChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func addOperators(userIds: [Swift.String], completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func addOperators(userIds: [Swift.String]) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func removeOperators(userIds: [Swift.String], completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func removeOperators(userIds: [Swift.String]) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func removeAllOperators(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func removeAllOperators() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createOperatorListQuery() -> ChatSDK.OperatorListQuery?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createOperatorListQuery(paramsBuilder: (ChatSDK.OperatorListQueryParams) -> Swift.Void) -> ChatSDK.OperatorListQuery?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createOperatorListQuery(params: ChatSDK.OperatorListQueryParams) -> ChatSDK.OperatorListQuery?
-  #endif
   dynamic public class func createOperatorListQuery(channelType: ChatSDK.ChannelType, channelURL: Swift.String) -> ChatSDK.OperatorListQuery
   dynamic public class func createOperatorListQuery(channelType: ChatSDK.ChannelType, channelURL: Swift.String, paramsBuilder: (ChatSDK.OperatorListQueryParams) -> Swift.Void) -> ChatSDK.OperatorListQuery
   dynamic public class func createOperatorListQuery(channelType: ChatSDK.ChannelType, channelURL: Swift.String, params: ChatSDK.OperatorListQueryParams) -> ChatSDK.OperatorListQuery
@@ -149,411 +110,197 @@ extension ChatSDK.BaseChannel {
   @objc override dynamic public var hash: Swift.Int {
     @objc get
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 extension ChatSDK.BaseChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createBannedUserListQuery() -> ChatSDK.BannedUserListQuery?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createBannedUserListQuery(paramsBuilder: (ChatSDK.BannedUserListQueryParams) -> Swift.Void) -> ChatSDK.BannedUserListQuery?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createBannedUserListQuery(params: ChatSDK.BannedUserListQueryParams) -> ChatSDK.BannedUserListQuery?
-  #endif
   dynamic public class func createBannedUserListQuery(channelType: ChatSDK.ChannelType, channelURL: Swift.String) -> ChatSDK.BannedUserListQuery
   dynamic public class func createBannedUserListQuery(channelType: ChatSDK.ChannelType, channelURL: Swift.String, paramsBuilder: (ChatSDK.BannedUserListQueryParams) -> Swift.Void) -> ChatSDK.BannedUserListQuery
   dynamic public class func createBannedUserListQuery(channelType: ChatSDK.ChannelType, channelURL: Swift.String, params: ChatSDK.BannedUserListQueryParams) -> ChatSDK.BannedUserListQuery
 }
 extension ChatSDK.BaseChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createPreviousMessageListQuery() -> ChatSDK.PreviousMessageListQuery?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createPreviousMessageListQuery(paramsBuilder: (ChatSDK.PreviousMessageListQueryParams) -> Swift.Void) -> ChatSDK.PreviousMessageListQuery?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createPreviousMessageListQuery(params: ChatSDK.PreviousMessageListQueryParams) -> ChatSDK.PreviousMessageListQuery?
-  #endif
   dynamic public class func createPreviousMessageListQuery(channelType: ChatSDK.ChannelType, channelURL: Swift.String) -> ChatSDK.PreviousMessageListQuery
   dynamic public class func createPreviousMessageListQuery(channelType: ChatSDK.ChannelType, channelURL: Swift.String, paramsBuilder: (ChatSDK.PreviousMessageListQueryParams) -> Swift.Void) -> ChatSDK.PreviousMessageListQuery
   dynamic public class func createPreviousMessageListQuery(channelType: ChatSDK.ChannelType, channelURL: Swift.String, params: ChatSDK.PreviousMessageListQueryParams) -> ChatSDK.PreviousMessageListQuery
 }
 extension ChatSDK.BaseChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func banUser(_ user: ChatSDK.User, seconds: Swift.Int, description: Swift.String?, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func banUser(_ user: ChatSDK.User, seconds: Swift.Int, description: Swift.String?) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func banUser(userId: Swift.String, seconds: Swift.Int, description: Swift.String?, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func banUser(userId: Swift.String, seconds: Swift.Int, description: Swift.String?) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func unbanUser(_ user: ChatSDK.User, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func unbanUser(_ user: ChatSDK.User) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func unbanUser(userId: Swift.String, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func unbanUser(userId: Swift.String) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.BaseChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   public func getMyMutedInfo(completionHandler: ChatSDK.MuteInfoHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public func getMyMutedInfo() async throws -> Swift.Result<ChatSDK.MuteInfo, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func muteUser(_ user: ChatSDK.User, seconds: Swift.Int, description: Swift.String?, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func muteUser(_ user: ChatSDK.User, seconds: Swift.Int, description: Swift.String?) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func muteUser(userId: Swift.String, seconds: Swift.Int, description: Swift.String?, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func muteUser(userId: Swift.String, seconds: Swift.Int, description: Swift.String?) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func unmuteUser(userId: Swift.String, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func unmuteUser(userId: Swift.String) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func unmuteUser(_ user: ChatSDK.User, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func unmuteUser(_ user: ChatSDK.User) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createMutedUserListQuery() -> ChatSDK.MutedUserListQuery?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createMutedUserListQuery(paramsBuilder: (ChatSDK.MutedUserListQueryParams) -> Swift.Void) -> ChatSDK.MutedUserListQuery?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createMutedUserListQuery(params: ChatSDK.MutedUserListQueryParams) -> ChatSDK.MutedUserListQuery?
-  #endif
   dynamic public class func createMutedUserListQuery(channelType: ChatSDK.ChannelType, channelURL: Swift.String) -> ChatSDK.MutedUserListQuery
   dynamic public class func createMutedUserListQuery(channelType: ChatSDK.ChannelType, channelURL: Swift.String, paramsBuilder: (ChatSDK.MutedUserListQueryParams) -> Swift.Void) -> ChatSDK.MutedUserListQuery
   dynamic public class func createMutedUserListQuery(channelType: ChatSDK.ChannelType, channelURL: Swift.String, params: ChatSDK.MutedUserListQueryParams) -> ChatSDK.MutedUserListQuery
 }
 extension ChatSDK.BaseChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func freeze(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func freeze() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func unfreeze(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func unfreeze() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.BaseChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func sendFileMessage(params: ChatSDK.FileMessageCreateParams, completionHandler: ChatSDK.FileMessageHandler?) -> ChatSDK.FileMessage?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func sendFileMessage(params: ChatSDK.FileMessageCreateParams, progressHandler: ChatSDK.MultiProgressHandler?, completionHandler: ChatSDK.FileMessageHandler?) -> ChatSDK.FileMessage?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func sendMultipleFilesMessage(uploadableInfoList: [ChatSDK.FileMessageCreateParams], parentMessage: ChatSDK.BaseMessage? = nil, isReplyToChannel: Swift.Bool = true, completionHandler: ChatSDK.MultipleFilesMessageHandler?) -> ChatSDK.MultipleFilesMessage
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func updateFileMessage(messageId: Swift.Int64, params: ChatSDK.FileMessageUpdateParams, completionHandler: ChatSDK.FileMessageHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func updateFileMessage(messageId: Swift.Int64, params: ChatSDK.FileMessageUpdateParams) async throws -> Swift.Result<ChatSDK.FileMessage, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func resendFileMessage(_ fileMessage: ChatSDK.FileMessage, progressHandler: ChatSDK.MultiProgressHandler?, completionHandler: ChatSDK.FileMessageHandler?) -> ChatSDK.FileMessage?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func copyFileMessage(_ message: ChatSDK.FileMessage, toTargetChannel targetChannel: ChatSDK.BaseChannel, completionHandler: ChatSDK.FileMessageHandler?) -> ChatSDK.FileMessage?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public class func cancelUploadingFileMessage(requestId: Swift.String, completionHandler: ((_ result: Swift.Bool, _ error: ChatSDK.GIMError?) -> Swift.Void)?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func resendMultipleFilesMessage(_ message: ChatSDK.MultipleFilesMessage, completionHandler: ChatSDK.MultipleFilesMessageHandler?) -> ChatSDK.MultipleFilesMessage?
-  #endif
 }
 extension ChatSDK.BaseChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func deleteMessage(_ message: ChatSDK.BaseMessage, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func deleteMessage(_ message: ChatSDK.BaseMessage) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func deleteMessage(messageId: Swift.Int64, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func deleteMessage(messageId: Swift.Int64) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.GroupChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func updatePoll(pollId: Swift.Int64, params: ChatSDK.PollUpdateParams, completionHandler: ChatSDK.PollHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func updatePoll(pollId: Swift.Int64, params: ChatSDK.PollUpdateParams) async throws -> Swift.Result<ChatSDK.Poll, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func deletePoll(pollId: Swift.Int64, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func deletePoll(pollId: Swift.Int64) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func closePoll(pollId: Swift.Int64, completionHandler: ChatSDK.PollHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func closePoll(pollId: Swift.Int64) async throws -> Swift.Result<ChatSDK.Poll, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func addPollOption(pollId: Swift.Int64, optionText: Swift.String, completionHandler: ChatSDK.PollHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func addPollOption(pollId: Swift.Int64, optionText: Swift.String) async throws -> Swift.Result<ChatSDK.Poll, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func updatePollOption(pollId: Swift.Int64, pollOptionId: Swift.Int64, optionText: Swift.String, completionHandler: ChatSDK.PollHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func updatePollOption(pollId: Swift.Int64, pollOptionId: Swift.Int64, optionText: Swift.String) async throws -> Swift.Result<ChatSDK.Poll, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func deletePollOption(pollId: Swift.Int64, pollOptionId: Swift.Int64, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func deletePollOption(pollId: Swift.Int64, pollOptionId: Swift.Int64) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func votePoll(pollId: Swift.Int64, pollOptionIds: [Swift.Int64], completionHandler: ChatSDK.PollVoteEventHandler)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func votePoll(pollId: Swift.Int64, pollOptionIds: [Swift.Int64]) async throws -> Swift.Result<ChatSDK.PollVoteEvent, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createPollListQuery(limit: Swift.UInt = 20) -> ChatSDK.PollListQuery?
-  #endif
   dynamic public func createPollVoterListQuery(pollId: Swift.Int64, pollOptionId: Swift.Int64, limit: Swift.UInt = 20) -> ChatSDK.PollVoterListQuery
   dynamic public func createPollVoterListQuery(pollId: Swift.Int64, pollOptionId: Swift.Int64) -> ChatSDK.PollVoterListQuery
 }
 extension ChatSDK.BaseChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func getMessagesByTimestamp(_ timestamp: Swift.Int64, params: ChatSDK.MessageListParams, completionHandler: ChatSDK.MessageListHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func getMessagesByTimestamp(_ timestamp: Swift.Int64, params: ChatSDK.MessageListParams) async throws -> Swift.Result<[ChatSDK.BaseMessage], ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func getMessagesByMessageId(_ messageId: Swift.Int64, params: ChatSDK.MessageListParams, completionHandler: ChatSDK.MessageListHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func getMessagesByMessageId(_ messageId: Swift.Int64, params: ChatSDK.MessageListParams) async throws -> Swift.Result<[ChatSDK.BaseMessage], ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.BaseChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func getMessageChangeLogs(token: Swift.String?, params: ChatSDK.MessageChangeLogsParams, completionHandler: ChatSDK.MessageChangeLogHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func getMessageChangeLogs(token: Swift.String?, params: ChatSDK.MessageChangeLogsParams) async throws -> Swift.Result<ChatSDK.MessageChangeLog, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func getMessageChangeLogs(timestamp: Swift.Int64, params: ChatSDK.MessageChangeLogsParams, completionHandler: ChatSDK.MessageChangeLogHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func getMessageChangeLogs(timestamp: Swift.Int64, params: ChatSDK.MessageChangeLogsParams) async throws -> Swift.Result<ChatSDK.MessageChangeLog, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.BaseChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func addReaction(with message: ChatSDK.BaseMessage, key: Swift.String, completionHandler: ChatSDK.ReactionEventHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func addReaction(with message: ChatSDK.BaseMessage, key: Swift.String) async throws -> Swift.Result<ChatSDK.ReactionEvent, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func deleteReaction(with message: ChatSDK.BaseMessage, key: Swift.String, completionHandler: ChatSDK.ReactionEventHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func deleteReaction(with message: ChatSDK.BaseMessage, key: Swift.String) async throws -> Swift.Result<ChatSDK.ReactionEvent, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.BaseChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createMetaData(_ metaData: [Swift.String : Swift.String], completionHandler: ChatSDK.MetaDataHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func createMetaData(_ metaData: [Swift.String : Swift.String]) async throws -> Swift.Result<[Swift.String : Swift.String], ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func getMetaData(keys: [Swift.String], completionHandler: ChatSDK.MetaDataHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func getMetaData(keys: [Swift.String]) async throws -> Swift.Result<[Swift.String : Swift.String], ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func getAllMetaData(completionHandler: ChatSDK.MetaDataHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func getAllMetaData() async throws -> Swift.Result<[Swift.String : Swift.String], ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func updateMetaData(_ metaData: [Swift.String : Swift.String], completionHandler: ChatSDK.MetaDataHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func updateMetaData(_ metaData: [Swift.String : Swift.String]) async throws -> Swift.Result<[Swift.String : Swift.String], ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func deleteMetaData(key: Swift.String, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func deleteMetaData(key: Swift.String) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func deleteAllMetaData(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func deleteAllMetaData() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
   dynamic public func getCachedMetaData() -> [Swift.String : Swift.String]
 }
 extension ChatSDK.BaseChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createMessageMetaArrayKeys(message: ChatSDK.BaseMessage, keys: [Swift.String], completionHandler: ChatSDK.BaseMessageHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func createMessageMetaArrayKeys(message: ChatSDK.BaseMessage, keys: [Swift.String]) async throws -> Swift.Result<ChatSDK.BaseMessage, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func deleteMessageMetaArrayKeys(message: ChatSDK.BaseMessage, keys: [Swift.String], completionHandler: ChatSDK.BaseMessageHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func deleteMessageMetaArrayKeys(message: ChatSDK.BaseMessage, keys: [Swift.String]) async throws -> Swift.Result<ChatSDK.BaseMessage, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func addMessageMetaArrayValues(message: ChatSDK.BaseMessage, keyValues: [Swift.String : [Swift.String]], completionHandler: ChatSDK.BaseMessageHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func addMessageMetaArrayValues(message: ChatSDK.BaseMessage, keyValues: [Swift.String : [Swift.String]]) async throws -> Swift.Result<ChatSDK.BaseMessage, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func addMessageMetaArrayValues(message: ChatSDK.BaseMessage, metaArrays: [ChatSDK.MessageMetaArray], completionHandler: ChatSDK.BaseMessageHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func addMessageMetaArrayValues(message: ChatSDK.BaseMessage, metaArrays: [ChatSDK.MessageMetaArray]) async throws -> Swift.Result<ChatSDK.BaseMessage, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func removeMessageMetaArrayValues(message: ChatSDK.BaseMessage, keyValues: [Swift.String : [Swift.String]], completionHandler: ChatSDK.BaseMessageHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func removeMessageMetaArrayValues(message: ChatSDK.BaseMessage, keyValues: [Swift.String : [Swift.String]]) async throws -> Swift.Result<ChatSDK.BaseMessage, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func removeMessageMetaArrayValues(message: ChatSDK.BaseMessage, metaArrays: [ChatSDK.MessageMetaArray], completionHandler: ChatSDK.BaseMessageHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func removeMessageMetaArrayValues(message: ChatSDK.BaseMessage, metaArrays: [ChatSDK.MessageMetaArray]) async throws -> Swift.Result<ChatSDK.BaseMessage, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.BaseChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func sendUserMessage(_ message: Swift.String, completionHandler: ChatSDK.UserMessageHandler?) -> ChatSDK.UserMessage
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func sendUserMessage(params: ChatSDK.UserMessageCreateParams, completionHandler: ChatSDK.UserMessageHandler?) -> ChatSDK.UserMessage
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func resendUserMessage(_ message: ChatSDK.UserMessage, completionHandler: ChatSDK.UserMessageHandler?) -> ChatSDK.UserMessage
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func copyUserMessage(_ message: ChatSDK.UserMessage, toTargetChannel targetChannel: ChatSDK.BaseChannel, completionHandler: ChatSDK.UserMessageHandler?) -> ChatSDK.UserMessage?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func updateUserMessage(messageId: Swift.Int64, params: ChatSDK.UserMessageUpdateParams, completionHandler: ChatSDK.UserMessageHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func updateUserMessage(messageId: Swift.Int64, params: ChatSDK.UserMessageUpdateParams) async throws -> Swift.Result<ChatSDK.UserMessage, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func translateUserMessage(_ message: ChatSDK.UserMessage, targetLanguages: [Swift.String], completionHandler: ChatSDK.UserMessageHandler?)
-  #endif
 }
 extension ChatSDK.BaseChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func pinMessage(messageId: Swift.Int64, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func pinMessage(messageId: Swift.Int64) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func unpinMessage(messageId: Swift.Int64, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func unpinMessage(messageId: Swift.Int64) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.BaseChannel {
   dynamic public func createPinnedMessageListQuery() -> ChatSDK.PinnedMessageListQuery
@@ -564,13 +311,9 @@ extension ChatSDK.BaseChannel {
   dynamic public class func createPinnedMessageListQuery(channelType: ChatSDK.ChannelType, channelURL: Swift.String, params: ChatSDK.PinnedMessageListQueryParams) -> ChatSDK.PinnedMessageListQuery
 }
 extension ChatSDK.BaseChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   public func sendCustomEvent(message: Swift.String, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public func sendCustomEvent(message: Swift.String) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.BaseMessage {
   public func asFileMessage() -> ChatSDK.BaseMessage
@@ -594,9 +337,7 @@ public enum MessageType : Swift.String, Swift.Codable {
   case file
   case admin
   case summary
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -614,9 +355,7 @@ public enum MessageType : Swift.String, Swift.Codable {
   @objc deinit
 }
 extension ChatSDK.PinnedMessageListQueryParams : Foundation.NSCopying {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
 }
 @_hasMissingDesignatedInitializers public class TranslateMessageParams {
   @objc deinit
@@ -658,17 +397,11 @@ public typealias RestrictedUserListHandler = (_ users: [ChatSDK.RestrictedUser]?
   public var includeParentMessageInfo: Swift.Bool
   public var replyType: ChatSDK.ReplyType
   public var customTypes: [Swift.String]?
-  #if compiler(>=5.3) && $NonescapableTypes
   public init(previousResultSize: Swift.Int = 20, nextResultSize: Swift.Int = 0, isInclusive: Swift.Bool = false, reverse: Swift.Bool = false, messageTypeFilter: ChatSDK.MessageTypeFilter = .all, customType: Swift.String? = nil, senderUserIds: [Swift.String]? = nil, includeMetaArray: Swift.Bool = false, includeReactions: Swift.Bool = false, includeThreadInfo: Swift.Bool = false, includeParentMessageInfo: Swift.Bool = false, replyType: ChatSDK.ReplyType = .none, showSubChannelMessagesOnly: Swift.Bool = false, customTypes: [Swift.String]? = nil)
-  #endif
   public func belongsTo(_ message: ChatSDK.BaseMessage) -> Swift.Bool
   public func belongsToMessageParams(_ params: ChatSDK.BaseMessageCreateParams) -> Swift.Bool
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
   @objc deinit
 }
 extension ChatSDK.MessageListParams {
@@ -681,20 +414,16 @@ public enum ReportCategory : Swift.String, Swift.Encodable {
   case harassing
   case spam
   case inappropriate
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class UserMessage : ChatSDK.BaseMessage {
-  #if compiler(>=5.3) && $NonescapableTypes
   public var poll: ChatSDK.Poll? {
     get
   }
-  #endif
   public var pollId: Swift.Int64?
   public var messageType: ChatSDK.MessageType {
     get
@@ -712,9 +441,7 @@ public enum ReportCategory : Swift.String, Swift.Encodable {
   @objc deinit
 }
 extension ChatSDK.UserMessage {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 @objc @_inheritsConvenienceInitializers public class GroupChannelUpdateParams : ObjectiveC.NSObject, Swift.Encodable, ChatSDK.Serializable {
   public var name: Swift.String?
@@ -773,9 +500,7 @@ public enum UserConnectionStatus : Swift.Int, Swift.Codable {
   case nonAvailable
   case online
   case offline
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
-  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -791,15 +516,11 @@ public enum UserConnectionStatus : Swift.Int, Swift.Codable {
   @objc deinit
 }
 public protocol Mappable : Swift.Decodable, Swift.Encodable {
-  #if compiler(>=5.3) && $NonescapableTypes
   static func initWithDictionary(_ json: [Swift.String : Any]) -> Self?
-  #endif
   func _toDictionary() -> [Swift.String : Any]
 }
 extension ChatSDK.Mappable {
-  #if compiler(>=5.3) && $NonescapableTypes
   public static func initWithDictionary(_ json: [Swift.String : Any]) -> Self?
-  #endif
   public func _toDictionary() -> [Swift.String : Any]
 }
 @objc @_inheritsConvenienceInitializers public class OpenChannelCreateParams : ObjectiveC.NSObject, Foundation.NSCopying, Swift.Encodable, ChatSDK.Serializable {
@@ -812,13 +533,9 @@ extension ChatSDK.Mappable {
   public var operatorUserIds: [Swift.String]?
   public var customType: Swift.String?
   @objc override dynamic convenience public init()
-  #if compiler(>=5.3) && $NonescapableTypes
   public init(name: Swift.String? = nil, channelURL: Swift.String? = nil, coverURL: Swift.String? = nil, coverImage: Foundation.Data? = nil, coverImageName: Swift.String? = nil, data: Swift.String? = nil, operatorUserIds: [Swift.String]? = nil, customType: Swift.String? = nil)
-  #endif
   public func setOperators(_ operators: [ChatSDK.User])
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
@@ -847,12 +564,8 @@ extension ChatSDK.PollRetrievalParams : Swift.Encodable {
   public var includeThreadInfo: Swift.Bool
   public var includeReplyType: Swift.String?
   public var customTypes: [Swift.String]?
-  #if compiler(>=5.3) && $NonescapableTypes
   public init(previousResultSize: Swift.Int = 0, nextResultSize: Swift.Int = 0, isInclusive: Swift.Bool = false, reverse: Swift.Bool = false, messageTypeFilter: ChatSDK.MessageTypeFilter = .all, customType: Swift.String? = nil, senderUserIds: [Swift.String]? = nil, includeMetaArray: Swift.Bool = false, includeReactions: Swift.Bool = false, includeParentMessageInfo: Swift.Bool = false, customTypes: [Swift.String]? = nil, includeThreadInfo: Swift.Bool = false, includeReplyType: Swift.String? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers final public class MutedUserListQueryParams : ObjectiveC.NSObject {
@@ -862,14 +575,10 @@ extension ChatSDK.PollRetrievalParams : Swift.Encodable {
   @objc deinit
 }
 extension ChatSDK.MutedUserListQueryParams {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 extension ChatSDK.MutedUserListQueryParams : Foundation.NSCopying {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
 }
 @objc @_hasMissingDesignatedInitializers public class MessageSearchQuery : ObjectiveC.NSObject, ChatSDK.Serializable {
   public var hasNext: Swift.Bool {
@@ -915,18 +624,14 @@ extension ChatSDK.MutedUserListQueryParams : Foundation.NSCopying {
     get
   }
   public func loadNextPage(completionHandler: @escaping ChatSDK.MessageListHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public func loadNextPage() async throws -> Swift.Result<[ChatSDK.BaseMessage], ChatSDK.GIMError>
-  #endif
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
 }
 extension ChatSDK.MessageSearchQuery : Foundation.NSCopying {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
 }
 public typealias BaseChannelHandler = (_ channel: ChatSDK.BaseChannel?, _ error: ChatSDK.GIMError?) -> Swift.Void
 public enum CountPreference : Swift.String, Swift.Codable {
@@ -934,9 +639,7 @@ public enum CountPreference : Swift.String, Swift.Codable {
   case unreadMessageCountOnly
   case unreadMentionCountOnly
   case off
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -974,10 +677,8 @@ public enum CountPreference : Swift.String, Swift.Codable {
     get
   }
   public func loadNextPage(completionHandler: @escaping ChatSDK.MessageListHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public func loadNextPage() async throws -> Swift.Result<[ChatSDK.BaseMessage], ChatSDK.GIMError>
-  #endif
   @objc deinit
 }
 extension ChatSDK.PreviousMessageListQuery {
@@ -987,21 +688,15 @@ extension ChatSDK.PreviousMessageListQuery {
   dynamic public var messageTypeFilter: ChatSDK.MessageTypeFilter {
     get
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public var customTypeFilter: Swift.String? {
     get
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public var customTypesFilter: [Swift.String]? {
     get
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public var senderUserIdsFilter: [Swift.String]? {
     get
   }
-  #endif
   dynamic public var limit: Swift.UInt {
     get
   }
@@ -1014,9 +709,7 @@ public typealias GIMObjectComparator = (_ obj1: Any?, _ obj2: Any?) -> Foundatio
 public enum PollStatus : Swift.String, Swift.Codable {
   case open
   case closed
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -1028,9 +721,7 @@ public enum ChannelHiddenStateFilter : Swift.String, Swift.Codable {
   case hiddenAllowAutoUnhide
   case hiddenPreventAutoUnhide
   case all
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -1040,9 +731,7 @@ public enum Role : Swift.String, Swift.Codable {
   case none
   case `operator`
   public init(from decoder: any Swift.Decoder) throws
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -1089,10 +778,8 @@ public enum Role : Swift.String, Swift.Codable {
     get
   }
   public func loadNextPage(completionHandler: @escaping ChatSDK.PinnedMessageListHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public func loadNextPage() async throws -> Swift.Result<[ChatSDK.BaseMessage], ChatSDK.GIMError>
-  #endif
   @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers public class Thumbnail : ObjectiveC.NSObject, ChatSDK.Serializable {
@@ -1116,9 +803,7 @@ public enum Role : Swift.String, Swift.Codable {
   @objc deinit
 }
 extension ChatSDK.Thumbnail {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 public typealias PollOptionHandler = (_ option: ChatSDK.PollOption?, _ error: ChatSDK.GIMError?) -> Swift.Void
 @objc public class ThreadInfo : ObjectiveC.NSObject, Swift.Codable {
@@ -1134,9 +819,7 @@ public typealias MetaDataHandler = (_ metaData: [Swift.String : Swift.String]?, 
 public enum MessageSearchQueryOrder : Swift.String, Swift.Codable {
   case score
   case timestamp
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -1161,13 +844,9 @@ public enum MessageSearchQueryOrder : Swift.String, Swift.Codable {
     get
   }
   public func loadNextPage(completionHandler: @escaping ChatSDK.VoterListHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public func loadNextPage() async throws -> Swift.Result<[ChatSDK.User], ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers final public class ApplicationUserListQueryParams : ObjectiveC.NSObject {
@@ -1182,37 +861,23 @@ public enum MessageSearchQueryOrder : Swift.String, Swift.Codable {
   }
   @objc override dynamic public init()
   public init(builder: (ChatSDK.ApplicationUserListQueryParams) -> Swift.Void)
-  #if compiler(>=5.3) && $NonescapableTypes
   final public func setMetaDataFilter(key: Swift.String?, values: [Swift.String]?)
-  #endif
   @objc deinit
 }
 extension ChatSDK.ApplicationUserListQueryParams {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 extension ChatSDK.ApplicationUserListQueryParams : Foundation.NSCopying {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
 }
 public protocol GIMUserEventDelegate : AnyObject {
-  #if compiler(>=5.3) && $NonescapableTypes
   func didDiscoverFriends(_ friends: [ChatSDK.User]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   func didUpdateTotalUnreadMessageCount(_ totalCount: Swift.Int, totalCountByCustomType: [Swift.String : Swift.Int]?)
-  #endif
   func didUpdateUsers(_ users: [ChatSDK.User])
 }
 extension ChatSDK.GIMUserEventDelegate {
-  #if compiler(>=5.3) && $NonescapableTypes
   public func didDiscoverFriends(_ friends: [ChatSDK.User]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public func didUpdateTotalUnreadMessageCount(_ totalCount: Swift.Int, totalCountByCustomType: [Swift.String : Swift.Int]?)
-  #endif
   public func didUpdateUsers(_ users: [ChatSDK.User])
 }
 @objc final public class ScheduledUserMessageCreateParams : ChatSDK.ScheduledBaseMessageCreateParams {
@@ -1228,9 +893,7 @@ extension ChatSDK.GIMUserEventDelegate {
   public var isLocalCachingEnabled: Swift.Bool
   public var logLevel: ChatSDK.LogLevel
   public var appVersion: Swift.String?
-  #if compiler(>=5.3) && $NonescapableTypes
   public init(applicationId: Swift.String, isLocalCachingEnabled: Swift.Bool = false, logLevel: ChatSDK.LogLevel = .none, appVersion: Swift.String? = nil)
-  #endif
   @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers public class OpenChannelListQuery : ObjectiveC.NSObject {
@@ -1259,10 +922,8 @@ extension ChatSDK.GIMUserEventDelegate {
     get
   }
   public func loadNextPage(completionHandler: @escaping ChatSDK.OpenChannelListHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public func loadNextPage() async throws -> Swift.Result<[ChatSDK.OpenChannel], ChatSDK.GIMError>
-  #endif
   @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers public class BaseMessage : ObjectiveC.NSObject, Swift.Identifiable, ChatSDK.Serializable {
@@ -1282,16 +943,12 @@ extension ChatSDK.GIMUserEventDelegate {
   public var sendingStatus: ChatSDK.MessageSendingStatus {
     get
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   public var scheduledInfo: ChatSDK.ScheduledInfo? {
     get
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public var sender: ChatSDK.Sender? {
     get
   }
-  #endif
   final public var channelURL: Swift.String {
     get
   }
@@ -1304,11 +961,9 @@ extension ChatSDK.GIMUserEventDelegate {
   public var mentionType: ChatSDK.MentionType {
     get
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   public var requestedMentionUserIds: [Swift.String]? {
     get
   }
-  #endif
   public var createdAt: Swift.Int64 {
     get
   }
@@ -1318,30 +973,22 @@ extension ChatSDK.GIMUserEventDelegate {
   public var parentMessageId: Swift.Int64 {
     get
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   public var parentMessage: ChatSDK.BaseMessage? {
     get
     set
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public var threadInfo: ChatSDK.ThreadInfo? {
     get
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public var metaArrays: [ChatSDK.MessageMetaArray]? {
     get
   }
-  #endif
   public var data: Swift.String {
     get
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   final public var customType: Swift.String? {
     get
   }
-  #endif
   public var reactions: [ChatSDK.Reaction] {
     get
   }
@@ -1357,27 +1004,21 @@ extension ChatSDK.GIMUserEventDelegate {
   public var errorCode: Swift.UInt {
     get
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   final public var plugins: [ChatSDK.Plugin]? {
     get
   }
-  #endif
   final public var isReplyToChannel: Swift.Bool {
     get
   }
   public var isOperatorMessage: Swift.Bool {
     get
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   public var mentionedMessageTemplate: Swift.String? {
     get
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public var messageParams: ChatSDK.BaseMessageCreateParams? {
     get
   }
-  #endif
   public var extendedMessage: [Swift.String : Any] {
     get
   }
@@ -1388,9 +1029,7 @@ extension ChatSDK.GIMUserEventDelegate {
 extension ChatSDK.BaseMessage {
   dynamic public func copyWithFailedState() -> Self
   dynamic public func copyWithFailedState(errorCode: Swift.Int) -> Self
-  #if compiler(>=5.3) && $NonescapableTypes
   public func copyWithFailedState(errorCode: Swift.Int?) -> Self
-  #endif
 }
 extension ChatSDK.BaseMessage {
   dynamic public func isOpenChannel() -> Swift.Bool
@@ -1401,32 +1040,18 @@ extension ChatSDK.BaseMessage {
   dynamic public func apply(_ reactionEvent: ChatSDK.ReactionEvent) -> Swift.Bool
   @discardableResult
   dynamic public func apply(_ threadInfoUpdateEvent: ChatSDK.ThreadInfoUpdateEvent) -> Swift.Bool
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public class func getMessage(params: ChatSDK.MessageRetrievalParams, completionHandler: ChatSDK.BaseMessageHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public class func getMessage(params: ChatSDK.MessageRetrievalParams) async throws -> Swift.Result<ChatSDK.BaseMessage, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func getThreadedMessages(timestamp: Swift.Int64, params: ChatSDK.ThreadedMessageListParams, completionHandler: ChatSDK.ThreadedMessageListHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func getThreadedMessages(timestamp: Swift.Int64, params: ChatSDK.ThreadedMessageListParams) async throws -> Swift.Result<(parentMessage: ChatSDK.BaseMessage, messages: [ChatSDK.BaseMessage]), ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public class func getScheduledMessage(params: ChatSDK.ScheduledMessageRetrievalParams, completionHandler: ChatSDK.BaseMessageHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public class func getScheduledMessage(params: ChatSDK.ScheduledMessageRetrievalParams) async throws -> Swift.Result<ChatSDK.BaseMessage, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.BaseMessage {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 extension ChatSDK.BaseMessage {
   @objc override dynamic public var description: Swift.String {
@@ -1439,42 +1064,30 @@ public class UploadableFileParams : Swift.Codable {
   final public let channelType: ChatSDK.ChannelType
   public var requestId: Swift.String
   public var parentMessageId: Swift.Int64?
-  #if compiler(>=5.3) && $NonescapableTypes
   public init(paramsList: [ChatSDK.FileMessageCreateParams], channelURI: Swift.String, channelType: ChatSDK.ChannelType, requestId: Swift.String, parentMessageId: Swift.Int64? = nil)
-  #endif
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MultipleFilesMessage : ChatSDK.BaseMessage {
-  #if compiler(>=5.3) && $NonescapableTypes
   public func getUploadableFileParams() -> ChatSDK.UploadableFileParams?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public var files: [ChatSDK.FileEntity]? {
     get
   }
-  #endif
   required public init(from decoder: any Swift.Decoder) throws
   public func dispose()
   @objc deinit
 }
 extension ChatSDK.MultipleFilesMessage {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 public protocol GroupChannelDelegate : ChatSDK.BaseChannelDelegate {
   func channelDidUpdateReadStatus(_ channel: ChatSDK.GroupChannel)
   func channelDidUpdateDeliveryStatus(_ channel: ChatSDK.GroupChannel)
   func channelDidUpdateTypingStatus(_ channel: ChatSDK.GroupChannel)
   func channelDidChangeMemberCount(_ channels: [ChatSDK.GroupChannel])
-  #if compiler(>=5.3) && $NonescapableTypes
   func channel(_ channel: ChatSDK.GroupChannel, didReceiveInvitation invitees: [ChatSDK.User]?, inviter: ChatSDK.User?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   func channel(_ channel: ChatSDK.GroupChannel, didDeclineInvitation invitee: ChatSDK.User, inviter: ChatSDK.User?)
-  #endif
   func channel(_ channel: ChatSDK.GroupChannel, userDidJoin user: ChatSDK.User)
   func channel(_ channel: ChatSDK.GroupChannel, userDidLeave user: ChatSDK.User)
   func channelWasHidden(_ channel: ChatSDK.GroupChannel)
@@ -1487,12 +1100,8 @@ extension ChatSDK.GroupChannelDelegate {
   public func channelDidUpdateDeliveryStatus(_ channel: ChatSDK.GroupChannel)
   public func channelDidUpdateTypingStatus(_ channel: ChatSDK.GroupChannel)
   public func channelDidChangeMemberCount(_ channels: [ChatSDK.GroupChannel])
-  #if compiler(>=5.3) && $NonescapableTypes
   public func channel(_ channel: ChatSDK.GroupChannel, didReceiveInvitation invitees: [ChatSDK.User]?, inviter: ChatSDK.User?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public func channel(_ channel: ChatSDK.GroupChannel, didDeclineInvitation invitee: ChatSDK.User, inviter: ChatSDK.User?)
-  #endif
   public func channel(_ channel: ChatSDK.GroupChannel, userDidJoin user: ChatSDK.User)
   public func channel(_ channel: ChatSDK.GroupChannel, userDidLeave user: ChatSDK.User)
   public func channelWasHidden(_ channel: ChatSDK.GroupChannel)
@@ -1611,9 +1220,7 @@ public enum ChatError : Swift.Int, ChatSDK.GIMErrorCode {
   public var message: Swift.String {
     get
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
-  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -1622,9 +1229,7 @@ public enum ChatError : Swift.Int, ChatSDK.GIMErrorCode {
 public enum PublicGroupChannelMembershipFilter : Swift.Int, Swift.Codable {
   case all
   case joined
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
-  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -1633,9 +1238,7 @@ public enum PublicGroupChannelMembershipFilter : Swift.Int, Swift.Codable {
 public enum ScheduledMessageListOrder : Swift.String, Swift.Codable {
   case createdAt
   case scheduledAt
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -1702,13 +1305,9 @@ public typealias CountHandler = (_ count: Swift.Int, _ error: ChatSDK.GIMError?)
     get
   }
   final public func loadNextPage(completionHandler: @escaping ChatSDK.PollListHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   final public func loadNextPage() async throws -> Swift.Result<[ChatSDK.Poll], ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   final public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers final public class GroupChannelListQueryParams : ObjectiveC.NSObject {
@@ -1743,9 +1342,7 @@ public typealias CountHandler = (_ count: Swift.Int, _ error: ChatSDK.GIMError?)
   @objc deinit
 }
 extension ChatSDK.GroupChannelListQueryParams {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 @objc @_inheritsConvenienceInitializers final public class ScheduledMessageListQueryParams : ObjectiveC.NSObject {
   final public var limit: Swift.Int
@@ -1758,14 +1355,10 @@ extension ChatSDK.GroupChannelListQueryParams {
   @objc deinit
 }
 extension ChatSDK.ScheduledMessageListQueryParams {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 extension ChatSDK.ScheduledMessageListQueryParams : Foundation.NSCopying {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
 }
 public typealias VoidHandler = () -> Swift.Void
 public typealias MetaCountersHandler = (_ metaData: [Swift.String : Swift.Int]?, _ error: ChatSDK.GIMError?) -> Swift.Void
@@ -1790,9 +1383,7 @@ extension Foundation.URLRequest {
   public func setMentionedUsers(_ mentionedUsers: [ChatSDK.User])
   public func addMentionedUserIds(_ users: [Swift.String])
   @objc override dynamic public init()
-  #if compiler(>=5.3) && $NonescapableTypes
   public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
   public func encode(to encoder: any Swift.Encoder) throws
   @objc deinit
 }
@@ -1803,12 +1394,8 @@ extension Foundation.URLRequest {
   public var includeParentMessageInfo: Swift.Bool
   public var replyType: ChatSDK.ReplyType
   public init(includeMetaArray: Swift.Bool = false, includeReactions: Swift.Bool = false, includeThreadInfo: Swift.Bool = false, includeParentMessageInfo: Swift.Bool = false, replyType: ChatSDK.ReplyType = .none)
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func create(with query: ChatSDK.PreviousMessageListQuery?) -> ChatSDK.MessageChangeLogsParams
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func create(with params: ChatSDK.MessageListParams?) -> ChatSDK.MessageChangeLogsParams
-  #endif
   @objc deinit
 }
 public protocol BaseChannelDelegate : AnyObject {
@@ -1826,31 +1413,17 @@ public protocol BaseChannelDelegate : AnyObject {
   func channelWasChanged(_ channel: ChatSDK.BaseChannel)
   func channelWasDeleted(_ channelURL: Swift.String, channelType: ChatSDK.ChannelType)
   func channel(_ channel: ChatSDK.BaseChannel, messageWasDeleted messageId: Swift.Int64)
-  #if compiler(>=5.3) && $NonescapableTypes
   func channel(_ channel: ChatSDK.BaseChannel, createdMetaData: [Swift.String : Swift.String]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   func channel(_ channel: ChatSDK.BaseChannel, updatedMetaData: [Swift.String : Swift.String]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   func channel(_ channel: ChatSDK.BaseChannel, deletedMetaDataKeys: [Swift.String]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   func channel(_ channel: ChatSDK.BaseChannel, createdMetaCounters: [Swift.String : Swift.Int]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   func channel(_ channel: ChatSDK.BaseChannel, updatedMetaCounters: [Swift.String : Swift.Int]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   func channel(_ channel: ChatSDK.BaseChannel, deletedMetaCountersKeys: [Swift.String]?)
-  #endif
   func channel(_ channel: ChatSDK.BaseChannel, updatedReaction reactionEvent: ChatSDK.ReactionEvent)
   func channelDidUpdateOperators(_ channel: ChatSDK.BaseChannel)
   func channel(_ channel: ChatSDK.BaseChannel, didUpdateThreadInfo threadInfoUpdateEvent: ChatSDK.ThreadInfoUpdateEvent)
   func channelDidUpdatePinnedMessages(_ channel: ChatSDK.BaseChannel)
-  #if compiler(>=5.3) && $NonescapableTypes
   func channel(_ channel: ChatSDK.BaseChannel, pinnedMessageIds: [Swift.Int64], lastPinMessage: ChatSDK.BaseMessage?)
-  #endif
   func channel(_ channel: ChatSDK.BaseChannel, systemMessage: ChatSDK.BaseMessage)
   func channel(_ channel: ChatSDK.BaseChannel, didTranslateOnDemand message: ChatSDK.BaseMessage)
   func channel(_ channel: ChatSDK.BaseChannel, didAutoTranslate message: ChatSDK.BaseMessage)
@@ -1870,30 +1443,16 @@ extension ChatSDK.BaseChannelDelegate {
   public func channelWasChanged(_ channel: ChatSDK.BaseChannel)
   public func channelWasDeleted(_ channelURL: Swift.String, channelType: ChatSDK.ChannelType)
   public func channel(_ channel: ChatSDK.BaseChannel, messageWasDeleted messageId: Swift.Int64)
-  #if compiler(>=5.3) && $NonescapableTypes
   public func channel(_ channel: ChatSDK.BaseChannel, createdMetaData: [Swift.String : Swift.String]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public func channel(_ channel: ChatSDK.BaseChannel, updatedMetaData: [Swift.String : Swift.String]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public func channel(_ channel: ChatSDK.BaseChannel, deletedMetaDataKeys: [Swift.String]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public func channel(_ channel: ChatSDK.BaseChannel, createdMetaCounters: [Swift.String : Swift.Int]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public func channel(_ channel: ChatSDK.BaseChannel, updatedMetaCounters: [Swift.String : Swift.Int]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public func channel(_ channel: ChatSDK.BaseChannel, deletedMetaCountersKeys: [Swift.String]?)
-  #endif
   public func channel(_ channel: ChatSDK.BaseChannel, updatedReaction reactionEvent: ChatSDK.ReactionEvent)
   public func channelDidUpdateOperators(_ channel: ChatSDK.BaseChannel)
   public func channel(_ channel: ChatSDK.BaseChannel, didUpdateThreadInfo threadInfoUpdateEvent: ChatSDK.ThreadInfoUpdateEvent)
-  #if compiler(>=5.3) && $NonescapableTypes
   public func channel(_ channel: ChatSDK.BaseChannel, pinnedMessageIds: [Swift.Int64], lastPinMessage: ChatSDK.BaseMessage?)
-  #endif
   public func channelDidUpdatePinnedMessages(_ channel: ChatSDK.BaseChannel)
   public func channel(_ channel: ChatSDK.BaseChannel, systemMessage: ChatSDK.BaseMessage)
   public func channel(_ channel: ChatSDK.BaseChannel, didTranslateOnDemand message: ChatSDK.BaseMessage)
@@ -1907,9 +1466,7 @@ extension ChatSDK.BaseChannelDelegate {
     get
   }
   convenience public init(key: Swift.String)
-  #if compiler(>=5.3) && $NonescapableTypes
   public init(key: Swift.String, value: [Swift.String]?)
-  #endif
   public func addValue(_ value: Swift.Set<Swift.String>)
   public func addValue(with array: [Swift.String])
   public func removeValue(_ value: Swift.Set<Swift.String>)
@@ -1919,12 +1476,8 @@ extension ChatSDK.BaseChannelDelegate {
   required public init(from decoder: any Swift.Decoder) throws
 }
 extension ChatSDK.MessageMetaArray {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
 }
 @objc @_inheritsConvenienceInitializers final public class PreviousMessageListQueryParams : ObjectiveC.NSObject {
   final public var reverse: Swift.Bool
@@ -1944,14 +1497,10 @@ extension ChatSDK.MessageMetaArray {
   @objc deinit
 }
 extension ChatSDK.PreviousMessageListQueryParams {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 extension ChatSDK.PreviousMessageListQueryParams : Foundation.NSCopying {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
 }
 @objc @_inheritsConvenienceInitializers public class GroupChannelCreateParams : ObjectiveC.NSObject, Swift.Codable, ChatSDK.Serializable {
   public var channelURL: Swift.String?
@@ -1983,9 +1532,7 @@ extension ChatSDK.PreviousMessageListQueryParams : Foundation.NSCopying {
   required public init(from decoder: any Swift.Decoder) throws
 }
 extension ChatSDK.GroupChannelCreateParams : Foundation.NSCopying {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
 }
 @objc @_inheritsConvenienceInitializers final public class OperatorListQueryParams : ObjectiveC.NSObject {
   final public var limit: Swift.UInt
@@ -1994,22 +1541,16 @@ extension ChatSDK.GroupChannelCreateParams : Foundation.NSCopying {
   @objc deinit
 }
 extension ChatSDK.OperatorListQueryParams {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 extension ChatSDK.OperatorListQueryParams : Foundation.NSCopying {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
 }
 @objc public class UserMessageUpdateParams : ChatSDK.BaseMessageUpdateParams {
   public var message: Swift.String?
   public var pollId: Swift.Int64
   public var mentionedMessageTemplate: Swift.String?
-  #if compiler(>=5.3) && $NonescapableTypes
   public init(message: Swift.String? = nil)
-  #endif
   override public func encode(to encoder: any Swift.Encoder) throws
   @objc deinit
 }
@@ -2029,35 +1570,23 @@ public protocol PinnedMessageListDelegate {
   public var includeParentMessageInfo: Swift.Bool
   @objc override dynamic public init()
   public init(channelURL: Swift.String, channelType: ChatSDK.ChannelType, messageId: Swift.Int64, includeMetaArray: Swift.Bool = false, includeReactions: Swift.Bool = false, includeThreadInfo: Swift.Bool = false, includeParentMessageInfo: Swift.Bool = false)
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
   @objc deinit
 }
 public protocol Serializable : Swift.Decodable, Swift.Encodable {
-  #if compiler(>=5.3) && $NonescapableTypes
   func serialize() -> Foundation.Data?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   static func build(fromSerializedData data: Foundation.Data?) -> Self?
-  #endif
 }
 extension ChatSDK.Serializable {
-  #if compiler(>=5.3) && $NonescapableTypes
   public func serialize() -> Foundation.Data?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public static func build(fromSerializedData data: Foundation.Data?) -> Self?
-  #endif
 }
 public typealias PollVoteEventHandler = ((_ event: ChatSDK.PollVoteEvent?, _ error: ChatSDK.GIMError?) -> Swift.Void)?
 @objc public class Plugin : ObjectiveC.NSObject, Swift.Codable {
   final public let type: Swift.String?
   final public let vendor: Swift.String?
   final public let detail: [Swift.String : Any]?
-  #if compiler(>=5.3) && $NonescapableTypes
   public init(type: Swift.String?, vendor: Swift.String?, detail: [Swift.String : Any]?)
-  #endif
   required public init(from decoder: any Swift.Decoder) throws
   public func encode(to encoder: any Swift.Encoder) throws
   @objc deinit
@@ -2080,9 +1609,7 @@ public enum PushTokenRegistrationStatus : Swift.Int, Swift.Codable {
   case success
   case pending
   case error
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
-  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -2093,11 +1620,9 @@ public typealias ThreadedMessageListHandler = (_ parentMessage: ChatSDK.BaseMess
   open var url: Swift.String {
     get
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   final public var plainURL: Swift.String? {
     get
   }
-  #endif
   final public var name: Swift.String {
     get
   }
@@ -2107,23 +1632,17 @@ public typealias ThreadedMessageListHandler = (_ parentMessage: ChatSDK.BaseMess
   final public var type: Swift.String {
     get
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   open var thumbnails: [ChatSDK.Thumbnail]? {
     get
   }
-  #endif
   required public init(from decoder: any Swift.Decoder) throws
   override public func encode(to encoder: any Swift.Encoder) throws
-  #if compiler(>=5.3) && $NonescapableTypes
   public func getFileMessageParams() -> ChatSDK.FileMessageCreateParams?
-  #endif
   public func dispose()
   @objc deinit
 }
 extension ChatSDK.FileMessage {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 @objc @_hasMissingDesignatedInitializers public class Poll : ObjectiveC.NSObject, ChatSDK.Mappable {
   final public let pollId: Swift.Int64
@@ -2161,22 +1680,16 @@ extension ChatSDK.FileMessage {
   public var votedPollOptionIds: [Swift.Int64]?
   required public init(from decoder: any Swift.Decoder) throws
   public class func create(params: ChatSDK.PollCreateParams, completionHandler: @escaping ChatSDK.PollHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func create(params: ChatSDK.PollCreateParams) async throws -> Swift.Result<ChatSDK.Poll, ChatSDK.GIMError>
-  #endif
   public class func get(params: ChatSDK.PollRetrievalParams, completionHandler: @escaping ChatSDK.PollHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func get(params: ChatSDK.PollRetrievalParams) async throws -> Swift.Result<ChatSDK.Poll, ChatSDK.GIMError>
-  #endif
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
 }
 extension ChatSDK.Poll {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 public typealias GIMErrorHandler = (_ error: ChatSDK.GIMError?) -> Swift.Void
 public typealias PushTriggerOptionHandler = (_ pushTriggerOption: ChatSDK.PushTriggerOption, _ error: ChatSDK.GIMError?) -> Swift.Void
@@ -2204,14 +1717,10 @@ public typealias PushTriggerOptionHandler = (_ pushTriggerOption: ChatSDK.PushTr
   @objc deinit
 }
 extension ChatSDK.BlockedUserListQueryParams {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 extension ChatSDK.BlockedUserListQueryParams : Foundation.NSCopying {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
 }
 public protocol UserListQuery {
   var hasNext: Swift.Bool { get }
@@ -2222,9 +1731,7 @@ public enum AISummaryStatus : Swift.String {
   case processing
   case timeout
   case failed
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -2232,9 +1739,7 @@ public enum AISummaryStatus : Swift.String {
 }
 public enum MessageCollectionInitPolicy : Swift.Int {
   case cacheAndReplaceByApi
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
-  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -2245,9 +1750,7 @@ public enum ChannelType : Swift.String, Swift.Codable {
   case open
   case group
   case none
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -2259,9 +1762,7 @@ public enum MemberStateFilter : Swift.String, Swift.Codable {
   case invitedOnly
   case invitedByFriend
   case invitedByNonFriend
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -2273,9 +1774,7 @@ public enum PushTokenType : Swift.String, Swift.Codable {
   case FCM
   case APNS
   case APNSVoIP
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -2304,16 +1803,12 @@ public enum PushTokenType : Swift.String, Swift.Codable {
     get
   }
   final public func loadNextPage(completionHandler: @escaping ChatSDK.MessageListHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   final public func loadNextPage() async throws -> Swift.Result<[ChatSDK.BaseMessage], ChatSDK.GIMError>
-  #endif
   @objc deinit
 }
 extension ChatSDK.ScheduledMessageListQuery : Foundation.NSCopying {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic final public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
 }
 @propertyWrapper public class Atomic<T> {
   public var wrappedValue: T {
@@ -2357,9 +1852,7 @@ public enum GroupChannelPublicChannelFilter : Swift.String, Swift.Codable {
   case all
   case `public`
   case `private`
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -2387,64 +1880,42 @@ public enum GroupChannelPublicChannelFilter : Swift.String, Swift.Codable {
   dynamic public var queryType: ChatSDK.GroupChannelListQueryType {
     get
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public var channelURLsFilter: [Swift.String]? {
     get
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public var customTypeStartsWithFilter: Swift.String? {
     get
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public var customTypesFilter: [Swift.String]? {
     get
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public var nicknameContainsFilter: Swift.String? {
     get
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public var nicknameStartsWithFilter: Swift.String? {
     get
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public var userIdsIncludeFilter: [Swift.String]? {
     get
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public var userIdsExactFilter: [Swift.String]? {
     get
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public var channelNameStartsWithFilter: Swift.String? {
     get
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public var channelNameContainsFilter: Swift.String? {
     get
   }
-  #endif
   dynamic public var unreadChannelFilter: ChatSDK.UnreadChannelFilter {
     get
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public var metaDataOrderKeyFilter: Swift.String? {
     get
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public var metaDataValueStartsWithFilter: Swift.String? {
     get
   }
-  #endif
   dynamic public var channelHiddenStateFilter: ChatSDK.ChannelHiddenStateFilter {
     get
   }
@@ -2452,10 +1923,8 @@ public enum GroupChannelPublicChannelFilter : Swift.String, Swift.Codable {
     get
   }
   public func loadNextPage(completionHandler: @escaping ChatSDK.GroupChannelListHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public func loadNextPage() async throws -> Swift.Result<[ChatSDK.GroupChannel], ChatSDK.GIMError>
-  #endif
   @objc deinit
 }
 public enum UserListQueryType : Swift.Int, Swift.Codable {
@@ -2465,9 +1934,7 @@ public enum UserListQueryType : Swift.Int, Swift.Codable {
   case openChannelMutedUsers
   case openChannelBannedUsers
   case filteredUsers
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
-  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -2485,9 +1952,7 @@ public enum UserListQueryType : Swift.Int, Swift.Codable {
 public enum UnreadChannelFilter : Swift.String, Swift.Codable {
   case all
   case unreadMessage
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -2501,9 +1966,7 @@ public enum GroupChannelListOrder : Swift.String, Swift.Codable {
   case latestLastMessage
   case channelNameAlphabetical
   case channelMetaDataValueAlphabetical
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -2528,10 +1991,8 @@ public enum GroupChannelListOrder : Swift.String, Swift.Codable {
   }
   @objc deinit
   public func loadMore(completionHandler: @escaping ChatSDK.GroupChannelListHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public func loadMore() async throws -> Swift.Result<[ChatSDK.GroupChannel], ChatSDK.GIMError>
-  #endif
   public func dispose()
 }
 extension ChatSDK.GroupChannelCollection : ChatSDK.ConnectionDelegate {
@@ -2545,12 +2006,8 @@ extension ChatSDK.GroupChannelCollection : ChatSDK.GroupChannelDelegate {
   dynamic public func channel(_ channel: ChatSDK.BaseChannel, didUpdate message: ChatSDK.BaseMessage)
   dynamic public func channel(_ channel: ChatSDK.BaseChannel, didReceiveMention message: ChatSDK.BaseMessage)
   dynamic public func channelWasChanged(_ channel: ChatSDK.BaseChannel)
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func channel(_ channel: ChatSDK.GroupChannel, didReceiveInvitation invitees: [ChatSDK.User]?, inviter: ChatSDK.User?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func channel(_ channel: ChatSDK.GroupChannel, didDeclineInvitation invitee: ChatSDK.User, inviter: ChatSDK.User?)
-  #endif
   dynamic public func channelDidUpdateDeliveryStatus(_ channel: ChatSDK.GroupChannel)
   dynamic public func channelDidUpdateReadStatus(_ channel: ChatSDK.GroupChannel)
   dynamic public func channelDidChangeMemberCount(_ channels: [ChatSDK.GroupChannel])
@@ -2565,24 +2022,12 @@ extension ChatSDK.GroupChannelCollection : ChatSDK.GroupChannelDelegate {
   dynamic public func channel(_ channel: ChatSDK.BaseChannel, userWasBanned user: ChatSDK.RestrictedUser)
   dynamic public func channel(_ channel: ChatSDK.BaseChannel, userWasUnbanned user: ChatSDK.User)
   dynamic public func channelWasDeleted(_ channelURL: Swift.String, channelType: ChatSDK.ChannelType)
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func channel(_ channel: ChatSDK.BaseChannel, createdMetaData: [Swift.String : Swift.String]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func channel(_ channel: ChatSDK.BaseChannel, updatedMetaData: [Swift.String : Swift.String]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func channel(_ channel: ChatSDK.BaseChannel, deletedMetaDataKeys: [Swift.String]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func channel(_ channel: ChatSDK.BaseChannel, createdMetaCounters: [Swift.String : Swift.Int]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func channel(_ channel: ChatSDK.BaseChannel, updatedMetaCounters: [Swift.String : Swift.Int]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func channel(_ channel: ChatSDK.BaseChannel, deletedMetaCountersKeys: [Swift.String]?)
-  #endif
   dynamic public func channelDidUpdatePinnedMessages(_ channel: ChatSDK.BaseChannel)
   dynamic public func channel(_ channel: ChatSDK.BaseChannel, messageWasDeleted messageId: Swift.Int64)
 }
@@ -2621,9 +2066,7 @@ public enum PushTriggerOption : Swift.String, Swift.Codable {
   case mentionOnly
   public init(from decoder: any Swift.Decoder) throws
   public func encode(to encoder: any Swift.Encoder) throws
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -2632,22 +2075,14 @@ public enum PushTriggerOption : Swift.String, Swift.Codable {
 extension Swift.KeyedDecodingContainer {
   public func decode(_ type: [Any].Type, forKey key: Swift.KeyedDecodingContainer<K>.Key) throws -> [Any]
   public func decode(_ type: [Swift.String : Any].Type, forKey key: Swift.KeyedDecodingContainer<K>.Key) throws -> [Swift.String : Any]
-  #if compiler(>=5.3) && $NonescapableTypes
   public func decodeIfPresent(_ type: [Any].Type, forKey key: Swift.KeyedDecodingContainer<K>.Key) throws -> [Any]?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public func decodeIfPresent(_ type: [Swift.String : Any].Type, forKey key: Swift.KeyedDecodingContainer<K>.Key) throws -> [Swift.String : Any]?
-  #endif
 }
 extension Swift.KeyedEncodingContainer {
   public mutating func encode(_ value: [Swift.String : Any], forKey key: Swift.KeyedEncodingContainer<K>.Key) throws
   public mutating func encode(_ value: [Any], forKey key: Swift.KeyedEncodingContainer<K>.Key) throws
-  #if compiler(>=5.3) && $NonescapableTypes
   public mutating func encodeIfPresent(_ value: [Swift.String : Any]?, forKey key: Swift.KeyedEncodingContainer<K>.Key) throws
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public mutating func encodeIfPresent(_ value: [Any]?, forKey key: Swift.KeyedEncodingContainer<K>.Key) throws
-  #endif
 }
 @objc @_inheritsConvenienceInitializers final public class BannedUserListQueryParams : ObjectiveC.NSObject {
   final public var limit: Swift.UInt
@@ -2656,14 +2091,10 @@ extension Swift.KeyedEncodingContainer {
   @objc deinit
 }
 extension ChatSDK.BannedUserListQueryParams {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 extension ChatSDK.BannedUserListQueryParams : Foundation.NSCopying {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
 }
 @objc @_inheritsConvenienceInitializers public class UserUpdateParams : ObjectiveC.NSObject, Swift.Encodable, ChatSDK.Serializable {
   public var nickname: Swift.String?
@@ -2689,16 +2120,12 @@ extension ChatSDK.BannedUserListQueryParams : Foundation.NSCopying {
   public var profileURL: Swift.String? {
     get
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   public var originalProfileURL: Swift.String? {
     get
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public var plainProfileImageURL: Swift.String? {
     get
   }
-  #endif
   public var lastSeenAt: Swift.Int64 {
     get
   }
@@ -2719,40 +2146,22 @@ extension ChatSDK.BannedUserListQueryParams : Foundation.NSCopying {
   @objc deinit
 }
 extension ChatSDK.User {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createMetaData(_ metaData: [Swift.String : Swift.String], completionHandler: ChatSDK.MetaDataHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func createMetaData(_ metaData: [Swift.String : Swift.String]) async throws -> Swift.Result<[Swift.String : Swift.String], ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func updateMetaData(_ metaData: [Swift.String : Swift.String], completionHandler: ChatSDK.MetaDataHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func updateMetaData(_ metaData: [Swift.String : Swift.String]) async throws -> Swift.Result<[Swift.String : Swift.String], ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func deleteMetaData(key: Swift.String, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func deleteMetaData(key: Swift.String) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func deleteAllMetaData(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func deleteAllMetaData() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.User {
   public static func == (lhs: ChatSDK.User, rhs: ChatSDK.User) -> Swift.Bool
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 extension ChatSDK.User {
   @objc override dynamic public var description: Swift.String {
@@ -2776,12 +2185,8 @@ public enum CoreError : Swift.Int, ChatSDK.GIMErrorCode {
   public var message: Swift.String {
     get
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   public func asGIMError(message: Swift.String?) -> ChatSDK.GIMError
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
-  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -2813,16 +2218,12 @@ public enum CoreError : Swift.Int, ChatSDK.GIMErrorCode {
     get
   }
   public func loadNextPage(completionHandler: @escaping ChatSDK.MemberListHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public func loadNextPage() async throws -> Swift.Result<[ChatSDK.Member], ChatSDK.GIMError>
-  #endif
   @objc deinit
 }
 extension ChatSDK.MemberListQuery : Foundation.NSCopying {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
 }
 @objc @_hasMissingDesignatedInitializers public class PollDetails : ObjectiveC.NSObject, Swift.Codable {
   public var data: ChatSDK.PollData? {
@@ -2851,9 +2252,7 @@ extension ChatSDK.MemberListQuery : Foundation.NSCopying {
   required public init(from decoder: any Swift.Decoder) throws
 }
 extension ChatSDK.PollDetails {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 public typealias BaseMessageHandler = (_ message: ChatSDK.BaseMessage?, _ error: ChatSDK.GIMError?) -> Swift.Void
 public struct FileEntity : Swift.Codable {
@@ -2864,9 +2263,7 @@ public struct FileEntity : Swift.Codable {
   public let type: Swift.String
   public var thumbnails: [ChatSDK.Thumbnail]?
   public let objectId: Swift.String?
-  #if compiler(>=5.3) && $NonescapableTypes
   public init(url: Swift.String, plainURL: Swift.String?, name: Swift.String, size: Swift.UInt, type: Swift.String, thumbnails: [ChatSDK.Thumbnail]?, objectId: Swift.String?)
-  #endif
   public init(from decoder: any Swift.Decoder) throws
   public func encode(to encoder: any Swift.Encoder) throws
 }
@@ -2874,12 +2271,10 @@ public struct FileEntity : Swift.Codable {
   @objc override dynamic public var description: Swift.String {
     @objc get
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   public var lastMessage: ChatSDK.BaseMessage? {
     get
     set
   }
-  #endif
   public var isSuper: Swift.Bool {
     get
   }
@@ -2958,105 +2353,53 @@ public struct FileEntity : Swift.Codable {
   override public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
   public func hasMember(_ userId: Swift.String) -> Swift.Bool
-  #if compiler(>=5.3) && $NonescapableTypes
   public func getMember(_ userId: Swift.String) -> ChatSDK.Member?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public func getInviter() -> ChatSDK.User?
-  #endif
   public class func compare(channelA: ChatSDK.GroupChannel, channelB: ChatSDK.GroupChannel, order: ChatSDK.GroupChannelListOrder) -> Swift.Bool
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func refresh(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func refresh() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public class func createChannel(params: ChatSDK.GroupChannelCreateParams, completionHandler: ChatSDK.GroupChannelHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public class func createChannel(params: ChatSDK.GroupChannelCreateParams) async throws -> Swift.Result<ChatSDK.GroupChannel, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public class func createChannel(params: ChatSDK.GroupChannelCreateParams, progressHandler: ChatSDK.ProgressHandler?, completionHandler: ChatSDK.GroupChannelHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public class func createChannel(params: ChatSDK.GroupChannelCreateParams, progressHandler: ChatSDK.ProgressHandler?) async throws -> Swift.Result<ChatSDK.GroupChannel, ChatSDK.GIMError>
-  #endif
   dynamic public class func createDistinctChannelIfNotExist(params: ChatSDK.GroupChannelCreateParams, completionHandler: @escaping ChatSDK.DistinctGroupChannelHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public class func createDistinctChannelIfNotExist(params: ChatSDK.GroupChannelCreateParams) async throws -> Swift.Result<(channel: ChatSDK.GroupChannel, isCreate: Swift.Bool), ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public class func createDistinctChannelIfNotExist(params: ChatSDK.GroupChannelCreateParams, progressHandler: ChatSDK.ProgressHandler?, completionHandler: @escaping ChatSDK.DistinctGroupChannelHandler)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public class func createDistinctChannelIfNotExist(params: ChatSDK.GroupChannelCreateParams, progressHandler: ChatSDK.ProgressHandler?) async throws -> Swift.Result<(channel: ChatSDK.GroupChannel, isCreate: Swift.Bool), ChatSDK.GIMError>
-  #endif
   dynamic public func update(params: ChatSDK.GroupChannelUpdateParams, completionHandler: @escaping ChatSDK.GroupChannelHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func update(params: ChatSDK.GroupChannelUpdateParams) async throws -> Swift.Result<ChatSDK.GroupChannel, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func update(params: ChatSDK.GroupChannelUpdateParams, progressHandler: ChatSDK.ProgressHandler?, completionHandler: @escaping ChatSDK.GroupChannelHandler)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func update(params: ChatSDK.GroupChannelUpdateParams, progressHandler: ChatSDK.ProgressHandler?) async throws -> Swift.Result<ChatSDK.GroupChannel, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public class func getChannel(url: Swift.String, completionHandler: ChatSDK.GroupChannelHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func getChannel(completionHandler: ChatSDK.GroupChannelHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public class func getChannel(url: Swift.String) async throws -> Swift.Result<ChatSDK.GroupChannel, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func getChannel() async throws -> Swift.Result<ChatSDK.GroupChannel, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public class func getChannelFromCache(url: Swift.String) -> ChatSDK.GroupChannel?
-  #endif
   public func createMessageSync()
   @objc deinit
 }
 extension ChatSDK.GroupChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func resetMyHistory(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func resetMyHistory() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func setMyPushTriggerOption(_ option: ChatSDK.GroupChannelPushTriggerOption, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func setMyPushTriggerOption(_ option: ChatSDK.GroupChannelPushTriggerOption) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
   dynamic public func getMyPushTriggerOption(completionHandler: @escaping ChatSDK.GroupChannelPushTriggerOptionHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func getMyPushTriggerOption() async throws -> Swift.Result<ChatSDK.GroupChannelPushTriggerOption, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func setMyCountPreference(_ myCountPreference: ChatSDK.CountPreference, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func setMyCountPreference(_ myCountPreference: ChatSDK.CountPreference) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.GroupChannel {
   dynamic public func getUnreadMemberCount(_ message: ChatSDK.BaseMessage) -> Swift.Int
@@ -3065,14 +2408,10 @@ extension ChatSDK.GroupChannel {
   dynamic public func getUnreadMembers(message: ChatSDK.BaseMessage, includeAllMembers: Swift.Bool) -> [ChatSDK.Member]
   dynamic public func getUndeliveredMemberCount(_ message: ChatSDK.BaseMessage) -> Swift.Int
   dynamic public func getReadStatus(includeAllMembers: Swift.Bool) -> [Swift.String : [Swift.String : Any]]
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func markAsRead(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   @discardableResult
   dynamic public func markAsRead() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.GroupChannel {
   dynamic public class func createMyGroupChannelListQuery() -> ChatSDK.GroupChannelListQuery
@@ -3082,150 +2421,74 @@ extension ChatSDK.GroupChannel {
 extension ChatSDK.GroupChannel {
   dynamic public class func createMemberListQuery(channelURL: Swift.String) -> ChatSDK.MemberListQuery
   dynamic public class func createMemberListQuery(channelURL: Swift.String, paramsBuilder: (ChatSDK.MemberListQueryParams) -> Swift.Void) -> ChatSDK.MemberListQuery
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createMemberListQuery() -> ChatSDK.MemberListQuery?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createMemberListQuery(paramsBuilder: (ChatSDK.MemberListQueryParams) -> Swift.Void) -> ChatSDK.MemberListQuery?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createMemberListQuery(params: ChatSDK.MemberListQueryParams) -> ChatSDK.MemberListQuery?
-  #endif
 }
 extension ChatSDK.GroupChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createScheduledUserMessage(params: ChatSDK.ScheduledUserMessageCreateParams, completionHandler: ChatSDK.UserMessageHandler?) -> ChatSDK.UserMessage?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func updateScheduledUserMessage(scheduledMessageId: Swift.Int64, params: ChatSDK.ScheduledUserMessageUpdateParams, completionHandler: ChatSDK.UserMessageHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func updateScheduledUserMessage(scheduledMessageId: Swift.Int64, params: ChatSDK.ScheduledUserMessageUpdateParams) async throws -> Swift.Result<ChatSDK.UserMessage, ChatSDK.GIMError>
-  #endif
   dynamic public func sendScheduledMessageNow(scheduledMessageId: Swift.Int64, completionHandler: @escaping ChatSDK.GIMErrorHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func sendScheduledMessageNow(scheduledMessageId: Swift.Int64) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
   dynamic public func cancelScheduledMessage(scheduledMessageId: Swift.Int64, completionHandler: @escaping ChatSDK.GIMErrorHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func cancelScheduledMessage(scheduledMessageId: Swift.Int64) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.GroupChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func inviteUser(_ user: ChatSDK.User, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func inviteUser(_ user: ChatSDK.User) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func inviteUserId(_ userId: Swift.String, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func inviteUserId(_ userId: Swift.String) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func inviteUsers(_ users: [ChatSDK.User], completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func inviteUsers(_ users: [ChatSDK.User]) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func inviteUserIds(_ userIds: [Swift.String], completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func inviteUserIds(_ userIds: [Swift.String]) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func acceptInvitation(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func acceptInvitation() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func acceptInvitation(accessCode: Swift.String?, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func acceptInvitation(accessCode: Swift.String?) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func declineInvitation(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func declineInvitation() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func join(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func join() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func join(accessCode: Swift.String?, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func join(accessCode: Swift.String?) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func leave(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func leave() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func leave(shouldRemoveOperatorStatus: Swift.Bool, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func leave(shouldRemoveOperatorStatus: Swift.Bool) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func notifyScreenshotWasTaken(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
 }
 extension ChatSDK.GroupChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func hide(hidePreviousMessages: Swift.Bool, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func hide(hidePreviousMessages: Swift.Bool) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func hide(hidePreviousMessages: Swift.Bool, allowAutoUnhide: Swift.Bool, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func hide(hidePreviousMessages: Swift.Bool, allowAutoUnhide: Swift.Bool) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func unhide(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func unhide() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.GroupChannel {
   dynamic public func startTyping()
   dynamic public func endTyping()
   dynamic public func isTyping() -> Swift.Bool
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func getTypingUsers() -> [ChatSDK.User]?
-  #endif
 }
 @objc @_inheritsConvenienceInitializers final public class OpenChannelListQueryParams : ObjectiveC.NSObject {
   final public var includeFrozenChannel: Swift.Bool
@@ -3239,9 +2502,7 @@ extension ChatSDK.GroupChannel {
   @objc deinit
 }
 extension ChatSDK.OpenChannelListQueryParams {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 public typealias GroupChannelHandler = (_ channel: ChatSDK.GroupChannel?, _ error: ChatSDK.GIMError?) -> Swift.Void
 @objc @_hasMissingDesignatedInitializers public class Reaction : ObjectiveC.NSObject, ChatSDK.Mappable {
@@ -3264,9 +2525,7 @@ public typealias GroupChannelHandler = (_ channel: ChatSDK.GroupChannel?, _ erro
   public class func setSessionDelegate(_ delegate: any ChatSDK.SessionDelegate)
   public class func removeSessionDelegate()
   public class func setCompletionHandlerDelegateQueue(_ queue: Dispatch.DispatchQueue)
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func performCompletionHandlerDelegateQueue(_ block: (() -> Swift.Void)?)
-  #endif
   public class func getLastConnectedAt() -> Swift.Int64
   public class func clearAllCacheDataMessageSuccess(_ messages: [ChatSDK.BaseMessage])
   public static func addNetwork(delegate: any ChatSDK.GIMNetworkDelegate, identifier: Swift.String)
@@ -3278,113 +2537,65 @@ extension ChatSDK.GIMChat {
     get
   }
   public class func getSDKVersion() -> Swift.String
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func getApplicationId() -> Swift.String?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func setAppVersion(version: Swift.String?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @discardableResult
   public class func initialize(params: ChatSDK.InitParams, migrationStartHandler: ChatSDK.VoidHandler? = nil, completionHandler: ChatSDK.GIMErrorHandler? = nil) -> Swift.Bool
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func initializeSynchronously(params: ChatSDK.InitParams) -> ChatSDK.GIMError?
-  #endif
   public class func setAppGroup(_ appGroup: Swift.String)
   public class func getLogLevel() -> ChatSDK.LogLevel
   public class func setLogLevel(_ logLevel: ChatSDK.LogLevel)
   public class func setNetworkAwarenessReconnection(_ isOn: Swift.Bool)
   public class func getUserAgent() -> Swift.String
   public class func addExtension(_ key: Swift.String, version: Swift.String)
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func ekey() -> Swift.String?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func getAppInfo() -> ChatSDK.AppInfo?
-  #endif
 }
 extension ChatSDK.GIMChat {
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func connect(userId: Swift.String, completionHandler: ChatSDK.UserHandler? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func connect(userId: Swift.String, authToken: Swift.String?, completionHandler: ChatSDK.UserHandler? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func connect(userId: Swift.String, authToken: Swift.String?, apiHost: Swift.String?, wsHost: Swift.String?, completionHandler: ChatSDK.UserHandler? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func connect(userId: Swift.String, authToken: Swift.String?, apiHost: Swift.String?, wsHost: Swift.String?) async throws -> Swift.Result<ChatSDK.User, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func disconnect(completionHandler: ChatSDK.VoidHandler? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func disconnect() async throws -> ChatSDK.GIMError?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func disconnectWebSocket(completionHandler: ChatSDK.VoidHandler? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func disconnectWebSocket() async throws -> ChatSDK.GIMError?
-  #endif
   public class func reconnect() -> Swift.Bool
   public class func getConnectState() -> ChatSDK.GIMWebSocketConnectionState
   public class func addConnectionDelegate(_ delegate: any ChatSDK.ConnectionDelegate, identifier: Swift.String)
   public class func removeConnectionDelegate(forIdentifier identifier: Swift.String)
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func connectionDelegate(forIdentifier identifier: Swift.String) -> (any ChatSDK.ConnectionDelegate)?
-  #endif
   public class func removeAllConnectionDelegates()
 }
 extension ChatSDK.GIMChat {
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func setChannelInvitationPreference(autoAccept: Swift.Bool, completionHandler: ChatSDK.GIMErrorHandler? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func setChannelInvitationPreference(autoAccept: Swift.Bool) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func getChannelInvitationPreferenceAutoAccept(completionHandler: ((_ autoAccept: Swift.Bool, _ error: ChatSDK.GIMError?) -> Swift.Void)? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func getChannelInvitationPreferenceAutoAccept() async throws -> Swift.Result<Swift.Bool, ChatSDK.GIMError>
-  #endif
   public class func createGroupChannelCollection(query: ChatSDK.GroupChannelListQuery) -> ChatSDK.GroupChannelCollection
   public class func getTotalUnreadChannelCount(completionHandler: @escaping ChatSDK.CountHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func getTotalUnreadChannelCount() async throws -> Swift.Result<Swift.Int, ChatSDK.GIMError>
-  #endif
   public class func getTotalUnreadChannelCount(params: ChatSDK.GroupChannelTotalUnreadChannelCountParams, completionHandler: @escaping ChatSDK.CountHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func joinChannel(channelURL: Swift.String, accessCode: Swift.String? = nil, completionHandler: ChatSDK.GIMErrorHandler? = nil)
-  #endif
   public class func addChannelDelegate(_ delegate: any ChatSDK.BaseChannelDelegate, identifier: Swift.String)
   public class func removeChannelDelegate(forIdentifier identifier: Swift.String)
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func channelDelegate(forIdentifier identifier: Swift.String) -> (any ChatSDK.BaseChannelDelegate)?
-  #endif
   public class func removeAllChannelDelegates()
 }
 extension ChatSDK.GIMChat {
   public class func createMessageCollection(channel: ChatSDK.GroupChannel, startingPoint: Swift.Int64, params: ChatSDK.MessageListParams) -> ChatSDK.MessageCollection
   public class func getTotalUnreadMessageCount(completionHandler: @escaping ChatSDK.CountHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func getTotalUnreadMessageCount() async throws -> Swift.Result<Swift.Int, ChatSDK.GIMError>
-  #endif
   public class func getTotalUnreadMessageCount(params: ChatSDK.GroupChannelTotalUnreadMessageCountParams, completionHandler: @escaping ChatSDK.CountHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func getTotalUnreadMessageCount(params: ChatSDK.GroupChannelTotalUnreadMessageCountParams) async throws -> Swift.Result<Swift.Int, ChatSDK.GIMError>
-  #endif
   public class func createMessageSearchQuery(builder: (ChatSDK.MessageSearchQueryParams) -> Swift.Void) -> ChatSDK.MessageSearchQuery
   public class func createMessageSearchQuery(params: ChatSDK.MessageSearchQueryParams) -> ChatSDK.MessageSearchQuery
   public class func getSubscribedTotalUnreadMessageCount() -> Swift.Int
@@ -3393,71 +2604,35 @@ extension ChatSDK.GIMChat {
 }
 extension ChatSDK.GIMChat {
   public class func getTotalScheduledMessageCount(params: ChatSDK.TotalScheduledMessageCountParams, completionHandler: @escaping ChatSDK.CountHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func getTotalScheduledMessageCount(params: ChatSDK.TotalScheduledMessageCountParams) async throws -> Swift.Result<Swift.Int, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func createScheduledMessageListQuery(channelURL: Swift.String?) -> ChatSDK.ScheduledMessageListQuery
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func createScheduledMessageListQuery(channelURL: Swift.String?, paramsBuilder: (ChatSDK.ScheduledMessageListQueryParams) -> Swift.Void) -> ChatSDK.ScheduledMessageListQuery
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func createScheduledMessageListQuery(channelURL: Swift.String?, params: ChatSDK.ScheduledMessageListQueryParams) -> ChatSDK.ScheduledMessageListQuery
-  #endif
 }
 extension ChatSDK.GIMChat {
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func getCurrentUser() -> ChatSDK.User?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func updateCurrentUserInfo(params: ChatSDK.UserUpdateParams, progressHandler: ChatSDK.ProgressHandler? = nil, completionHandler: ChatSDK.GIMErrorHandler? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func uploadAvatarUser(params: ChatSDK.UserUpdateParams, progressHandler: ChatSDK.ProgressHandler? = nil, completionHandler: ChatSDK.GIMErrorHandler? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func updateCurrentUserInfo(params: ChatSDK.UserUpdateParams, progressHandler: ChatSDK.ProgressHandler? = nil) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func updateCurrentUserInfo(preferredLanguages: [Swift.String], completionHandler: ChatSDK.GIMErrorHandler? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func updateCurrentUserInfo(preferredLanguages: [Swift.String]) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.GIMChat {
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func blockUserId(_ userId: Swift.String, completionHandler: ChatSDK.UserHandler? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func blockUserId(_ userId: Swift.String) async throws -> Swift.Result<ChatSDK.User, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func blockUser(_ user: ChatSDK.User, completionHandler: ChatSDK.UserHandler? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func blockUser(_ user: ChatSDK.User) async throws -> Swift.Result<ChatSDK.User, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func unblockUserId(_ userId: Swift.String, completionHandler: ChatSDK.GIMErrorHandler? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func unblockUserId(_ userId: Swift.String) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func unblockUser(_ user: ChatSDK.User, completionHandler: ChatSDK.GIMErrorHandler? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func unblockUser(_ user: ChatSDK.User) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
   public class func createBlockedUserListQuery() -> ChatSDK.BlockedUserListQuery
   public class func createBlockedUserListQuery(paramsBuilder: (ChatSDK.BlockedUserListQueryParams) -> Swift.Void) -> ChatSDK.BlockedUserListQuery
   public class func createBlockedUserListQuery(params: ChatSDK.BlockedUserListQueryParams) -> ChatSDK.BlockedUserListQuery
@@ -3466,123 +2641,61 @@ extension ChatSDK.GIMChat {
   public class func createApplicationUserListQuery() -> ChatSDK.ApplicationUserListQuery
   public class func createApplicationUserListQuery(paramsBuilder: (ChatSDK.ApplicationUserListQueryParams) -> Swift.Void) -> ChatSDK.ApplicationUserListQuery
   public class func createApplicationUserListQuery(params: ChatSDK.ApplicationUserListQueryParams) -> ChatSDK.ApplicationUserListQuery
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func userEventDelegate(forIdentifier identifier: Swift.String) -> (any ChatSDK.GIMUserEventDelegate)?
-  #endif
   public class func addUserEventDelegate(_ delegate: any ChatSDK.GIMUserEventDelegate, identifier: Swift.String)
   public class func removeUserEventDelegate(forIdentifier identifier: Swift.String)
   public class func removeAllUserEventDelegates()
 }
 extension ChatSDK.GIMChat {
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func getPendingPushToken() -> Foundation.Data?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func registerDevicePushToken(_ devToken: Foundation.Data, unique: Swift.Bool, completionHandler: ((_ registrationStatus: ChatSDK.PushTokenRegistrationStatus, _ error: ChatSDK.GIMError?) -> Swift.Void)? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func registerDevicePushToken(_ devToken: Foundation.Data, unique: Swift.Bool) async throws -> Swift.Result<ChatSDK.PushTokenRegistrationStatus, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func unregisterPushToken(_ devToken: Foundation.Data, completionHandler: ((_ response: [Swift.AnyHashable : Any]?, _ error: ChatSDK.GIMError?) -> Swift.Void)? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func unregisterPushToken(_ devToken: Foundation.Data) async throws -> Swift.Result<[Swift.AnyHashable : Any], ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func unregisterAllPushToken(completionHandler: ((_ response: [Swift.AnyHashable : Any]?, _ error: ChatSDK.GIMError?) -> Swift.Void)? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func unregisterAllPushToken() async throws -> Swift.Result<[Swift.AnyHashable : Any], ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func getMyPushTokens(token: Swift.String?, pushTokenType: ChatSDK.PushTokenType, completionHandler: @escaping ChatSDK.GetPushTokensHandler)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func getMyPushTokens(token: Swift.String?, pushTokenType: ChatSDK.PushTokenType) async throws -> Swift.Result<ChatSDK.PushTokens, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func setDoNotDisturb(entity: ChatSDK.DoNotDisturbEntity, completionHandler: ChatSDK.GIMErrorHandler? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func setDoNotDisturb(entity: ChatSDK.DoNotDisturbEntity) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func getDoNotDisturb(completionHandler: ((_ entity: ChatSDK.DoNotDisturbEntity?, _ error: ChatSDK.GIMError?) -> Swift.Void)? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func fetchUserInfo(userId: Swift.String) async throws -> Swift.Result<ChatSDK.User, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func getDoNotDisturb() async throws -> Swift.Result<ChatSDK.DoNotDisturbEntity, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func setSnoozePeriod(enabled: Swift.Bool, startTimestamp: Swift.Int64, endTimestamp: Swift.Int64, timezone: Swift.String, completionHandler: ChatSDK.GIMErrorHandler? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func setSnoozePeriod(enabled: Swift.Bool, startTimestamp: Swift.Int64, endTimestamp: Swift.Int64, timezone: Swift.String) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
   public class func getSnoozePeriod(_ completionHandler: @escaping ChatSDK.SnoozePeriodHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func getSnoozePeriod() async throws -> Swift.Result<ChatSDK.SnoozePeriod, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func setPushTriggerOption(_ pushTriggerOption: ChatSDK.PushTriggerOption, completionHandler: ChatSDK.GIMErrorHandler? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func setPushTriggerOption(_ pushTriggerOption: ChatSDK.PushTriggerOption) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
   public class func getPushTriggerOption(completionHandler: @escaping ChatSDK.PushTriggerOptionHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func getPushTriggerOption() async throws -> Swift.Result<ChatSDK.PushTriggerOption, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func setPushSound(_ sound: Swift.String, completionHandler: ChatSDK.GIMErrorHandler? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func setPushSound(_ sound: Swift.String) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func getPushSound(completionHandler: ((_ pushSound: Swift.String?, _ error: ChatSDK.GIMError?) -> Swift.Void)? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func getPushSound() async throws -> Swift.Result<Swift.String, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func setPushTemplate(_ template: ChatSDK.PushTemplate, completionHandler: ChatSDK.GIMErrorHandler? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func setPushTemplate(_ template: ChatSDK.PushTemplate) async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func getPushTemplate(completionHandler: ((_ pushTemplate: ChatSDK.PushTemplate, _ error: ChatSDK.GIMError?) -> Swift.Void)? = nil)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func getPushTemplate() async throws -> Swift.Result<ChatSDK.PushTemplate, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.GIMChat {
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func clearCachedData(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func clearCachedMessages(channelURL: Swift.String, completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
   public class func getCachedDataSize() -> Swift.Int
   public static var isLocalCachingEnabled: Swift.Bool {
     get
@@ -3596,18 +2709,10 @@ extension ChatSDK.GIMChat {
   public static func stopOpenChannelObserve(channelIdentifier: Swift.String)
   public static func startMessageObserve(delegate: any ChatSDK.ConnectionDelegate & ChatSDK.OpenChannelDelegate, channelIdentifier: Swift.String)
   public static func stopMessageObserve(channelIdentifier: Swift.String)
-  #if compiler(>=5.3) && $NonescapableTypes
   public static func getConverstationSummarySetting(completion: ((ChatSDK.SettingAISummary?) -> Swift.Void)?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public static func updateConverstationSummarySetting(isEnabled: Swift.Bool, completion: ((ChatSDK.SettingAISummary?) -> Swift.Void)?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public static func updatePushNotificationTranslationSetting(isEnabled: Swift.Bool, completion: ((ChatSDK.SettingAISummary?) -> Swift.Void)?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public static func getSummaryMessage(type: ChatSDK.ChannelType, uri: Swift.String, completion: ((ChatSDK.SummaryMessage?) -> Swift.Void)?)
-  #endif
 }
 @objc public class MessageContext : ObjectiveC.NSObject {
   public var source: ChatSDK.CollectionEventSource {
@@ -3643,13 +2748,9 @@ extension ChatSDK.PollOptionRetrievalParams : Swift.Encodable {
     get
   }
   public func loadNextPage(completionHandler: @escaping ChatSDK.RestrictedUserListHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public func loadNextPage() async throws -> Swift.Result<[ChatSDK.RestrictedUser], ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
   @objc deinit
 }
 extension ChatSDK.BannedUserListQuery {
@@ -3661,9 +2762,7 @@ public enum GroupChannelOperatorFilter : Swift.String, Swift.Codable {
   case all
   case `operator`
   case nonOperator
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -3679,9 +2778,7 @@ public enum GroupChannelOperatorFilter : Swift.String, Swift.Codable {
   public var thumbnailSizes: [ChatSDK.ThumbnailSize]?
   public var fileName: Swift.String
   public var mimeType: Swift.String
-  #if compiler(>=5.3) && $NonescapableTypes
   public func getFileUrlIfNeeded() -> Swift.String?
-  #endif
   public var fileSize: Swift.UInt
   public var objectId: Swift.String?
   public var uuid: Swift.String
@@ -3712,14 +2809,10 @@ public typealias MessageRequestIdsHandler = (_ requestIds: [Swift.String]?, _ er
   required public init(from decoder: any Swift.Decoder) throws
 }
 extension ChatSDK.MessageSearchQueryParams {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 extension ChatSDK.MessageSearchQueryParams : Foundation.NSCopying {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
 }
 @objc @_inheritsConvenienceInitializers public class FileMessageUpdateParams : ChatSDK.BaseMessageUpdateParams {
   @objc override dynamic public init()
@@ -3753,22 +2846,16 @@ extension ChatSDK.MessageCollectionDelegate {
   @objc deinit
 }
 public protocol SessionDelegate : AnyObject {
-  #if compiler(>=5.3) && $NonescapableTypes
   func sessionTokenDidRequire(successCompletion success: @escaping (Swift.String?) -> Swift.Void, failCompletion fail: @escaping () -> Swift.Void)
-  #endif
   func sessionWasClosed()
   func sessionWasRefreshed()
   func sessionDidHaveError(_ error: ChatSDK.GIMError)
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class GIMError : Foundation.NSError {
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func error(withDictionary dict: [Swift.String : Any]) -> ChatSDK.GIMError?
-  #endif
   public class func error(withNSError error: Foundation.NSError) -> ChatSDK.GIMError
   public class func error(code: Swift.Int, message: Swift.String) -> ChatSDK.GIMError
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override dynamic public init(domain: Swift.String, code: Swift.Int, userInfo dict: [Swift.String : Any]? = nil)
-  #endif
   @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers public class UserMessageCreateParams : ChatSDK.BaseMessageCreateParams {
@@ -3784,9 +2871,7 @@ public protocol SessionDelegate : AnyObject {
 public enum PushNotificationDeliveryOption : Swift.String, Swift.Codable {
   case `default`
   case suppress
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -3796,9 +2881,7 @@ public enum GroupChannelMutedMemberFilter : Swift.String, Swift.Codable {
   case all
   case muted
   case unmuted
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -3809,9 +2892,7 @@ public enum MemberState : Swift.String, Swift.Codable {
   case invited
   case none
   case left
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -3822,9 +2903,7 @@ public enum MessageTypeFilter : Swift.String, Swift.Codable {
   case user
   case file
   case admin
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -3836,9 +2915,7 @@ public enum MyMemberStateFilter : Swift.String, Swift.Codable {
   case invitedOnly
   case invitedByFriend
   case invitedByNonFriend
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -3853,9 +2930,7 @@ public enum MyMemberStateFilter : Swift.String, Swift.Codable {
 public enum GroupChannelListQueryType : Swift.String, Swift.Codable {
   case and
   case or
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -3882,9 +2957,7 @@ public enum ScheduledStatusOptions : Swift.String {
   case sent
   case failed
   case canceled
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -3899,13 +2972,9 @@ public enum ScheduledStatusOptions : Swift.String {
   public var operatorUserIds: [Swift.String]?
   public var customType: Swift.String?
   @objc override dynamic convenience public init()
-  #if compiler(>=5.3) && $NonescapableTypes
   public init(name: Swift.String? = nil, coverURL: Swift.String? = nil, coverImage: Foundation.Data? = nil, coverImageName: Swift.String? = nil, data: Swift.String? = nil, operatorUserIds: [Swift.String]? = nil, customType: Swift.String? = nil)
-  #endif
   public func setOperators(_ operators: [ChatSDK.User])
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
@@ -3944,80 +3013,48 @@ public enum ScheduledStatusOptions : Swift.String {
   }
   public init(channelUri: Swift.String, hasNext: Swift.Bool, isLoading: Swift.Bool, limit: Swift.UInt = 20)
   public func loadNextPage(completionHandler: @escaping ChatSDK.UserListHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public func loadNextPage() async throws -> Swift.Result<[ChatSDK.User], ChatSDK.GIMError>
-  #endif
   @objc deinit
 }
 extension ChatSDK.ParticipantListQuery : Foundation.NSCopying {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
 }
 public typealias GroupChannelListHandler = (_ channels: [ChatSDK.GroupChannel]?, _ error: ChatSDK.GIMError?) -> Swift.Void
 @objc @_hasMissingDesignatedInitializers public class OpenChannel : ChatSDK.BaseChannel {
   public var participantCount: Swift.Int {
     get
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   public var operators: [ChatSDK.User]? {
     get
   }
-  #endif
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
 extension ChatSDK.OpenChannel {
   dynamic public class func createChannel(completionHandler: @escaping ChatSDK.OpenChannelHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public class func createChannel() async throws -> Swift.Result<ChatSDK.OpenChannel, ChatSDK.GIMError>
-  #endif
   dynamic public class func createChannel(params: ChatSDK.OpenChannelCreateParams, completionHandler: @escaping ChatSDK.OpenChannelHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public class func createChannel(params: ChatSDK.OpenChannelCreateParams) async throws -> Swift.Result<ChatSDK.OpenChannel, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public class func createChannel(params: ChatSDK.OpenChannelCreateParams, progressHandler: ChatSDK.ProgressHandler?) async throws -> Swift.Result<ChatSDK.OpenChannel, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public class func createChannel(params: ChatSDK.OpenChannelCreateParams, progressHandler: ChatSDK.ProgressHandler?, completionHandler: ChatSDK.OpenChannelHandler?)
-  #endif
   dynamic public func update(params: ChatSDK.OpenChannelUpdateParams, completionHandler: @escaping ChatSDK.OpenChannelHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func update(params: ChatSDK.OpenChannelUpdateParams) async throws -> Swift.Result<ChatSDK.OpenChannel, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func update(params: ChatSDK.OpenChannelUpdateParams, progressHandler: ChatSDK.ProgressHandler?, completionHandler: @escaping ChatSDK.OpenChannelHandler)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func update(params: ChatSDK.OpenChannelUpdateParams, progressHandler: ChatSDK.ProgressHandler?) async throws -> Swift.Result<ChatSDK.OpenChannel, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public class func getChannel(url: Swift.String, completionHandler: ChatSDK.OpenChannelHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public func getChannel(completionHandler: ChatSDK.OpenChannelHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public class func getChannel(url: Swift.String) async throws -> Swift.Result<ChatSDK.OpenChannel, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public func getChannel() async throws -> Swift.Result<ChatSDK.OpenChannel, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func refresh(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func refresh() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.OpenChannel {
   dynamic public class func createOpenChannelListQuery() -> ChatSDK.OpenChannelListQuery
@@ -4028,31 +3065,17 @@ extension ChatSDK.OpenChannel {
   dynamic public class func createParticipantListQuery(channelURL: Swift.String) -> ChatSDK.ParticipantListQuery
   dynamic public class func createParticipantListQuery(channelURL: Swift.String, paramsBuilder: (ChatSDK.ParticipantListQueryParams) -> Swift.Void) -> ChatSDK.ParticipantListQuery
   dynamic public class func createParticipantListQuery(channelURL: Swift.String, params: ChatSDK.ParticipantListQueryParams) -> ChatSDK.ParticipantListQuery
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createParticipantListQuery() -> ChatSDK.ParticipantListQuery?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createParticipantListQuery(paramsBuilder: (ChatSDK.ParticipantListQueryParams) -> Swift.Void) -> ChatSDK.ParticipantListQuery?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func createParticipantListQuery(params: ChatSDK.ParticipantListQueryParams) -> ChatSDK.ParticipantListQuery?
-  #endif
 }
 extension ChatSDK.OpenChannel {
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func enter(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func enter() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func exit(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   dynamic public func exit() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
 }
 @objc @_inheritsConvenienceInitializers public class MessageRequestState : ObjectiveC.NSObject {
   @objc override dynamic public init()
@@ -4077,16 +3100,12 @@ public typealias OpenChannelListHandler = (_ channels: [ChatSDK.OpenChannel]?, _
     get
   }
   final public func loadNextPage(completionHandler: @escaping ChatSDK.UserListHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   final public func loadNextPage() async throws -> Swift.Result<[ChatSDK.User], ChatSDK.GIMError>
-  #endif
   @objc deinit
 }
 extension ChatSDK.BlockedUserListQuery : Foundation.NSCopying {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
 }
 public typealias MessageChangeLogHandler = (_ updatedMessages: [ChatSDK.BaseMessage]?, _ deletedMessageIds: [Swift.Int64]?, _ hasMore: Swift.Bool, _ token: Swift.String?, _ error: ChatSDK.GIMError?) -> Swift.Void
 public struct MessageChangeLog {
@@ -4125,13 +3144,9 @@ public struct MuteInfo {
     get
   }
   public func loadNextPage(completionHandler: @escaping ChatSDK.UserListHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public func loadNextPage() async throws -> Swift.Result<[ChatSDK.User], ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
   @objc deinit
 }
 extension ChatSDK.OperatorListQuery {
@@ -4165,34 +3180,20 @@ extension ChatSDK.OperatorListQuery : Foundation.NSCopying {
     get
   }
   @objc deinit
-  #if compiler(>=5.3) && $NonescapableTypes
   public func startCollection(initPolicy: ChatSDK.MessageCollectionInitPolicy, cacheResultHandler: ChatSDK.MessageListHandler?, apiResultHandler: ChatSDK.MessageListHandler?)
-  #endif
   public func dispose()
   public func loadNext(completionHandler: @escaping ChatSDK.MessageListHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public func loadNext() async throws -> Swift.Result<[ChatSDK.BaseMessage], ChatSDK.GIMError>
-  #endif
   public func loadPrevious(completionHandler: @escaping ChatSDK.MessageListHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public func loadPrevious() async throws -> Swift.Result<[ChatSDK.BaseMessage], ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public func removeFailed(messages: [ChatSDK.BaseMessage], completionHandler: ChatSDK.MessageRequestIdsHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public func removeFailed(messages: [ChatSDK.BaseMessage]) async throws -> Swift.Result<[Swift.String], ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public func removeAllFailed(completionHandler: ChatSDK.GIMErrorHandler?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public func removeAllFailed() async throws -> Swift.Result<Swift.Void, ChatSDK.GIMError>
-  #endif
 }
 extension ChatSDK.MessageCollection : ChatSDK.GroupChannelDelegate {
   dynamic public func channel(_ channel: ChatSDK.BaseChannel, didReceive message: ChatSDK.BaseMessage)
@@ -4210,15 +3211,9 @@ extension ChatSDK.MessageCollection : ChatSDK.GroupChannelDelegate {
   public func channel(_ channel: ChatSDK.BaseChannel, userWasMuted user: ChatSDK.RestrictedUser)
   public func channel(_ channel: ChatSDK.BaseChannel, userWasUnmuted user: ChatSDK.User)
   public func channel(_ channel: ChatSDK.BaseChannel, userWasBanned user: ChatSDK.RestrictedUser)
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func channel(_ channel: ChatSDK.BaseChannel, createdMetaData: [Swift.String : Swift.String]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func channel(_ channel: ChatSDK.BaseChannel, updatedMetaData: [Swift.String : Swift.String]?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   dynamic public func channel(_ channel: ChatSDK.BaseChannel, deletedMetaDataKeys: [Swift.String]?)
-  #endif
   public func channelDidUpdateOperators(_ channel: ChatSDK.BaseChannel)
   public func channelDidUpdatePinnedMessages(_ channel: ChatSDK.BaseChannel)
   public func channel(_ channel: ChatSDK.GroupChannel, userDidJoin user: ChatSDK.User)
@@ -4243,13 +3238,9 @@ extension ChatSDK.MessageCollection : ChatSDK.ConnectionDelegate {
     get
   }
   final public func loadNextPage(completionHandler: @escaping ChatSDK.RestrictedUserListHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   final public func loadNextPage() async throws -> Swift.Result<[ChatSDK.RestrictedUser], ChatSDK.GIMError>
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   final public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
   @objc deinit
 }
 extension ChatSDK.MutedUserListQuery {
@@ -4261,9 +3252,7 @@ public enum GroupChannelHiddenState : Swift.String, Swift.Codable {
   case unhidden
   case hiddenAllowAutoUnhide
   case hiddenPreventAutoUnhide
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -4300,9 +3289,7 @@ public enum LogLevel : Swift.Int, Swift.Comparable, Swift.Codable {
   case none
   public static func < (lhs: ChatSDK.LogLevel, rhs: ChatSDK.LogLevel) -> Swift.Bool
   public static func == (lhs: ChatSDK.LogLevel, rhs: ChatSDK.LogLevel) -> Swift.Bool
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
-  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -4336,9 +3323,7 @@ public enum GroupChannelPushTriggerOption : Swift.String, Swift.Codable {
   case off
   case mentionOnly
   public init(from decoder: any Swift.Decoder) throws
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -4350,25 +3335,17 @@ public typealias OpenChannelHandler = (_ channel: ChatSDK.OpenChannel?, _ error:
 public protocol GIMErrorCode : Foundation.LocalizedError {
   var message: Swift.String { get }
   var code: Swift.Int { get }
-  #if compiler(>=5.3) && $NonescapableTypes
   func asGIMError(message: Swift.String?) -> ChatSDK.GIMError
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   init?(rawValue: Swift.Int)
-  #endif
 }
 extension ChatSDK.GIMErrorCode {
-  #if compiler(>=5.3) && $NonescapableTypes
   public var errorDescription: Swift.String? {
     get
   }
-  #endif
   public var asGIMError: ChatSDK.GIMError {
     get
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   public func asGIMError(message: Swift.String?) -> ChatSDK.GIMError
-  #endif
 }
 public class SummaryMessage : Swift.Codable {
   final public let summary: ChatSDK.Summary
@@ -4433,10 +3410,8 @@ public struct DoNotDisturbEntity : Swift.Codable {
     get
   }
   public func loadNextPage(completionHandler: @escaping ChatSDK.UserListHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public func loadNextPage() async throws -> Swift.Result<[ChatSDK.User], ChatSDK.GIMError>
-  #endif
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class SettingAISummary : Swift.Codable {
@@ -4463,9 +3438,7 @@ public class PushNotificationTranslation : Swift.Codable {
 public enum ReactionEventAction : Swift.String, Swift.Codable {
   case add
   case delete
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -4517,9 +3490,7 @@ public enum CollectionEventSource : Swift.Int, Swift.Codable {
   case eventPollVoted
   case eventPollChangeLog
   case eventPinnedMessageUpdated
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
-  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -4538,12 +3509,8 @@ extension ChatSDK.OpenChannelDelegate {
   public func channelDidUpdateDeliveryStatus(_ channel: ChatSDK.OpenChannel)
   public func channelDidUpdateTypingStatus(_ channel: ChatSDK.OpenChannel)
   public func channelDidChangeMemberCount(_ channels: [ChatSDK.OpenChannel])
-  #if compiler(>=5.3) && $NonescapableTypes
   public func channel(_ channel: ChatSDK.OpenChannel, didReceiveInvitation invitees: [ChatSDK.User]?, inviter: ChatSDK.User?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public func channel(_ channel: ChatSDK.OpenChannel, didDeclineInvitation invitee: ChatSDK.User, inviter: ChatSDK.User?)
-  #endif
   public func channel(_ channel: ChatSDK.OpenChannel, userDidJoin user: ChatSDK.User)
   public func channel(_ channel: ChatSDK.OpenChannel, userDidLeave user: ChatSDK.User)
   public func channelWasHidden(_ channel: ChatSDK.OpenChannel)
@@ -4574,26 +3541,20 @@ extension ChatSDK.OpenChannelDelegate {
   final public let updatedAt: Swift.Int64
   required public init(from decoder: any Swift.Decoder) throws
   public class func getPollOption(params: ChatSDK.PollOptionRetrievalParams, completionHandler: @escaping ChatSDK.PollOptionHandler)
-  #if compiler(>=5.3) && $NonescapableTypes
   @available(iOS 13.0, *)
   public class func getPollOption(params: ChatSDK.PollOptionRetrievalParams) async throws -> Swift.Result<ChatSDK.PollOption, ChatSDK.GIMError>
-  #endif
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
 }
 extension ChatSDK.PollOption {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 public typealias PollHandler = (_ poll: ChatSDK.Poll?, _ error: ChatSDK.GIMError?) -> Swift.Void
 public enum MentionType : Swift.String, Swift.Codable {
   case users
   case channel
   public init(from decoder: any Swift.Decoder) throws
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -4611,22 +3572,16 @@ public enum MentionType : Swift.String, Swift.Codable {
   @objc deinit
 }
 extension ChatSDK.MemberListQueryParams {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
-  #endif
 }
 extension ChatSDK.MemberListQueryParams : Foundation.NSCopying {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  #endif
 }
 public enum GIMWebSocketConnectionState : Swift.Int {
   case connecting
   case open
   case closed
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
-  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -4652,9 +3607,7 @@ extension ChatSDK.RestrictionType : Swift.Hashable {
 public enum PushTemplate : Swift.String, Swift.Codable {
   case `default`
   case alternative
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -4663,9 +3616,7 @@ public enum PushTemplate : Swift.String, Swift.Codable {
 public enum MutedState : Swift.Int, Swift.Codable {
   case unmuted
   case muted
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
-  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -4675,9 +3626,7 @@ public enum ReplyType : Swift.String, Swift.Codable {
   case none
   case all
   case onlyReplyToChannel
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -4691,9 +3640,7 @@ public enum MessageSendingStatus : Swift.String, Swift.Codable {
   case succeeded
   case canceled
   case scheduled
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -4725,9 +3672,7 @@ public enum MessageSendingStatus : Swift.String, Swift.Codable {
 public enum MemberListOrder : Swift.String, Swift.Codable {
   case nicknameAlphabetical
   case operatorThenMemberNicknameAlphabetical
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
