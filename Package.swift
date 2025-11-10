@@ -8,8 +8,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "ChatSDK",
-            url: "https://github.com/gamania-beanfun/gim-chat-sdk-ios/releases/download/1.4.0/ChatSDK.xcframework.zip",
-            checksum: "c213c3decbed3e091a2662bd53641c18afb2c8007dabfd0875aaac0afe2bc972"
+            url: "https://github.com/gamania-beanfun/gim-chat-sdk-ios/releases/download/1.5.0/ChatSDK.xcframework.zip",
+            checksum: "773f09ca6da44a936199c3c9ed3818419a968b2e96190e02a5d0e4a0c9402802"
         )
     ]
 )

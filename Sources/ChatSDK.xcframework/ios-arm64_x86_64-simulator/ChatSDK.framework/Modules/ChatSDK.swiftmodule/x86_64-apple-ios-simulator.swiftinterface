@@ -1111,6 +1111,7 @@ extension ChatSDK.GroupChannelDelegate {
 }
 public enum ChatError : Swift.Int, ChatSDK.GIMErrorCode {
   case parameterDecodeFailure
+  case appIdNotValid
   case invalidParameterValueString
   case invalidParameterValueNumber
   case invalidParameterValueList
@@ -1132,7 +1133,7 @@ public enum ChatError : Swift.Int, ChatSDK.GIMErrorCode {
   case userNotExist
   case accessTokenNotValid
   case authUnknownError
-  case appIdNotValid
+  case appIdNotFound
   case authUserIdTooLong
   case authPlanQuotaExceeded
   case sessionKeyExpired
