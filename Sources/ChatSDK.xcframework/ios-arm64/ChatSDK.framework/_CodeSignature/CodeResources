@@ -14,27 +14,27 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		9chegxWH+VROI5yisB8Srz/en8w=
+		N+EnhMO28zaCB++nV0U4sY+ZGY8=
 		</data>
 		<key>Modules/ChatSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		rME6nTt8EI2cchShzwf0nLPP+GU=
+		kEERxLI+c2Weog6U5+1m/Q6R1y0=
 		</data>
 		<key>Modules/ChatSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		PPWk3FYx3DxIpynaSpMuUH/7lwk=
+		J6/UUKYVi6D+1BRJwQnWOYHOsTc=
 		</data>
 		<key>Modules/ChatSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		0mq89Jh++yOp0a93EqcW3eSdngk=
+		/+DP1lfZpvCdJW9ppINnCFF8wOA=
 		</data>
 		<key>Modules/ChatSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		PPWk3FYx3DxIpynaSpMuUH/7lwk=
+		J6/UUKYVi6D+1BRJwQnWOYHOsTc=
 		</data>
 		<key>Modules/ChatSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		0LjcfQwpCpB2k+knLMURbFU6Q1w=
+		eKqkwyS6BmEvgr8NIhRCz4gGnng=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -61,35 +61,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			nf4lrzyRpAKXY+1EU1hvqkaSeMLUs1vg6VbIuwoCUaY=
+			FxDqAjFCXhON/G6VfG93ePKzjYd1LyxPlchsfJje904=
 			</data>
 		</dict>
 		<key>Modules/ChatSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			K8T6R/MlmDmSVkkAdK0lRVC5HkyEcOOWTfUiA0W5ev8=
+			v3SxPWQT7NJqEs9azTKPty9tkXS2jXjol+Xj3Xr+zps=
 			</data>
 		</dict>
 		<key>Modules/ChatSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			qQl34SvLtmJBZHqLrGo2FQ/UuLeyw+UhOmpn+Eo0COg=
+			32xyfAA582gFneW34/k4VCzEj3NF5WpGQf1U31mPSJg=
 			</data>
 		</dict>
 		<key>Modules/ChatSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			K8T6R/MlmDmSVkkAdK0lRVC5HkyEcOOWTfUiA0W5ev8=
+			v3SxPWQT7NJqEs9azTKPty9tkXS2jXjol+Xj3Xr+zps=
 			</data>
 		</dict>
 		<key>Modules/ChatSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QmEx7W3dDtlLQkobWexD1PxE64AehkMXk6o33azS5iA=
+			gUUeHL8/n2LIelt1wDDLW+lSyblePW7qixtqID/vbiM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

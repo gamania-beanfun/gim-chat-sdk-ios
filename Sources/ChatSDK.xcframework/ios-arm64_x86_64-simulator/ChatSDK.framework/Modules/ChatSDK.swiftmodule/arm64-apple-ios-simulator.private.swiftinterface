@@ -383,6 +383,18 @@ public typealias RestrictedUserListHandler = (_ users: [ChatSDK.RestrictedUser]?
   @objc override dynamic public init()
   @objc deinit
 }
+public enum AssociateImageType : Swift.String {
+  case user
+  case channel
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct UploadImageData {
+  public init(data: Foundation.Data?, associteType: ChatSDK.AssociateImageType)
+}
 @objc public class MessageListParams : ObjectiveC.NSObject, Foundation.NSCopying {
   public var previousResultSize: Swift.Int
   public var nextResultSize: Swift.Int
@@ -455,6 +467,7 @@ extension ChatSDK.UserMessage {
   public var accessCode: Swift.String?
   public var operatorUserIds: [Swift.String]?
   public var messageSurvivalSeconds: Swift.Int?
+  public var coverFile: Swift.String?
   @objc override dynamic public init()
   public func setOperators(_ operators: [ChatSDK.User])
   @objc deinit
@@ -1373,9 +1386,6 @@ public typealias MetaCountersHandler = (_ metaData: [Swift.String : Swift.Int]?,
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
-extension Foundation.URLRequest {
-  public func cURL(pretty: Swift.Bool = false) -> Swift.String
-}
 @objc @_inheritsConvenienceInitializers public class BaseMessageUpdateParams : ObjectiveC.NSObject, Swift.Encodable {
   public var data: Swift.String?
   public var customType: Swift.String?
@@ -1521,6 +1531,7 @@ extension ChatSDK.PreviousMessageListQueryParams : Foundation.NSCopying {
   public var operatorUserIds: [Swift.String]?
   public var userIds: [Swift.String]?
   public var accessCode: Swift.String?
+  public var coverFile: Swift.String?
   public var messageSurvivalSeconds: Swift.Int
   @objc override dynamic public init()
   public func addUser(_ user: ChatSDK.User)
@@ -2363,21 +2374,21 @@ public struct FileEntity : Swift.Codable {
   dynamic public class func createChannel(params: ChatSDK.GroupChannelCreateParams, completionHandler: ChatSDK.GroupChannelHandler?)
   @available(iOS 13.0, *)
   dynamic public class func createChannel(params: ChatSDK.GroupChannelCreateParams) async throws -> Swift.Result<ChatSDK.GroupChannel, ChatSDK.GIMError>
-  dynamic public class func createChannel(params: ChatSDK.GroupChannelCreateParams, progressHandler: ChatSDK.ProgressHandler?, completionHandler: ChatSDK.GroupChannelHandler?)
+  dynamic public class func createChannel(params: ChatSDK.GroupChannelCreateParams, progressHandler: ChatSDK.MultiProgressHandler?, completionHandler: ChatSDK.GroupChannelHandler?)
   @available(iOS 13.0, *)
-  dynamic public class func createChannel(params: ChatSDK.GroupChannelCreateParams, progressHandler: ChatSDK.ProgressHandler?) async throws -> Swift.Result<ChatSDK.GroupChannel, ChatSDK.GIMError>
+  dynamic public class func createChannel(params: ChatSDK.GroupChannelCreateParams, progressHandler: ChatSDK.MultiProgressHandler?) async throws -> Swift.Result<ChatSDK.GroupChannel, ChatSDK.GIMError>
   dynamic public class func createDistinctChannelIfNotExist(params: ChatSDK.GroupChannelCreateParams, completionHandler: @escaping ChatSDK.DistinctGroupChannelHandler)
   @available(iOS 13.0, *)
   dynamic public class func createDistinctChannelIfNotExist(params: ChatSDK.GroupChannelCreateParams) async throws -> Swift.Result<(channel: ChatSDK.GroupChannel, isCreate: Swift.Bool), ChatSDK.GIMError>
-  dynamic public class func createDistinctChannelIfNotExist(params: ChatSDK.GroupChannelCreateParams, progressHandler: ChatSDK.ProgressHandler?, completionHandler: @escaping ChatSDK.DistinctGroupChannelHandler)
+  dynamic public class func createDistinctChannelIfNotExist(params: ChatSDK.GroupChannelCreateParams, progressHandler: ChatSDK.MultiProgressHandler?, completionHandler: @escaping ChatSDK.DistinctGroupChannelHandler)
   @available(iOS 13.0, *)
-  dynamic public class func createDistinctChannelIfNotExist(params: ChatSDK.GroupChannelCreateParams, progressHandler: ChatSDK.ProgressHandler?) async throws -> Swift.Result<(channel: ChatSDK.GroupChannel, isCreate: Swift.Bool), ChatSDK.GIMError>
+  dynamic public class func createDistinctChannelIfNotExist(params: ChatSDK.GroupChannelCreateParams, progressHandler: ChatSDK.MultiProgressHandler?) async throws -> Swift.Result<(channel: ChatSDK.GroupChannel, isCreate: Swift.Bool), ChatSDK.GIMError>
   dynamic public func update(params: ChatSDK.GroupChannelUpdateParams, completionHandler: @escaping ChatSDK.GroupChannelHandler)
   @available(iOS 13.0, *)
   dynamic public func update(params: ChatSDK.GroupChannelUpdateParams) async throws -> Swift.Result<ChatSDK.GroupChannel, ChatSDK.GIMError>
-  dynamic public func update(params: ChatSDK.GroupChannelUpdateParams, progressHandler: ChatSDK.ProgressHandler?, completionHandler: @escaping ChatSDK.GroupChannelHandler)
+  dynamic public func update(params: ChatSDK.GroupChannelUpdateParams, progressHandler: ChatSDK.MultiProgressHandler?, completionHandler: @escaping ChatSDK.GroupChannelHandler)
   @available(iOS 13.0, *)
-  dynamic public func update(params: ChatSDK.GroupChannelUpdateParams, progressHandler: ChatSDK.ProgressHandler?) async throws -> Swift.Result<ChatSDK.GroupChannel, ChatSDK.GIMError>
+  dynamic public func update(params: ChatSDK.GroupChannelUpdateParams, progressHandler: ChatSDK.MultiProgressHandler?) async throws -> Swift.Result<ChatSDK.GroupChannel, ChatSDK.GIMError>
   dynamic public class func getChannel(url: Swift.String, completionHandler: ChatSDK.GroupChannelHandler?)
   dynamic public func getChannel(completionHandler: ChatSDK.GroupChannelHandler?)
   @available(iOS 13.0, *)
@@ -2522,7 +2533,6 @@ public typealias GroupChannelHandler = (_ channel: ChatSDK.GroupChannel?, _ erro
   public func encode(to encoder: any Swift.Encoder) throws
 }
 @objc @_inheritsConvenienceInitializers public class GIMChat : ObjectiveC.NSObject {
-  public static var isEnableDebugcURL: Swift.Bool
   public class func setSessionDelegate(_ delegate: any ChatSDK.SessionDelegate)
   public class func removeSessionDelegate()
   public class func setCompletionHandlerDelegateQueue(_ queue: Dispatch.DispatchQueue)
@@ -3684,6 +3694,9 @@ extension ChatSDK.ReachabilityStatus : Swift.Hashable {}
 extension ChatSDK.MessageType : Swift.Equatable {}
 extension ChatSDK.MessageType : Swift.Hashable {}
 extension ChatSDK.MessageType : Swift.RawRepresentable {}
+extension ChatSDK.AssociateImageType : Swift.Equatable {}
+extension ChatSDK.AssociateImageType : Swift.Hashable {}
+extension ChatSDK.AssociateImageType : Swift.RawRepresentable {}
 extension ChatSDK.ReportCategory : Swift.Equatable {}
 extension ChatSDK.ReportCategory : Swift.Hashable {}
 extension ChatSDK.ReportCategory : Swift.RawRepresentable {}
