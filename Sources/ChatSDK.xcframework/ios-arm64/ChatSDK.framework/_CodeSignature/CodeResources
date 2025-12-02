@@ -18,7 +18,7 @@
 		</data>
 		<key>Modules/ChatSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		kEERxLI+c2Weog6U5+1m/Q6R1y0=
+		tYCdfoH8i66BxrA6dJx5rdTmR3M=
 		</data>
 		<key>Modules/ChatSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
@@ -34,7 +34,7 @@
 		</data>
 		<key>Modules/ChatSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		eKqkwyS6BmEvgr8NIhRCz4gGnng=
+		TE+KpBApYDdpHTwnZq789AFbl/E=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -61,7 +61,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			FxDqAjFCXhON/G6VfG93ePKzjYd1LyxPlchsfJje904=
+			wHMuu6LQQR+KRBIG1QxkgJVqSJC5PNd19vKFf0aozUg=
 			</data>
 		</dict>
 		<key>Modules/ChatSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
@@ -89,7 +89,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gUUeHL8/n2LIelt1wDDLW+lSyblePW7qixtqID/vbiM=
+			94i7hOwzut2E0XwDDnyJdCzAcZ8WXOU1Jwncauo+BJs=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
