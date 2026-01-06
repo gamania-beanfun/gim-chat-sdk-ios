@@ -143519,31 +143519,52 @@
     },
     {
       "filePath": "\/Users\/shuyusung\/2Swift\/Gamania\/chatsdk\/Sources\/ChatSDK\/Network\/GIMConnection\/GIMConnection.swift",
+      "kind": "StringLiteral",
+      "offset": 1359,
+      "length": 25,
+      "value": "\"com.gamania.chat.socket\""
+    },
+    {
+      "filePath": "\/Users\/shuyusung\/2Swift\/Gamania\/chatsdk\/Sources\/ChatSDK\/Network\/GIMConnection\/GIMConnection.swift",
       "kind": "IntegerLiteral",
-      "offset": 1128,
+      "offset": 1609,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/shuyusung\/2Swift\/Gamania\/chatsdk\/Sources\/ChatSDK\/Network\/GIMConnection\/GIMConnection.swift",
       "kind": "IntegerLiteral",
-      "offset": 1164,
+      "offset": 1645,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/shuyusung\/2Swift\/Gamania\/chatsdk\/Sources\/ChatSDK\/Network\/GIMConnection\/GIMConnection.swift",
       "kind": "IntegerLiteral",
-      "offset": 1212,
+      "offset": 1689,
       "length": 2,
       "value": "15"
     },
     {
       "filePath": "\/Users\/shuyusung\/2Swift\/Gamania\/chatsdk\/Sources\/ChatSDK\/Network\/GIMConnection\/GIMConnection.swift",
       "kind": "IntegerLiteral",
-      "offset": 1256,
+      "offset": 1733,
       "length": 1,
       "value": "5"
+    },
+    {
+      "filePath": "\/Users\/shuyusung\/2Swift\/Gamania\/chatsdk\/Sources\/ChatSDK\/Network\/GIMConnection\/GIMConnection.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1905,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/shuyusung\/2Swift\/Gamania\/chatsdk\/Sources\/ChatSDK\/Network\/GIMConnection\/GIMConnection.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7037,
+      "length": 5,
+      "value": "false"
     },
     {
       "filePath": "\/Users\/shuyusung\/2Swift\/Gamania\/chatsdk\/Sources\/ChatSDK\/Use Cases\/UserMessageCreate\/UserMessageCreateParams.swift",
@@ -144824,7 +144845,7 @@
       "kind": "StringLiteral",
       "offset": 346,
       "length": 7,
-      "value": "\"1.6.1\""
+      "value": "\"1.7.0\""
     },
     {
       "filePath": "\/Users\/shuyusung\/2Swift\/Gamania\/chatsdk\/Sources\/ChatSDK\/GIMEnvironment.swift",
