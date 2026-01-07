@@ -143520,49 +143520,49 @@
     {
       "filePath": "\/Users\/shuyusung\/2Swift\/Gamania\/chatsdk\/Sources\/ChatSDK\/Network\/GIMConnection\/GIMConnection.swift",
       "kind": "StringLiteral",
-      "offset": 1359,
+      "offset": 1352,
       "length": 25,
       "value": "\"com.gamania.chat.socket\""
     },
     {
       "filePath": "\/Users\/shuyusung\/2Swift\/Gamania\/chatsdk\/Sources\/ChatSDK\/Network\/GIMConnection\/GIMConnection.swift",
       "kind": "IntegerLiteral",
-      "offset": 1609,
+      "offset": 1602,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/shuyusung\/2Swift\/Gamania\/chatsdk\/Sources\/ChatSDK\/Network\/GIMConnection\/GIMConnection.swift",
       "kind": "IntegerLiteral",
-      "offset": 1645,
+      "offset": 1638,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/shuyusung\/2Swift\/Gamania\/chatsdk\/Sources\/ChatSDK\/Network\/GIMConnection\/GIMConnection.swift",
       "kind": "IntegerLiteral",
-      "offset": 1689,
+      "offset": 1682,
       "length": 2,
       "value": "15"
     },
     {
       "filePath": "\/Users\/shuyusung\/2Swift\/Gamania\/chatsdk\/Sources\/ChatSDK\/Network\/GIMConnection\/GIMConnection.swift",
       "kind": "IntegerLiteral",
-      "offset": 1733,
+      "offset": 1726,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/shuyusung\/2Swift\/Gamania\/chatsdk\/Sources\/ChatSDK\/Network\/GIMConnection\/GIMConnection.swift",
       "kind": "IntegerLiteral",
-      "offset": 1905,
+      "offset": 1898,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/shuyusung\/2Swift\/Gamania\/chatsdk\/Sources\/ChatSDK\/Network\/GIMConnection\/GIMConnection.swift",
       "kind": "BooleanLiteral",
-      "offset": 7037,
+      "offset": 7619,
       "length": 5,
       "value": "false"
     },
@@ -144845,7 +144845,7 @@
       "kind": "StringLiteral",
       "offset": 346,
       "length": 7,
-      "value": "\"1.7.0\""
+      "value": "\"1.7.1\""
     },
     {
       "filePath": "\/Users\/shuyusung\/2Swift\/Gamania\/chatsdk\/Sources\/ChatSDK\/GIMEnvironment.swift",
