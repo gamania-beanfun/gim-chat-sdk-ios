@@ -1123,47 +1123,97 @@ extension ChatSDK.GroupChannelDelegate {
   public func channel(_ channel: ChatSDK.GroupChannel, didUpdateSummaryStatus status: ChatSDK.AISummaryStatus)
 }
 public enum ChatError : Swift.Int, ChatSDK.GIMErrorCode {
-  case parameterDecodeFailure
-  case appIdNotValid
+  case errBadRequest
+  case errInvalidArgument
+  case errUnexpectedParameterTypeNumber
+  case errUnauthorized
+  case errInputExceedLimit
+  case errInvalidValue
+  case errNotFoundInDatabase
+  case errResourceAlreadyExists
+  case errInvalidSessionKeyValue
+  case errInvalidAPIToken
+  case errJSONParser
+  case errParameterDecode
+  case errInvalidSession
+  case errAPPUnauthorized
+  case errHttpUnauthorized
+  case errForbidden
+  case errIPIsNotAllowed
+  case errDomainIsNotAllowed
+  case errForbiddenFeatureGroupPermission
+  case ErrForbiddenOutOfQuota
+  case errNotSupportDefaultPlan
+  case errNotFound
+  case errRouterNotFound
+  case errFileNotFound
+  case errPreconditionFailed
+  case errServerBusy
+  case errInternal
+  case errDatabase
+  case errOtherService
+  case errMarshalFailed
+  case errHttpRequestTimeout
+  case errInvalidValueBotProfileLanguage
+  case errInvalidAppID
+  case userNotFound
+  case errApplicationNotFound
+  case errAPPPermissionDeny
+  case errUserNotLoggedIn
+  case errChannelFreeze
+  case errInvitationNotFound
+  case errDeactivatedUserNotAccessible
+  case errMemIsDeactivated
+  case errChannelNotFound
+  case errChannelUserLimit
+  case errInvalidEventName
+  case errInvalidChannelURLFormat
+  case errNotAnOwner
+  case errSendNotAllowed
+  case errUserIsMuted
+  case errFileIsNotReady
+  case errMessageNotFound
+  case errMetaSendOutsideAllowedWindow
+  case errPollNotFound
+  case errPollOptionNotFound
+  case errMultipleVotePollNotFound
+  case errPollAlreadyExistsForMessage
+  case errPollNotLinkedToMessage
+  case errPollNotOpen
+  case errPollHasClosedOrRemoved
+  case errBlockProfanityMessage
+  case errDomainFilter
+  case errOptionsExceedMax
+  case errInBlockRelation
+  case errBlockAndInvitedNotAllowed
+  case errMessageRateLimitExceeded
+  case errOpenSearchPingFailed
   case invalidParameterValueString
-  case invalidParameterValueNumber
   case invalidParameterValueList
   case invalidParameterValueJson
   case invalidParameterValueBoolean
   case invalidParameterValueRequired
   case invalidParameterValuePositive
   case invalidParameterValueNegative
-  case nonAuthorized
   case tokenExpired
-  case invalidChannelURL
-  case invalidParameterValue
   case unusableCharacterIncluded
-  case notFoundInDatabase
-  case duplicatedData
   case reachedMaxCount
-  case memberReachedMaxCount
-  case userDeactivated
-  case userNotExist
   case accessTokenNotValid
-  case authUnknownError
-  case appIdNotFound
   case authUserIdTooLong
   case authPlanQuotaExceeded
   case sessionKeyExpired
   case sessionTokenRevoked
-  case invalidApiToken
   case parameterMissing
-  case invalidJsonBody
-  case blockUser
   case conflict
-  case internalServerError
   case rateLimitExceeded
-  case messageNotFound
-  case channelFreeze
   case unknownError
   case invalidInitialization
   case connectionRequired
   case connectionCanceled
+  case networkError
+  case networkRoutingError
+  case malformedData
+  case malformedErrorData
   case invalidParameter
   case notSupported
   case wrongChannelType
@@ -1173,6 +1223,11 @@ public enum ChatError : Swift.Int, ChatSDK.GIMErrorCode {
   case loginTimeout
   case webSocketConnectionClosed
   case webSocketConnectionFailed
+  case requestFailed
+  case fileUploadCancelFailed
+  case fileUploadCanceled
+  case fileUploadTimeout
+  case fileSizeLimitExceeded
   case timerWasExpired
   case timerWasAlreadyDone
   case pendingError
@@ -1181,20 +1236,9 @@ public enum ChatError : Swift.Int, ChatSDK.GIMErrorCode {
   case sessionKeyRefreshFailed
   case collectionDisposed
   case localDatabaseError
-  case networkError
-  case networkRoutingError
-  case malformedData
-  case malformedErrorData
-  case requestFailed
-  case fileUploadCancelFailed
-  case fileUploadCanceled
-  case fileUploadTimeout
-  case fileSizeLimitExceeded
   case socketLoginRequired
   case socketUserNotMember
   case socketUserDeactivated
-  case socketUserNotOwnerOfMessage
-  case socketUserSendMessageNotAllowed
   case socketInvalidMentionForMessage
   case socketInvalidPushOptionForMessage
   case socketTooManyMetaKeyForMessage
@@ -1202,7 +1246,6 @@ public enum ChatError : Swift.Int, ChatSDK.GIMErrorCode {
   case socketTooManyMetaArrayForMessage
   case socketGuestNotAllowed
   case socketMutedUserInApplicationSendMessageNotAllowed
-  case socketMutedUserInChannelSendMessageNotAllowed
   case socketChannelFrozen
   case socketProfanityMessageBlocked
   case socketBannedUrlsBlocked
@@ -1216,18 +1259,6 @@ public enum ChatError : Swift.Int, ChatSDK.GIMErrorCode {
   case socketTooManyMessages
   case socketMessageNotFound
   case socketTooManyParticipants
-  case socketChannelNotFound
-  case errBadRequest
-  case errInvalidArgument
-  case errBlockAndInvitedNotAllowed
-  case errInvalidSession
-  case errAPPUnauthorized
-  case errHttpUnauthorized
-  case errForbidden
-  case errForbiddenFeatureGroupPermission
-  case ErrForbiddenOutOfQuota
-  case errNotSupportDefaultPlan
-  case errNotFound
   public var code: Swift.Int {
     get
   }
@@ -1237,6 +1268,100 @@ public enum ChatError : Swift.Int, ChatSDK.GIMErrorCode {
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
+    get
+  }
+}
+extension ChatSDK.ChatError {
+  @available(*, deprecated, message: "Use .errUnauthorized instead")
+  public static var nonAuthorized: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errInternal instead")
+  public static var internalServerError: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errUnexpectedParameterTypeNumber instead")
+  public static var invalidParameterValueNumber: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errInvalidValue instead")
+  public static var invalidParameterValue: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errNotFoundInDatabase instead")
+  public static var notFoundInDatabase: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errResourceAlreadyExists instead")
+  public static var duplicatedData: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errInvalidAPIToken instead")
+  public static var invalidApiToken: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errJSONParser instead")
+  public static var invalidJsonBody: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errParameterDecode instead")
+  public static var parameterDecodeFailure: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errInputExceedLimit instead")
+  public static var invalidChannelURL: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errInvalidSessionKeyValue instead")
+  public static var authUnknownError: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errInvalidAppID instead")
+  public static var appIdNotValid: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .userNotFound instead")
+  public static var userNotExist: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errApplicationNotFound instead")
+  public static var appIdNotFound: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errChannelFreeze instead")
+  public static var channelFreeze: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errDeactivatedUserNotAccessible instead")
+  public static var userDeactivated: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errChannelNotFound instead")
+  public static var socketChannelNotFound: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errChannelUserLimit instead")
+  public static var memberReachedMaxCount: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errNotAnOwner instead")
+  public static var socketUserNotOwnerOfMessage: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errSendNotAllowed instead")
+  public static var socketUserSendMessageNotAllowed: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errUserIsMuted instead")
+  public static var socketMutedUserInChannelSendMessageNotAllowed: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errMessageNotFound instead")
+  public static var messageNotFound: ChatSDK.ChatError {
+    get
+  }
+  @available(*, deprecated, message: "Use .errInBlockRelation instead")
+  public static var blockUser: ChatSDK.ChatError {
     get
   }
 }
